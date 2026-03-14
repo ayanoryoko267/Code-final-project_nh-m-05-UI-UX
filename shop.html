@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wearever - Cửa hàng thời trang</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Áp dụng font Fira Sans cho toàn bộ trang web */
+      body {
+        font-family: "Fira Sans", sans-serif;
+      }
+
+      /* Hiệu ứng cuộn trang mượt mà */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* CSS khi một nút Kích thước (Size) được click chọn (Nền nâu #422B1C, chữ trắng) */
+      .filter-size.selected {
+        background-color: #422b1c;
+        color: white;
+        border-color: #422b1c;
+      }
+
+      /* CSS khi một nút Màu sắc (Color) được click chọn (Thêm viền đỏ #422B1C bao quanh) */
+      .filter-color.selected {
+        outline: 2px solid #422b1c;
+        outline-offset: 2px;
+      }
+
+      /* Code ẩn thanh cuộn ngang trên điện thoại nhưng vẫn cho phép vuốt tay */
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+
+  <body class="bg-white text-[#422B1C] overflow-x-hidden">
+    <header
+      class="border-b border-gray-100 shadow-sm sticky top-0 bg-white/95 backdrop-blur-sm z-50"
+    >
+      <div
+        class="container mx-auto px-3 py-3 md:px-4 md:py-4 flex flex-wrap items-center justify-between gap-y-3"
+      >
+        <div
+          class="order-1 md:order-2 flex-shrink-0 w-1/2 md:w-1/3 flex justify-start md:justify-center"
+        >
+          <div
+            class="w-10 h-10 md:w-12 md:h-12 border-2 border-[#422B1C] rounded-full flex items-center justify-center font-bold text-xs md:text-base"
+          >
+            Logo
+          </div>
+        </div>
+
+        <div
+          class="order-2 md:order-3 flex items-center justify-end space-x-4 md:space-x-6 w-1/2 md:w-1/3"
+        >
+          <div class="relative hidden sm:block">
+            <input
+              type="text"
+              placeholder="Tìm kiếm sản phẩm"
+              class="border border-[#422B1C]/30 rounded-full py-1 px-4 pl-10 focus:outline-none focus:border-[#422B1C] w-48 lg:w-64 text-sm font-normal italic transition-colors"
+            />
+            <i
+              class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-[#422B1C]/60"
+            ></i>
+          </div>
+          <button class="sm:hidden text-[#422B1C]">
+            <i class="fa-solid fa-magnifying-glass text-lg"></i>
+          </button>
+
+          <a
+            href="#"
+            class="flex items-center space-x-1 hover:opacity-70 transition-opacity"
+          >
+            <span class="font-normal hidden md:inline">Tài khoản</span
+            ><i class="fa-regular fa-circle-user text-xl md:text-2xl"></i>
+          </a>
+
+          <a
+            href="#"
+            class="relative hover:opacity-70 transition-opacity flex items-center space-x-1"
+          >
+            <span class="font-normal hidden md:inline">Giỏ hàng</span
+            ><i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i>
+            <span
+              class="absolute -top-2 -right-2 bg-[#7a0000] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center"
+              >0</span
+            >
+          </a>
+        </div>
+
+        <nav
+          class="order-3 md:order-1 flex space-x-5 md:space-x-8 font-semibold items-center overflow-x-auto scrollbar-hide md:overflow-visible w-full md:w-1/3 text-sm md:text-base pb-1 md:pb-0"
+        >
+          <a
+            href="shop.html"
+            class="hover:opacity-70 py-2 whitespace-nowrap transition-opacity"
+            >Về Wearever</a
+          >
+
+          <div class="relative group py-2 whitespace-nowrap">
+            <a
+              href="#"
+              class="hover:opacity-70 cursor-pointer transition-opacity"
+              >Áo</a
+            >
+            <div
+              class="absolute top-full left-0 pt-2 hidden group-hover:block z-50"
+            >
+              <div
+                class="bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.05)] rounded-md w-40 overflow-hidden"
+              >
+                <a
+                  href="shop.html?category=áo thun"
+                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
+                  >Áo thun</a
+                >
+                <a
+                  href="shop.html?category=áo sơ mi"
+                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
+                  >Áo sơ mi</a
+                >
+                <a
+                  href="shop.html?category=áo len"
+                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
+                  >Áo len</a
+                >
+                <a
+                  href="shop.html?category=áo tanktop"
+                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
+                  >Áo tanktop</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="relative group py-2 whitespace-nowrap">
+            <a
+              href="#"
+              class="hover:opacity-70 cursor-pointer transition-opacity"
+              >Quần</a
+            >
+            <div
+              class="absolute top-full left-0 pt-2 hidden group-hover:block z-50"
+            >
+              <div
+                class="bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.05)] rounded-md w-40 overflow-hidden"
+              >
+                <a
+                  href="shop.html?category=quần jeans"
+                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
+                  >Quần jeans</a
+                >
+                <a
+                  href="shop.html?category=quần tây"
+                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
+                  >Quần tây</a
+                >
+                <a
+                  href="shop.html?category=quần kaki"
+                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
+                  >Quần kaki</a
+                >
+                <a
+                  href="shop.html?category=quần nỉ"
+                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
+                  >Quần nỉ</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="relative group py-2 whitespace-nowrap">
+            <a
+              href="#"
+              class="hover:opacity-70 cursor-pointer transition-opacity"
+              >Bộ sưu tập</a
+            >
+            <div
+              class="absolute top-full left-0 pt-2 hidden group-hover:block z-50"
+            >
+              <div
+                class="bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.05)] rounded-md w-48 overflow-hidden"
+              >
+                <a
+                  href="shop.html?category=BST1"
+                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
+                  >SHE'S VIETNAMESE</a
+                >
+                <a
+                  href="shop.html?category=BST2"
+                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
+                  >SUMMER HER</a
+                >
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-2 md:px-4 py-4 md:py-6">
+      <div class="flex flex-col mb-4 md:mb-6">
+        <nav
+          class="flex items-center space-x-2 md:space-x-3 text-xs md:text-sm mb-4"
+          id="dynamic-breadcrumb"
+        ></nav>
+
+        <button
+          id="toggle-filter-btn"
+          class="focus:outline-none hover:bg-[#d2c8be]/30 transition-colors flex items-center space-x-2 w-fit bg-gray-50 border border-gray-200 px-4 py-2 rounded-full shadow-sm"
+          title="Đóng/Mở bảng bộ lọc"
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#422B1C"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+          <span class="font-medium text-sm">Bộ lọc</span>
+        </button>
+      </div>
+
+      <div
+        class="flex flex-col md:flex-row gap-5 md:gap-8 transition-all duration-300"
+      >
+        <aside
+          id="filter-sidebar"
+          class="w-full md:w-1/4 bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] rounded-2xl md:rounded-[2rem] p-5 md:p-8 h-fit md:sticky md:top-28 transition-all duration-300"
+        >
+          <div class="mb-6 md:mb-8">
+            <h3 class="font-bold mb-3 md:mb-4 text-sm md:text-lg">
+              Kích thước
+            </h3>
+            <div class="flex flex-wrap gap-2 md:gap-3" id="size-filters">
+              <button
+                class="filter-size w-9 h-9 md:w-11 md:h-11 text-xs md:text-base border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
+                data-size="XS"
+              >
+                XS
+              </button>
+              <button
+                class="filter-size w-9 h-9 md:w-11 md:h-11 text-xs md:text-base border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
+                data-size="S"
+              >
+                S
+              </button>
+              <button
+                class="filter-size w-9 h-9 md:w-11 md:h-11 text-xs md:text-base border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
+                data-size="M"
+              >
+                M
+              </button>
+              <button
+                class="filter-size w-9 h-9 md:w-11 md:h-11 text-xs md:text-base border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
+                data-size="L"
+              >
+                L
+              </button>
+              <button
+                class="filter-size w-9 h-9 md:w-11 md:h-11 text-xs md:text-base border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
+                data-size="XL"
+              >
+                XL
+              </button>
+            </div>
+          </div>
+
+          <div class="mb-6 md:mb-8">
+            <h3 class="font-bold mb-3 md:mb-4 text-sm md:text-lg">Màu sắc</h3>
+            <div class="flex flex-wrap gap-3 md:gap-4" id="color-filters">
+              <div
+                class="filter-color w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#ffffff] border border-gray-300 cursor-pointer shadow-sm hover:scale-110 transition-transform"
+                data-color="trắng"
+                title="Trắng"
+              ></div>
+              <div
+                class="filter-color w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#EED9B9] border border-gray-200 cursor-pointer shadow-sm hover:scale-110 transition-transform"
+                data-color="be"
+                title="Be"
+              ></div>
+              <div
+                class="filter-color w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#263B6A] cursor-pointer shadow-sm hover:scale-110 transition-transform"
+                data-color="xanh dương"
+                title="Xanh dương"
+              ></div>
+              <div
+                class="filter-color w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#d2c8be] cursor-pointer shadow-sm hover:scale-110 transition-transform"
+                data-color="xám"
+                title="Xám"
+              ></div>
+              <div
+                class="filter-color w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#000000] cursor-pointer shadow-sm hover:scale-110 transition-transform"
+                data-color="đen"
+                title="Đen"
+              ></div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="font-bold mb-3 md:mb-4 text-sm md:text-lg">Mức giá</h3>
+            <div class="space-y-3 md:space-y-4" id="price-filters">
+              <label
+                class="flex items-center space-x-2 md:space-x-3 cursor-pointer group"
+              >
+                <input
+                  type="checkbox"
+                  class="filter-price w-4 h-4 md:w-5 md:h-5 accent-[#422B1C] border-gray-300 rounded cursor-pointer"
+                  data-min="100000"
+                  data-max="200000"
+                />
+                <span
+                  class="text-xs md:text-base group-hover:opacity-70 transition-opacity"
+                  >100.000 - 200.000 đồng</span
+                >
+              </label>
+              <label
+                class="flex items-center space-x-2 md:space-x-3 cursor-pointer group"
+              >
+                <input
+                  type="checkbox"
+                  class="filter-price w-4 h-4 md:w-5 md:h-5 accent-[#422B1C] border-gray-300 rounded cursor-pointer"
+                  data-min="200000"
+                  data-max="300000"
+                />
+                <span
+                  class="text-xs md:text-base group-hover:opacity-70 transition-opacity"
+                  >200.000 - 300.000 đồng</span
+                >
+              </label>
+              <label
+                class="flex items-center space-x-2 md:space-x-3 cursor-pointer group"
+              >
+                <input
+                  type="checkbox"
+                  class="filter-price w-4 h-4 md:w-5 md:h-5 accent-[#422B1C] border-gray-300 rounded cursor-pointer"
+                  data-min="300000"
+                  data-max="99999999"
+                />
+                <span
+                  class="text-xs md:text-base group-hover:opacity-70 transition-opacity"
+                  >Trên 300.000 đồng</span
+                >
+              </label>
+            </div>
+          </div>
+        </aside>
+
+        <section
+          id="product-section"
+          class="w-full md:w-3/4 mx-auto transition-all duration-300"
+        >
+          <div
+            id="product-grid"
+            class="grid grid-cols-3 gap-1.5 md:gap-x-6 md:gap-y-10"
+          ></div>
+
+          <div
+            id="no-products-msg"
+            class="hidden text-center text-[#422B1C]/60 py-10 w-full text-sm md:text-base"
+          >
+            Không tìm thấy sản phẩm nào phù hợp với bộ lọc của bạn.
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="border-t border-gray-100 mt-12 md:mt-16 bg-gray-50/50">
+      <div
+        class="container mx-auto px-4 py-8 md:py-12 text-center text-[#422B1C]/60 text-xs md:text-sm"
+      >
+        <p>&copy; 2026 Wearever. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <button
+      id="backToTopBtn"
+      onclick="scrollToTop()"
+      class="fixed bottom-4 right-4 md:bottom-6 md:right-6 w-10 h-10 md:w-12 md:h-12 bg-[#422B1C] text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-0 translate-y-10 hover:bg-[#2c1d12] z-50"
+    >
+      <i class="fa-solid fa-chevron-up text-sm md:text-lg"></i>
+    </button>
+
+    <script>
+      // --- 6.1. KHAI BÁO BIẾN CƠ BẢN ---
+      let allProducts = []; // Biến lưu trữ toàn bộ dữ liệu gọi từ file product.json
+      const urlParams = new URLSearchParams(window.location.search);
+      const activeCategory = urlParams.get("category"); // Lấy loại danh mục từ URL (vd: ?category=áo thun)
+
+      // --- 6.2. HIỆU ỨNG ĐÓNG MỞ SIDEBAR BỘ LỌC BÊN TRÁI ---
+      document
+        .getElementById("toggle-filter-btn")
+        .addEventListener("click", function () {
+          const sidebar = document.getElementById("filter-sidebar");
+          const productSection = document.getElementById("product-section");
+
+          sidebar.classList.toggle("hidden"); // Ẩn/hiện bộ lọc
+
+          // Điều chỉnh độ rộng của lưới sản phẩm (khi đóng bộ lọc thì mở rộng lưới sản phẩm 100%)
+          if (sidebar.classList.contains("hidden")) {
+            productSection.classList.remove("md:w-3/4");
+            productSection.classList.add("md:w-full");
+          } else {
+            productSection.classList.remove("md:w-full");
+            productSection.classList.add("md:w-3/4");
+          }
+        });
+
+      // --- 6.3. TỰ ĐỘNG TẠO DÒNG ĐIỀU HƯỚNG (BREADCRUMB) DỰA THEO DANH MỤC TRÊN URL ---
+      function updateBreadcrumb() {
+        const breadcrumbContainer =
+          document.getElementById("dynamic-breadcrumb");
+        // Từ điển dùng để mapping mã url sang Tên hiển thị & Danh mục cha
+        const categoryMap = {
+          "áo thun": { parent: "Áo", name: "Áo thun" },
+          "áo sơ mi": { parent: "Áo", name: "Áo sơ mi" },
+          "áo len": { parent: "Áo", name: "Áo len" },
+          "áo tanktop": { parent: "Áo", name: "Áo tanktop" },
+          "quần jeans": { parent: "Quần", name: "Quần jeans" },
+          "quần tây": { parent: "Quần", name: "Quần tây" },
+          "quần kaki": { parent: "Quần", name: "Quần kaki" },
+          "quần nỉ": { parent: "Quần", name: "Quần nỉ" },
+          bst1: { parent: "Bộ sưu tập", name: "SHE'S VIETNAMESE" },
+          bst2: { parent: "Bộ sưu tập", name: "SUMMER HER" },
+        };
+
+        if (activeCategory) {
+          const lowerCat = activeCategory.toLowerCase();
+          const catInfo = categoryMap[lowerCat] || {
+            parent: "Danh mục",
+            name: activeCategory,
+          };
+
+          breadcrumbContainer.innerHTML = `
+                    <a href="shop.html" class="hover:opacity-70 transition-opacity">Trang chủ</a>
+                    <span class="text-[#422B1C]/40">|</span>
+                    <a href="#" class="hover:opacity-70 transition-opacity">${catInfo.parent}</a>
+                    <span class="text-[#422B1C]/40">|</span>
+                    <span class="bg-[#d2c8be] px-2 md:px-3 py-1 rounded font-medium">${catInfo.name}</span>
+                `;
+        } else {
+          breadcrumbContainer.innerHTML = `
+                    <a href="shop.html" class="hover:opacity-70 transition-opacity">Trang chủ</a>
+                    <span class="text-[#422B1C]/40">|</span>
+                    <span class="bg-[#d2c8be] px-2 md:px-3 py-1 rounded font-medium">Tất cả sản phẩm</span>
+                `;
+        }
+      }
+
+      // --- 6.4. FETCH API: LẤY DỮ LIỆU TỪ FILE PRODUCT.JSON ---
+      async function fetchProducts() {
+        try {
+          const response = await fetch("product.json"); // Yêu cầu phải chạy qua Live Server để không bị lỗi CORS
+          allProducts = await response.json();
+          updateBreadcrumb();
+          applyFilters(); // Vừa load xong dữ liệu thì gọi hàm lọc luôn
+        } catch (error) {
+          console.error("Lỗi tải JSON:", error);
+          document.getElementById("product-grid").innerHTML =
+            '<p class="text-red-500 col-span-3 text-center text-sm md:text-base">Không thể tải dữ liệu sản phẩm. Hãy đảm bảo bạn đang chạy qua Live Server.</p>';
+        }
+      }
+
+      // --- 6.5. LOGIC LỌC SẢN PHẨM THEO BỘ LỌC (SIZE, MÀU, GIÁ, DANH MỤC) ---
+      function applyFilters() {
+        // Lấy danh sách các nút đang ở trạng thái 'selected' hoặc 'checked'
+        const selectedSizes = Array.from(
+          document.querySelectorAll(".filter-size.selected"),
+        ).map((btn) => btn.dataset.size);
+        const selectedColors = Array.from(
+          document.querySelectorAll(".filter-color.selected"),
+        ).map((div) => div.dataset.color);
+        const selectedPriceInputs = Array.from(
+          document.querySelectorAll(".filter-price:checked"),
+        );
+
+        let filteredProducts = allProducts; // Khởi tạo mảng lọc bằng toàn bộ sản phẩm
+
+        // 1. Lọc theo Danh mục (URL)
+        if (activeCategory) {
+          filteredProducts = filteredProducts.filter(
+            (p) =>
+              p.phanloai &&
+              p.phanloai.toLowerCase() === activeCategory.toLowerCase(),
+          );
+        }
+
+        // 2. Lọc theo Kích thước
+        if (selectedSizes.length > 0) {
+          filteredProducts = filteredProducts.filter((p) => {
+            if (!p.kichthuoc) return false;
+            const productSizes = p.kichthuoc.split(",").map((s) => s.trim());
+            // Trả về true nếu trong mảng size của sp có chứa 1 trong các size người dùng chọn
+            return selectedSizes.some((size) => productSizes.includes(size));
+          });
+        }
+
+        // 3. Lọc theo Màu sắc
+        if (selectedColors.length > 0) {
+          filteredProducts = filteredProducts.filter(
+            (p) => p.mausac && selectedColors.includes(p.mausac.toLowerCase()),
+          );
+        }
+
+        // 4. Lọc theo Mức Giá
+        if (selectedPriceInputs.length > 0) {
+          filteredProducts = filteredProducts.filter((p) => {
+            // Nếu có giá khuyến mãi thì dùng để xét, không có thì dùng giá gốc
+            const priceStr =
+              p.giasaukhuyenmai && p.giasaukhuyenmai.trim() !== ""
+                ? p.giasaukhuyenmai
+                : p.dongia;
+            const currentPrice = parseInt(priceStr);
+
+            return selectedPriceInputs.some((cb) => {
+              return (
+                currentPrice >= parseInt(cb.dataset.min) &&
+                currentPrice <= parseInt(cb.dataset.max)
+              );
+            });
+          });
+        }
+
+        // Sau khi lọc xong, đem mảng đi hiển thị
+        renderProducts(filteredProducts);
+      }
+
+      // --- 6.6. RENDER DỮ LIỆU SẢN PHẨM RA MÃ HTML (TẠO GIAO DIỆN THE CARD) ---
+      function renderProducts(data) {
+        const grid = document.getElementById("product-grid");
+        const noMsg = document.getElementById("no-products-msg");
+
+        // Nếu mảng rỗng (không tìm thấy SP), hiện thông báo
+        if (data.length === 0) {
+          grid.innerHTML = "";
+          noMsg.classList.remove("hidden");
+          return;
+        }
+
+        noMsg.classList.add("hidden"); // Ẩn thông báo nếu có SP
+
+        // Dùng hàm .map() để tạo HTML cho từng sản phẩm
+        grid.innerHTML = data
+          .map((p) => {
+            // Định dạng tiền tệ (vd: 100000 -> 100.000đ)
+            const formatPrice = (price) =>
+              new Intl.NumberFormat("vi-VN").format(Number(price)) + "đ";
+            const currentPrice = p.giasaukhuyenmai
+              ? formatPrice(p.giasaukhuyenmai)
+              : formatPrice(p.dongia);
+
+            // Kiểm tra xem sản phẩm có giảm giá thật không (Giá gốc > Giá km)
+            const hasDiscount =
+              p.giasaukhuyenmai && Number(p.dongia) > Number(p.giasaukhuyenmai);
+
+            // Style viền: Có giảm giá -> viền đỏ, Không có -> viền nâu nhạt
+            const cardBorderStyle = hasDiscount
+              ? "border-[1.5px] md:border-2 border-[#7a0000]/40"
+              : "border border-[#422B1C]/10 shadow-[0_2px_10px_rgba(0,0,0,0.02)]";
+
+            // Tính toán % giảm giá
+            let discountBadge = "";
+            if (hasDiscount) {
+              const percent = Math.round(
+                100 - (Number(p.giasaukhuyenmai) / Number(p.dongia)) * 100,
+              );
+              discountBadge = `-${percent}%`;
+            }
+
+            // Xử lý Ảnh (Có ảnh Hover mặt sau)
+            const imgSrc1 =
+              p.linkanhsp ||
+              "https://via.placeholder.com/300x400?text=Chua+co+anh";
+            const imgSrc2 = p.linkanhsp_hover || imgSrc1;
+
+            // TRẢ VỀ KHỐI HTML CHO TỪNG THẺ SẢN PHẨM
+            return `
+    <a href="product-detail.html?id=${p.stt}" class="group relative block cursor-pointer">
+        <div class="aspect-[1/1.618] ${cardBorderStyle} rounded-md md:rounded-lg mb-1.5 md:mb-4 relative overflow-hidden bg-white transition-all duration-300">
+            <img src="${imgSrc2}" alt="${p.tensanpham} mặt sau" class="w-full h-full object-cover absolute inset-0 z-0">
+            <img src="${imgSrc1}" alt="${p.tensanpham}" class="w-full h-full object-cover absolute inset-0 z-10 transition-opacity duration-500 group-hover:opacity-0">
+            
+            <div class="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                <button class="w-6 h-6 md:w-10 md:h-10 bg-white border border-[#422B1C] text-[#422B1C] rounded-full flex items-center justify-center hover:bg-[#422B1C] hover:text-white transition-all duration-200 hover:-translate-y-1 shadow-md">
+                    <i class="fa-solid fa-cart-shopping text-[8px] md:text-sm"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="space-y-0.5 md:space-y-1.5 px-0.5">
+            <h4 class="font-medium truncate text-[9px] sm:text-[11px] md:text-base leading-tight" title="${p.tensanpham}">${p.tensanpham}</h4>
+            
+            <div class="flex justify-between items-center">
+                <span class="font-bold text-[11px] sm:text-sm md:text-lg">${currentPrice}</span>
+                <div class="flex items-center space-x-0.5 md:space-x-1 text-[#422B1C]/60">
+                    <span class="text-[10px] md:text-base">${p.danhgia}</span>
+                    <i class="fa-solid fa-star text-[10px] md:text-base text-yellow-500"></i>
+                </div>
+            </div>
+            
+            ${
+              hasDiscount
+                ? `
+            <div class="flex justify-between items-center mt-0.5 md:mt-1">
+                <span class="text-[9px] md:text-sm text-[#422B1C]/40 line-through">${formatPrice(p.dongia)}</span>
+                <span class="text-[10px] md:text-[13px] bg-[#7a0000] text-white rounded px-1.5 md:px-3 py-0.5 font-medium leading-none">${discountBadge}</span>
+            </div>
+            `
+                : '<div class="h-4 md:h-7 mt-0.5 md:mt-1"></div>'
+            }
+        </div>
+    </a>
+`;
+          })
+          .join("");
+      }
+
+      // --- 6.7. GẮN SỰ KIỆN (EVENT LISTENERS) KHI NGƯỜI DÙNG CLICK VÀO BỘ LỌC BÊN TRÁI ---
+
+      // Sự kiện Click cho nút Kích thước
+      document.querySelectorAll(".filter-size").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.target.classList.toggle("selected"); // Thêm/bỏ class selected để đổi màu
+          applyFilters(); // Gọi hàm lọc ngay lập tức
+        });
+      });
+
+      // Sự kiện Click cho hình tròn Màu sắc
+      document.querySelectorAll(".filter-color").forEach((div) => {
+        div.addEventListener("click", (e) => {
+          e.target.classList.toggle("selected");
+          applyFilters();
+        });
+      });
+
+      // Sự kiện Check/Uncheck cho ô Mức giá
+      document.querySelectorAll(".filter-price").forEach((cb) => {
+        cb.addEventListener("change", applyFilters); // Input checkbox dùng sự kiện 'change'
+      });
+
+      // --- 6.8. XỬ LÝ NÚT SCROLL TO TOP (HIỂN THỊ KHI CUỘN CHUỘT) ---
+      window.onscroll = function () {
+        const btn = document.getElementById("backToTopBtn");
+        // Nếu cuộn xuống quá 300px thì hiện nút
+        if (
+          document.body.scrollTop > 300 ||
+          document.documentElement.scrollTop > 300
+        ) {
+          btn.classList.remove("opacity-0", "translate-y-10");
+        } else {
+          // Còn không thì ẩn đi
+          btn.classList.add("opacity-0", "translate-y-10");
+        }
+      };
+      // Hàm kích hoạt khi bấm nút (Cuộn mượt mà lên vị trí top = 0)
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // --- 6.9. KHỞI CHẠY CHƯƠNG TRÌNH KHI TRANG WEB VỪA LOAD XONG ---
+      fetchProducts();
+    </script>
+  </body>
+</html>

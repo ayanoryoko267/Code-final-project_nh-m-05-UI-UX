@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi tiết sản phẩm - Wearever</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Fira Sans", sans-serif;
+      }
+      .size-btn.active {
+        border-color: #422b1c;
+        background-color: #422b1c;
+        color: white;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-[#422B1C] overflow-x-hidden relative">
+    <header
+      class="border-b border-gray-100 shadow-sm sticky top-0 bg-white/95 backdrop-blur-sm z-50"
+    >
+      <div
+        class="container mx-auto px-3 py-3 md:px-4 md:py-4 flex flex-wrap items-center justify-between gap-y-3"
+      >
+        <div
+          class="order-1 md:order-2 flex-shrink-0 w-1/2 md:w-1/3 flex justify-start md:justify-center"
+        >
+          <a
+            href="shop.html"
+            class="w-10 h-10 md:w-12 md:h-12 border-2 border-[#422B1C] rounded-full flex items-center justify-center font-bold text-xs md:text-base"
+            >Logo</a
+          >
+        </div>
+        <div
+          class="order-2 md:order-3 flex items-center justify-end space-x-4 md:space-x-6 w-1/2 md:w-1/3"
+        >
+          <div class="relative hidden sm:block">
+            <input
+              type="text"
+              placeholder="Tìm kiếm sản phẩm"
+              class="border border-[#422B1C]/30 rounded-full py-1 px-4 pl-10 focus:outline-none focus:border-[#422B1C] w-48 lg:w-64 text-sm font-normal italic transition-colors"
+            />
+            <i
+              class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-[#422B1C]/60"
+            ></i>
+          </div>
+          <button class="sm:hidden text-[#422B1C]">
+            <i class="fa-solid fa-magnifying-glass text-lg"></i>
+          </button>
+          <a
+            href="#"
+            class="flex items-center space-x-1 hover:opacity-70 transition-opacity"
+          >
+            <span class="font-normal hidden md:inline">Tài khoản</span
+            ><i class="fa-regular fa-circle-user text-xl md:text-2xl"></i>
+          </a>
+          <a
+            href="#"
+            class="relative hover:opacity-70 transition-opacity flex items-center space-x-1"
+          >
+            <span class="font-normal hidden md:inline">Giỏ hàng</span
+            ><i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i>
+            <span
+              id="cart-count"
+              class="absolute -top-2 -right-2 bg-[#7a0000] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center transition-transform duration-300"
+              >0</span
+            >
+          </a>
+        </div>
+        <nav
+          class="order-3 md:order-1 flex space-x-5 md:space-x-8 font-semibold items-center overflow-x-auto scrollbar-hide md:overflow-visible w-full md:w-1/3 text-sm md:text-base pb-1 md:pb-0"
+        >
+          <a
+            href="shop.html"
+            class="hover:opacity-70 py-2 whitespace-nowrap transition-opacity"
+            >Về Wearever</a
+          >
+          <a
+            href="#"
+            class="hover:opacity-70 py-2 whitespace-nowrap transition-opacity"
+            >Áo</a
+          >
+          <a
+            href="#"
+            class="hover:opacity-70 py-2 whitespace-nowrap transition-opacity"
+            >Quần</a
+          >
+          <a
+            href="#"
+            class="hover:opacity-70 py-2 whitespace-nowrap transition-opacity"
+            >Bộ sưu tập</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main
+      id="main-content"
+      class="container mx-auto px-4 py-8 md:py-12 max-w-6xl"
+    >
+      <nav class="text-sm mb-8 text-[#422B1C]/70">
+        <a href="shop.html" class="hover:text-[#422B1C]">Trang chủ</a> /
+        <span id="bc-category" class="hover:text-[#422B1C] cursor-pointer"
+          >Danh mục</span
+        >
+        /
+        <span id="bc-name" class="font-medium text-[#422B1C]"
+          >Tên sản phẩm</span
+        >
+      </nav>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-start">
+        <div class="flex gap-4">
+          <div
+            id="img-container"
+            class="w-3/4 aspect-[1/1.618] relative overflow-hidden rounded-lg border border-gray-200 shadow-sm transition-all duration-300"
+          >
+            <img
+              id="main-img"
+              src="https://via.placeholder.com/600x970"
+              alt="Product Image"
+              class="w-full h-full object-cover transition-transform duration-300 transform origin-center"
+            />
+            <div
+              id="zoom-icon"
+              class="hidden absolute top-3 right-3 w-8 h-8 bg-white/80 rounded-full items-center justify-center pointer-events-none shadow-sm transition-opacity"
+            >
+              <i class="fa-solid fa-magnifying-glass text-[#422B1C]"></i>
+            </div>
+          </div>
+          <div
+            class="w-1/4 flex flex-col gap-3 overflow-y-auto scrollbar-hide max-h-[80vh]"
+            id="thumbnails-container"
+          ></div>
+        </div>
+
+        <div class="flex flex-col">
+          <h1 id="detail-name" class="text-2xl md:text-3xl font-medium mb-4">
+            Tên sản phẩm ABC
+          </h1>
+
+          <div
+            id="event-banner"
+            class="hidden rounded justify-between items-center px-4 py-2.5 mb-6 bg-gradient-to-r from-[#e63946] to-[#7a0000] text-white shadow-md"
+          >
+            <span
+              class="font-bold text-sm md:text-base uppercase tracking-wide flex items-center"
+            >
+              <i
+                class="fa-solid fa-fire-flame-curved mr-2 text-yellow-300 text-lg animate-pulse"
+              ></i>
+              HOT FIT - COOL PRICE
+            </span>
+            <div
+              class="flex items-center gap-2 font-mono font-bold text-sm md:text-base bg-white/20 px-2.5 py-1 rounded backdrop-blur-sm"
+            >
+              <i class="fa-regular fa-clock"></i>
+              <span id="countdown-timer">24:00:00</span>
+            </div>
+          </div>
+
+          <div id="detail-price-box" class="mb-8"></div>
+
+          <div class="mb-6 flex justify-between items-center">
+            <p class="text-lg">Kích thước:</p>
+            <div
+              class="flex gap-2 lg:gap-3 justify-end"
+              id="detail-sizes"
+            ></div>
+          </div>
+
+          <div class="mb-8 flex justify-between items-center">
+            <p class="text-lg">Số lượng:</p>
+            <div
+              class="flex items-center border border-[#422B1C]/50 rounded w-fit justify-end bg-white"
+            >
+              <button
+                id="btn-decrease"
+                class="w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition font-medium"
+              >
+                -
+              </button>
+              <input
+                type="text"
+                id="input-qty"
+                value="1"
+                class="w-12 h-10 text-center border-x border-[#422B1C]/50 outline-none font-medium bg-transparent"
+                readonly
+              />
+              <button
+                id="btn-increase"
+                class="w-10 h-10 flex items-center justify-center hover:bg-gray-100 transition font-medium"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 md:gap-4 mb-8">
+            <div class="flex items-center justify-center gap-2 md:gap-3">
+              <i
+                class="fa-solid fa-truck-fast text-2xl md:text-3xl text-[#422B1C]"
+              ></i>
+              <p
+                class="text-xs md:text-sm text-[#422B1C]/90 text-left leading-snug"
+              >
+                Miễn phí vận chuyển<br />cho đơn từ 200.000đ
+              </p>
+            </div>
+            <div class="flex items-center justify-center gap-2 md:gap-3">
+              <i
+                class="fa-solid fa-box-open text-2xl md:text-3xl text-[#422B1C]"
+              ></i>
+              <p
+                class="text-xs md:text-sm text-[#422B1C]/90 text-left leading-snug"
+              >
+                Đổi trả miễn phí<br />trong vòng 7 ngày
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-3 md:gap-4">
+            <button
+              onclick="addToCart()"
+              class="flex-1 py-3.5 rounded-full bg-[#422B1C] text-white font-medium hover:bg-[#2c1d12] transition-colors shadow-md"
+            >
+              Thêm vào giỏ hàng
+            </button>
+            <button
+              class="flex-1 py-3.5 rounded-full bg-[#7a0000] text-white font-medium hover:bg-[#5a0000] transition-colors shadow-md flex items-center justify-center gap-2"
+            >
+              <i class="fa-solid fa-cart-shopping"></i> Mua ngay
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 pt-10 border-t border-gray-200">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start"
+        >
+          <div id="reviews-container">
+            <div
+              class="flex justify-between items-center bg-gray-200/80 border border-gray-300 px-5 py-3 rounded-md mb-6"
+            >
+              <h3 class="font-bold text-lg">Đánh giá sản phẩm</h3>
+              <div
+                class="flex items-center gap-2 font-bold text-lg"
+                id="overall-rating"
+              ></div>
+            </div>
+            <div class="space-y-4" id="review-list"></div>
+          </div>
+
+          <div class="flex flex-col gap-5 mt-2 lg:mt-0">
+            <div class="accordion-item">
+              <button
+                class="accordion-btn w-full px-5 py-3.5 border border-[#422B1C] rounded-full flex justify-between items-center bg-white hover:bg-gray-50 transition-colors"
+                data-target="desc-content"
+              >
+                <span class="font-medium">Mô tả sản phẩm</span>
+                <i
+                  class="fa-solid fa-caret-down text-[#422B1C] transition-transform duration-300 icon-arrow"
+                ></i>
+              </button>
+              <div
+                id="desc-content"
+                class="px-5 pb-2 pt-4 hidden text-[#422B1C]/80"
+              >
+                <hr class="border-[#422B1C]/20 mb-3" />
+                <p
+                  id="detail-desc"
+                  class="text-sm leading-relaxed whitespace-pre-line"
+                ></p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button
+                class="accordion-btn w-full px-5 py-3.5 border border-[#422B1C] rounded-full flex justify-between items-center bg-white hover:bg-gray-50 transition-colors"
+                data-target="size-guide-content"
+              >
+                <span class="font-medium">Hướng dẫn chọn size</span>
+                <i
+                  class="fa-solid fa-caret-down text-[#422B1C] transition-transform duration-300 icon-arrow"
+                ></i>
+              </button>
+              <div id="size-guide-content" class="px-5 py-4 hidden">
+                <p class="text-sm text-[#422B1C]/70 mb-2 italic">
+                  <i class="fa-solid fa-magnifying-glass-plus mr-1"></i>Bấm vào
+                  ảnh để phóng to
+                </p>
+                <img
+                  id="size-guide-img"
+                  src=""
+                  alt="Hướng dẫn chọn size"
+                  class="w-full h-auto rounded border border-gray-200 cursor-zoom-in hover:opacity-90 transition-opacity"
+                  onclick="openSizeModal()"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div
+      id="size-modal"
+      class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 p-4 sm:p-6 md:p-8 transition-opacity duration-300 opacity-0"
+      onclick="closeSizeModal()"
+    >
+      <div
+        class="relative w-full max-w-4xl bg-white rounded-xl p-2 md:p-4 shadow-2xl"
+        onclick="event.stopPropagation()"
+      >
+        <button
+          onclick="closeSizeModal()"
+          class="absolute -top-3 -right-3 md:-top-4 md:-right-4 bg-[#422B1C] text-white rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shadow-lg font-bold hover:bg-[#2c1d12] transition-colors z-10 border-2 border-white"
+        >
+          <i class="fa-solid fa-xmark text-sm md:text-base"></i>
+        </button>
+
+        <div
+          class="w-full flex justify-center items-center overflow-hidden rounded-lg"
+        >
+          <img
+            id="modal-size-img"
+            src=""
+            class="w-full h-auto max-h-[70vh] md:max-h-[85vh] object-contain"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="toast-message"
+      class="fixed bottom-6 right-6 bg-[#422B1C] text-white px-5 py-3.5 rounded-lg shadow-xl flex items-center gap-3 transition-all duration-300 transform translate-y-24 opacity-0 z-[100]"
+    >
+      <i class="fa-solid fa-circle-check text-green-400 text-xl"></i>
+      <div>
+        <p class="font-bold text-sm">Thành công!</p>
+        <p class="text-xs text-white/80 mt-0.5">
+          Đã thêm sản phẩm vào giỏ hàng.
+        </p>
+      </div>
+    </div>
+
+    <footer class="border-t border-gray-100 mt-12 bg-gray-50/50">
+      <div
+        class="container mx-auto px-4 py-8 text-center text-[#422B1C]/60 text-sm"
+      >
+        <p>&copy; 2026 Wearever. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get("id");
+      const formatPrice = (price) =>
+        new Intl.NumberFormat("vi-VN").format(Number(price)) + "đ";
+      let currentImageIndex = 0;
+
+      async function loadProductDetail() {
+        try {
+          const response = await fetch("product.json");
+          const products = await response.json();
+          const product = products.find((p) => p.stt === productId);
+
+          if (product) {
+            renderDetail(product);
+          } else {
+            document.getElementById("main-content").innerHTML = `
+                        <div class="text-center py-20">
+                            <h2 class="text-2xl font-bold mb-4">Không tìm thấy sản phẩm!</h2>
+                            <a href="shop.html" class="text-[#422B1C] underline">Quay lại cửa hàng</a>
+                        </div>`;
+          }
+        } catch (error) {
+          console.error("Lỗi tải JSON:", error);
+        }
+      }
+
+      function renderDetail(p) {
+        document.title = p.tensanpham + " - Wearever";
+        document.getElementById("bc-category").textContent = p.phanloai;
+        document.getElementById("bc-name").textContent = p.tensanpham;
+        document.getElementById("detail-name").textContent = p.tensanpham;
+        document.getElementById("detail-desc").textContent =
+          p.mota || "Chưa có mô tả cho sản phẩm này.";
+
+        const priceBox = document.getElementById("detail-price-box");
+        const eventBanner = document.getElementById("event-banner");
+        const hasDiscount =
+          p.giasaukhuyenmai && Number(p.dongia) > Number(p.giasaukhuyenmai);
+
+        if (hasDiscount) {
+          eventBanner.classList.remove("hidden");
+          eventBanner.classList.add("flex");
+          const percent = Math.round(
+            100 - (Number(p.giasaukhuyenmai) / Number(p.dongia)) * 100,
+          );
+          priceBox.innerHTML = `
+                    <div class="flex justify-between items-center w-full">
+                        <span class="text-2xl lg:text-3xl font-bold">${formatPrice(p.giasaukhuyenmai)}</span>
+                        <div class="flex items-center gap-3">
+                            <span class="text-base lg:text-lg text-[#422B1C]/50 line-through">${formatPrice(p.dongia)}</span>
+                            <span class="bg-[#7a0000] text-white rounded-full px-3 py-1 text-xs lg:text-sm font-medium border border-[#7a0000]">-${percent}%</span>
+                        </div>
+                    </div>
+                `;
+        } else {
+          eventBanner.classList.add("hidden");
+          eventBanner.classList.remove("flex");
+          priceBox.innerHTML = `<div class="flex justify-between items-center w-full"><span class="text-2xl lg:text-3xl font-bold">${formatPrice(p.dongia)}</span></div>`;
+        }
+
+        const mainImg = document.getElementById("main-img");
+        const thumbContainer = document.getElementById("thumbnails-container");
+        const images = [p.linkanhsp, p.linkanhsp_hover, p.chatlieu].filter(
+          (img) => img,
+        );
+
+        if (images.length > 0) {
+          mainImg.src = images[0];
+          thumbContainer.innerHTML = images
+            .map(
+              (src, idx) => `
+                    <div class="w-full aspect-[1/1.618] rounded border ${idx === 0 ? "border-[#422B1C]" : "border-gray-200"} cursor-pointer overflow-hidden thumb-wrapper" onclick="changeImage('${src}', this, ${idx})">
+                        <img src="${src}" class="w-full h-full object-cover">
+                    </div>
+                `,
+            )
+            .join("");
+        }
+
+        const sizeContainer = document.getElementById("detail-sizes");
+        if (p.kichthuoc) {
+          const sizes = p.kichthuoc.split(",").map((s) => s.trim());
+          sizeContainer.innerHTML = sizes
+            .map(
+              (s, idx) => `
+                    <button class="size-btn w-10 h-10 lg:w-12 lg:h-10 border border-[#422B1C]/30 rounded hover:border-[#422B1C] transition font-medium ${idx === 0 ? "active" : ""}" onclick="selectSize(this)">
+                        ${s}
+                    </button>
+                `,
+            )
+            .join("");
+        }
+        // TỰ ĐỘNG THÊM HƯỚNG DẪN CHỌN SIZE
+        const cat = p.tensanpham ? p.tensanpham.toLowerCase() : "";
+        const sizeGuideImg = document.getElementById("size-guide-img");
+        if (cat.includes("áo")) {
+          sizeGuideImg.src = "image/size-ao.png";
+        } else if (cat.includes("quần")) {
+          sizeGuideImg.src = "image/size-quan.png";
+        } else {
+          sizeGuideImg.src =
+            "https://via.placeholder.com/600x400/f3f4f6/422B1C?text=BANG+SIZE+CHUNG";
+        }
+
+        const ratingNumber = p.danhgia ? parseInt(p.danhgia) : 5;
+        document.getElementById("overall-rating").innerHTML =
+          `<span>${ratingNumber}</span> <i class="fa-solid fa-star text-yellow-500"></i>`;
+
+        let starsHtml = "";
+        for (let i = 1; i <= 5; i++) {
+          starsHtml += `<i class="fa-solid fa-star ${i <= ratingNumber ? "text-yellow-500" : "text-gray-300"} text-xs md:text-sm"></i>`;
+        }
+
+        const rawReview =
+          p.review ||
+          "Sản phẩm tuyệt vời, chất lượng tốt. Đáng đồng tiền bát gạo!";
+        let reviewTexts = [];
+        if (rawReview.includes("(1)") && rawReview.includes("(2)")) {
+          let parts = rawReview.split("(2)");
+          reviewTexts.push(parts[0].replace("(1)", "").trim());
+          reviewTexts.push(parts[1].trim());
+        } else {
+          reviewTexts.push(rawReview);
+        }
+
+        let imgHtml = "";
+        if (p.linkreview) {
+          imgHtml = `
+                    <div class="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 bg-gray-100 rounded border border-gray-200 overflow-hidden ml-4 shadow-sm">
+                        <img src="${p.linkreview}" alt="Ảnh review" class="w-full h-full object-cover">
+                    </div>
+                `;
+        } else {
+          imgHtml = `
+                    <div class="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 flex items-center justify-center bg-gray-50/50 rounded-xl border-2 border-dashed border-[#422B1C]/30 ml-4 p-2 text-center text-[10px] md:text-xs text-[#422B1C]/60 italic font-medium">
+                        Không có ảnh
+                    </div>
+                `;
+        }
+
+        let reviewsHtml = "";
+        reviewTexts.forEach((text, index) => {
+          reviewsHtml += `
+                    <div class="border border-[#422B1C] rounded-xl p-4 md:p-5 flex justify-between bg-white shadow-sm mb-4">
+                        <div class="flex-1 flex flex-col justify-between">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex items-center gap-2 font-medium">
+                                    <i class="fa-solid fa-circle-user text-2xl text-gray-500"></i>
+                                    <span class="text-sm md:text-base">Người dùng ẩn danh</span>
+                                </div>
+                                <div class="flex gap-0.5 mt-1">
+                                    ${starsHtml}
+                                </div>
+                            </div>
+                            <hr class="border-[#422B1C]/20 my-2">
+                            <p class="text-xs md:text-sm text-[#422B1C]/80 mt-1 whitespace-pre-line">${text}</p>
+                        </div>
+                        ${imgHtml}
+                    </div>
+                `;
+        });
+
+        document.getElementById("review-list").innerHTML = reviewsHtml;
+      }
+
+      document.querySelectorAll(".accordion-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const targetId = this.getAttribute("data-target");
+          const content = document.getElementById(targetId);
+          const icon = this.querySelector(".icon-arrow");
+          content.classList.toggle("hidden");
+          icon.classList.toggle("rotate-180");
+        });
+      });
+
+      function startCountdown() {
+        let timeLeft = localStorage.getItem("mockCountdownTimer");
+        if (!timeLeft || timeLeft <= 0) {
+          timeLeft = 24 * 60 * 60;
+        }
+        const timerDisplay = document.getElementById("countdown-timer");
+        setInterval(() => {
+          timeLeft--;
+          if (timeLeft <= 0) {
+            timeLeft = 24 * 60 * 60;
+          }
+          localStorage.setItem("mockCountdownTimer", timeLeft);
+          let h = Math.floor(timeLeft / 3600);
+          let m = Math.floor((timeLeft % 3600) / 60);
+          let s = timeLeft % 60;
+          h = h < 10 ? "0" + h : h;
+          m = m < 10 ? "0" + m : m;
+          s = s < 10 ? "0" + s : s;
+          if (timerDisplay) timerDisplay.textContent = `${h}:${m}:${s}`;
+        }, 1000);
+      }
+
+      window.changeImage = function (src, el, idx) {
+        currentImageIndex = parseInt(idx);
+        document.getElementById("main-img").src = src;
+        document.querySelectorAll(".thumb-wrapper").forEach((t) => {
+          t.classList.remove("border-[#422B1C]");
+          t.classList.add("border-gray-200");
+        });
+        el.classList.remove("border-gray-200");
+        el.classList.add("border-[#422B1C]");
+        const imgContainer = document.getElementById("img-container");
+        const zoomIcon = document.getElementById("zoom-icon");
+        if (currentImageIndex === 2) {
+          imgContainer.classList.add("cursor-crosshair");
+          zoomIcon.classList.remove("hidden");
+          zoomIcon.classList.add("flex");
+        } else {
+          imgContainer.classList.remove("cursor-crosshair");
+          zoomIcon.classList.add("hidden");
+          zoomIcon.classList.remove("flex");
+          document.getElementById("main-img").style.transform = "scale(1)";
+        }
+      };
+
+      window.selectSize = function (el) {
+        document
+          .querySelectorAll(".size-btn")
+          .forEach((btn) => btn.classList.remove("active"));
+        el.classList.add("active");
+      };
+
+      const inputQty = document.getElementById("input-qty");
+      document.getElementById("btn-decrease").addEventListener("click", () => {
+        let val = parseInt(inputQty.value);
+        if (val > 1) inputQty.value = val - 1;
+      });
+      document.getElementById("btn-increase").addEventListener("click", () => {
+        inputQty.value = parseInt(inputQty.value) + 1;
+      });
+
+      const imgContainer = document.getElementById("img-container");
+      const mainImg = document.getElementById("main-img");
+      imgContainer.addEventListener("mousemove", (e) => {
+        if (currentImageIndex !== 2) return;
+        mainImg.style.transform = "scale(1.8)";
+        const rect = imgContainer.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        mainImg.style.transformOrigin = `${x}% ${y}%`;
+      });
+      imgContainer.addEventListener("mouseleave", () => {
+        mainImg.style.transform = "scale(1)";
+        mainImg.style.transformOrigin = "center center";
+      });
+
+      function startZoomModal() {
+        window.openSizeModal = function () {
+          const modal = document.getElementById("size-modal");
+          const modalImg = document.getElementById("modal-size-img");
+          const sizeImg = document.getElementById("size-guide-img");
+          modalImg.src = sizeImg.src;
+          modal.classList.remove("hidden");
+          modal.classList.add("flex");
+          setTimeout(() => {
+            modal.classList.remove("opacity-0");
+          }, 10);
+        };
+        window.closeSizeModal = function () {
+          const modal = document.getElementById("size-modal");
+          modal.classList.add("opacity-0");
+          setTimeout(() => {
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+          }, 300);
+        };
+      }
+
+      // HÀM XỬ LÝ TOAST THÊM VÀO GIỎ HÀNG
+      window.addToCart = function () {
+        const toast = document.getElementById("toast-message");
+        const qtyToAdd = parseInt(document.getElementById("input-qty").value);
+        const cartBadge = document.getElementById("cart-count");
+
+        // Cập nhật số lượng trên icon giỏ hàng
+        let currentCartVal = parseInt(cartBadge.textContent);
+        cartBadge.textContent = currentCartVal + qtyToAdd;
+
+        // Hiệu ứng nảy (bounce) nhẹ cho icon giỏ hàng
+        cartBadge.classList.add("scale-150");
+        setTimeout(() => {
+          cartBadge.classList.remove("scale-150");
+        }, 300);
+
+        // Hiện Toast Notification
+        toast.classList.remove("translate-y-24", "opacity-0");
+
+        // Tự động ẩn Toast sau 3 giây
+        setTimeout(() => {
+          toast.classList.add("translate-y-24", "opacity-0");
+        }, 3000);
+      };
+
+      loadProductDetail();
+      startCountdown();
+      startZoomModal();
+    </script>
+  </body>
+</html>
