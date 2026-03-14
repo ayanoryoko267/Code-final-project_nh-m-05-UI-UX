@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh toán - Wearever</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Fira Sans", sans-serif;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      input[type="radio"] {
+        accent-color: #422b1c;
+      }
+    </style>
+  </head>
+  <body class="bg-[#FAFAFA] text-[#422B1C] overflow-x-hidden">
+    <header
+      class="border-b border-gray-100 shadow-sm sticky top-0 bg-white/95 backdrop-blur-sm z-50"
+    >
+      <div
+        class="container mx-auto px-3 py-3 md:px-4 md:py-4 flex flex-wrap items-center justify-between gap-y-3"
+      >
+        <div
+          class="order-1 md:order-2 flex-shrink-0 w-1/2 md:w-1/3 flex justify-start md:justify-center"
+        >
+          <a
+            href="index.html"
+            class="w-10 h-10 md:w-12 md:h-12 border-2 border-[#422B1C] rounded-full flex items-center justify-center font-bold text-xs md:text-base"
+            >Logo</a
+          >
+        </div>
+        <div
+          class="order-2 md:order-3 flex items-center justify-end space-x-4 md:space-x-6 w-1/2 md:w-1/3"
+        >
+          <div class="relative hidden sm:block">
+            <input
+              type="text"
+              placeholder="Tìm kiếm sản phẩm"
+              class="border border-[#422B1C]/30 rounded-full py-1 px-4 pl-10 focus:outline-none focus:border-[#422B1C] w-48 lg:w-64 text-sm font-normal italic transition-colors"
+            />
+            <i
+              class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-[#422B1C]/60"
+            ></i>
+          </div>
+          <button class="sm:hidden text-[#422B1C]">
+            <i class="fa-solid fa-magnifying-glass text-lg"></i>
+          </button>
+          <a
+            href="#"
+            class="flex items-center space-x-1 hover:opacity-70 transition-opacity"
+          >
+            <span class="font-normal hidden md:inline">Tài khoản</span
+            ><i class="fa-regular fa-circle-user text-xl md:text-2xl"></i>
+          </a>
+          <a
+            href="cart.html"
+            class="relative hover:opacity-70 transition-opacity flex items-center space-x-1"
+          >
+            <span class="font-normal hidden md:inline">Giỏ hàng</span
+            ><i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i>
+            <span
+              id="global-cart-badge"
+              class="absolute -top-2 -right-2 bg-[#7a0000] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center transition-transform duration-300"
+              >0</span
+            >
+          </a>
+        </div>
+        <nav
+          class="order-3 md:order-1 flex space-x-5 md:space-x-8 font-semibold items-center overflow-x-auto scrollbar-hide md:overflow-visible w-full md:w-1/3 text-sm md:text-base pb-1 md:pb-0"
+        >
+          <a
+            href="shop.html"
+            class="hover:opacity-70 py-2 whitespace-nowrap transition-opacity"
+            >Về Wearever</a
+          >
+          <a
+            href="shop.html?category=áo"
+            class="hover:opacity-70 cursor-pointer transition-opacity py-2 whitespace-nowrap"
+            >Áo</a
+          >
+          <a
+            href="shop.html?category=quần"
+            class="hover:opacity-70 cursor-pointer transition-opacity py-2 whitespace-nowrap"
+            >Quần</a
+          >
+          <a
+            href="#"
+            class="hover:opacity-70 cursor-pointer transition-opacity py-2 whitespace-nowrap"
+            >Bộ sưu tập</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 md:py-12 max-w-6xl">
+      <div
+        class="flex items-center justify-center w-full max-w-3xl mx-auto mb-10 text-[10px] sm:text-xs md:text-sm font-medium"
+      >
+        <div
+          class="flex items-center space-x-1.5 sm:space-x-2 text-[#422B1C] opacity-70 cursor-pointer"
+          onclick="window.location.href = 'cart.html'"
+        >
+          <span
+            class="w-4 h-4 sm:w-5 sm:h-5 bg-gray-300 text-white rounded-full flex items-center justify-center text-[9px] sm:text-[10px]"
+            ><i class="fa-solid fa-check"></i
+          ></span>
+          <i class="fa-solid fa-cart-shopping ml-1"></i>
+          <span class="hidden sm:inline">Kiểm tra giỏ hàng</span>
+          <span class="sm:hidden">Giỏ hàng</span>
+        </div>
+        <div
+          class="border-b-2 border-dashed border-gray-300 flex-1 mx-2 sm:mx-4 max-w-[60px]"
+        ></div>
+        <div
+          class="flex items-center space-x-1.5 sm:space-x-2 bg-gray-200/80 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-[#422B1C]"
+        >
+          <span
+            class="w-4 h-4 sm:w-5 sm:h-5 bg-[#422B1C] text-white rounded-full flex items-center justify-center text-[9px] sm:text-[10px]"
+            >2</span
+          >
+          <i class="fa-solid fa-clipboard-list ml-1"></i>
+          <span class="hidden sm:inline">Điền thông tin đơn hàng</span>
+          <span class="sm:hidden">Thông tin</span>
+        </div>
+        <div
+          class="border-b-2 border-dashed border-gray-300 flex-1 mx-2 sm:mx-4 max-w-[60px]"
+        ></div>
+        <div class="flex items-center space-x-1.5 sm:space-x-2 text-gray-400">
+          <span
+            class="w-4 h-4 sm:w-5 sm:h-5 bg-gray-300 text-white rounded-full flex items-center justify-center text-[9px] sm:text-[10px]"
+            >3</span
+          >
+          <i class="fa-solid fa-clipboard-check"></i>
+          <span class="hidden sm:inline">Hoàn tất đặt hàng</span>
+          <span class="sm:hidden">Hoàn tất</span>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+          <div class="flex-1 lg:w-3/5">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-xl md:text-2xl font-bold text-[#422B1C]">
+                Thông tin đơn hàng
+              </h2>
+              <div class="flex items-center gap-2 text-sm md:text-base">
+                <span class="text-gray-600 hidden sm:inline"
+                  >Đã có tài khoản?</span
+                >
+                <a
+                  href="#"
+                  class="bg-[#7a0000] text-white px-4 py-1.5 rounded-md hover:bg-gray-700 transition font-medium"
+                  >Đăng nhập</a
+                >
+              </div>
+            </div>
+
+            <div
+              class="border border-[#422B1C] rounded-lg p-5 md:p-6 bg-white mb-8"
+            >
+              <div class="space-y-4">
+                <input
+                  id="customer-name"
+                  type="text"
+                  placeholder="Họ tên"
+                  class="w-full border border-gray-400 rounded-md px-4 py-2.5 outline-none focus:border-[#422B1C] focus:ring-1 focus:ring-[#422B1C] transition"
+                  required
+                />
+                <input
+                  id="customer-phone"
+                  type="tel"
+                  placeholder="Số điện thoại"
+                  class="w-full border border-gray-400 rounded-md px-4 py-2.5 outline-none focus:border-[#422B1C] focus:ring-1 focus:ring-[#422B1C] transition"
+                  required
+                />
+                <textarea
+                  id="customer-address"
+                  placeholder="Địa chỉ nhận hàng (Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành phố)"
+                  rows="3"
+                  class="w-full border border-gray-400 rounded-md px-4 py-2.5 outline-none focus:border-[#422B1C] focus:ring-1 focus:ring-[#422B1C] transition resize-none"
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <h2 class="text-xl md:text-2xl font-bold mb-4 text-[#422B1C]">
+              Phương thức thanh toán
+            </h2>
+            <div class="space-y-4 mb-8">
+              <label
+                class="flex items-center cursor-pointer p-3 border border-transparent hover:border-gray-200 rounded-lg transition"
+              >
+                <input
+                  type="radio"
+                  name="payment_method"
+                  value="COD"
+                  class="w-5 h-5 cursor-pointer"
+                  checked
+                />
+                <span class="ml-3 text-base font-medium"
+                  >Thanh toán khi nhận hàng (COD)</span
+                >
+              </label>
+              <label
+                class="flex items-center cursor-pointer p-3 border border-transparent hover:border-gray-200 rounded-lg transition"
+              >
+                <input
+                  type="radio"
+                  name="payment_method"
+                  value="Ví điện tử"
+                  class="w-5 h-5 cursor-pointer"
+                />
+                <span class="ml-3 text-base font-medium flex-1"
+                  >Thanh toán qua ví điện tử (Momo, ZaloPay)</span
+                >
+                <div class="flex gap-2">
+                  <img
+                    src="image/momo.png"
+                    alt="Momo"
+                    class="h-6 object-contain"
+                  />
+                  <img
+                    src="image/zalo.png"
+                    alt="ZaloPay"
+                    class="h-6 object-contain"
+                  />
+                </div>
+              </label>
+              <label
+                class="flex items-center cursor-pointer p-3 border border-transparent hover:border-gray-200 rounded-lg transition"
+              >
+                <input
+                  type="radio"
+                  name="payment_method"
+                  value="Thẻ Ngân Hàng"
+                  class="w-5 h-5 cursor-pointer"
+                />
+                <span class="ml-3 text-base font-medium flex-1"
+                  >Thanh toán qua thẻ ATM/ Visa/ Master</span
+                >
+                <div class="flex gap-2">
+                  <img
+                    src="image/visa.png"
+                    alt="Visa"
+                    class="h-6 object-contain mt-1"
+                  />
+                  <img
+                    src="image/master.png"
+                    alt="MasterCard"
+                    class="h-6 object-contain mt-1"
+                  />
+                </div>
+              </label>
+            </div>
+
+            <div class="flex flex-col md:flex-row md:items-center gap-3 mb-6">
+              <label class="font-bold text-[#422B1C] md:w-1/4 whitespace-nowrap"
+                >Ghi chú thêm</label
+              >
+              <input
+                id="customer-note"
+                type="text"
+                placeholder="Ví dụ: Giao giờ hành chính, gọi trước khi giao..."
+                class="flex-1 border border-gray-400 rounded-md px-4 py-2.5 outline-none focus:border-[#422B1C] focus:ring-1 focus:ring-[#422B1C] transition"
+              />
+            </div>
+          </div>
+
+          <div class="w-full lg:w-2/5">
+            <h2 class="text-xl md:text-2xl font-bold mb-4 text-[#422B1C]">
+              Tóm tắt đơn hàng
+            </h2>
+            <div id="checkout-items-container" class="mb-6 space-y-4"></div>
+
+            <div class="border border-gray-800 rounded-lg p-5 md:p-6 bg-white">
+              <div class="flex justify-between mb-3">
+                <span class="text-gray-600 font-medium text-sm md:text-base"
+                  >Tổng giá trị:</span
+                >
+                <span id="summary-subtotal" class="font-bold text-[#422B1C]"
+                  >0đ</span
+                >
+              </div>
+              <div class="flex justify-between mb-3">
+                <span class="text-gray-600 font-medium text-sm md:text-base"
+                  >Phí vận chuyển:</span
+                >
+                <span id="summary-shipping" class="font-bold text-[#422B1C]"
+                  >20.000đ</span
+                >
+              </div>
+              <div
+                class="flex justify-between mb-4 pb-4 border-b border-gray-800"
+              >
+                <span class="text-[#8C1C13] font-medium text-sm md:text-base"
+                  >Giảm giá:</span
+                >
+                <span class="font-bold text-[#8C1C13]">-0đ</span>
+              </div>
+              <div class="flex justify-between mb-6 items-center">
+                <span class="font-bold text-base md:text-lg text-[#422B1C]"
+                  >Thành tiền:</span
+                >
+                <span
+                  id="summary-total"
+                  class="font-bold text-xl md:text-2xl text-[#422B1C]"
+                  >0đ</span
+                >
+              </div>
+
+              <div
+                class="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-3 mb-6"
+              >
+                <div class="flex items-center gap-2 whitespace-nowrap">
+                  <i class="fa-solid fa-ticket text-[#422B1C] text-lg"></i>
+                  <span class="font-bold text-[#422B1C] text-sm md:text-base"
+                    >Mã voucher</span
+                  >
+                </div>
+                <div class="flex items-center w-full xl:w-auto flex-1">
+                  <input
+                    type="text"
+                    placeholder="Nhập mã..."
+                    class="w-full border border-gray-400 rounded-l-md px-3 py-2 outline-none focus:border-[#422B1C] text-sm"
+                  />
+                  <button
+                    type="button"
+                    class="bg-gray-700 text-white px-3 md:px-4 py-2 rounded-r-md hover:bg-gray-800 transition font-medium whitespace-nowrap text-sm border border-gray-700"
+                  >
+                    Áp dụng
+                  </button>
+                </div>
+              </div>
+
+              <button
+                id="btn-checkout"
+                type="button"
+                onclick="placeOrder()"
+                class="w-full bg-[#7a0000] border border-gray-400 text-white font-bold py-3 md:py-3.5 rounded-full hover:from-gray-200 hover:to-gray-400 transition text-base md:text-lg shadow-md mt-2"
+              >
+                Thanh toán
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="border-t border-gray-100 mt-12 bg-white">
+      <div
+        class="container mx-auto px-4 py-8 text-center text-[#422B1C]/60 text-sm"
+      >
+        <p>&copy; 2026 Wearever. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      const formatPrice = (price) =>
+        new Intl.NumberFormat("vi-VN").format(Number(price)) + "đ";
+
+      let allProducts = [];
+      let cartItems = [];
+      let productMap = {};
+
+      function initData() {
+        cartItems =
+          JSON.parse(localStorage.getItem("wearever_cart_details")) || [];
+        const hasSelectedItems = cartItems.some((item) => item.checked);
+        if (!hasSelectedItems && cartItems.length > 0) {
+          alert(
+            "Bạn chưa chọn sản phẩm nào để thanh toán. Đang quay lại giỏ hàng...",
+          );
+          window.location.href = "cart.html";
+        }
+      }
+
+      function saveCartData() {
+        localStorage.setItem(
+          "wearever_cart_details",
+          JSON.stringify(cartItems),
+        );
+        const totalItems = cartItems.reduce((sum, item) => sum + item.qty, 0);
+        localStorage.setItem("wearever_cart_count", totalItems);
+        const badge = document.getElementById("global-cart-badge");
+        if (badge) badge.textContent = totalItems;
+      }
+
+      async function loadDataAndRender() {
+        try {
+          const response = await fetch("product.json");
+          allProducts = await response.json();
+          productMap = allProducts.reduce((map, product) => {
+            map[product.stt] = product;
+            return map;
+          }, {});
+          initData();
+          renderCheckoutCart();
+          const currentCount =
+            parseInt(localStorage.getItem("wearever_cart_count")) || 0;
+          const badge = document.getElementById("global-cart-badge");
+          if (badge) badge.textContent = currentCount;
+        } catch (error) {
+          console.error("Lỗi tải JSON:", error);
+        }
+      }
+
+      function renderCheckoutCart() {
+        const container = document.getElementById("checkout-items-container");
+        let html = "";
+        cartItems.forEach((item, index) => {
+          if (!item.checked) return;
+          const product = productMap[item.id];
+          if (!product) return;
+          const priceStr =
+            product.giasaukhuyenmai && product.giasaukhuyenmai.trim() !== ""
+              ? product.giasaukhuyenmai
+              : product.dongia;
+          const currentPrice = parseInt(priceStr) || 0;
+          const itemTotal = currentPrice * item.qty;
+
+          html += `
+            <div class="flex bg-white py-2">
+              <div class="w-16 h-24 md:w-20 md:h-28 border border-gray-300 rounded overflow-hidden flex-shrink-0 mr-4">
+                <img src="${product.linkanhsp}" alt="${product.tensanpham}" class="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="flex-1 flex flex-col justify-between py-0.5">
+                <div>
+                  <h3 class="font-medium text-sm md:text-base text-[#422B1C] line-clamp-2 pr-4">${product.tensanpham}</h3>
+                  <p class="text-xs md:text-sm mt-1 text-[#422B1C] font-medium">Kích thước: <span class="text-gray-500 font-normal">${item.size}</span></p>
+                </div>
+                <div class="flex items-center justify-between mt-auto">
+                  <span class="font-bold text-sm md:text-base text-[#422B1C]">${formatPrice(itemTotal)}</span>
+                  <div class="flex items-center border border-gray-400 rounded w-fit h-7">
+                    <button type="button" class="w-7 h-full flex items-center justify-center hover:bg-gray-100 transition text-lg leading-none" onclick="updateQty(${index}, -1)">-</button>
+                    <input type="text" class="w-8 h-full text-center border-x border-gray-400 outline-none text-xs font-medium" value="${item.qty}" readonly />
+                    <button type="button" class="w-7 h-full flex items-center justify-center hover:bg-gray-100 transition text-lg leading-none" onclick="updateQty(${index}, 1)">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+        });
+        container.innerHTML = html;
+        updateSummary();
+      }
+
+      window.updateQty = function (index, change) {
+        let newQty = cartItems[index].qty + change;
+        if (newQty < 1) return;
+        cartItems[index].qty = newQty;
+        saveCartData();
+        renderCheckoutCart();
+      };
+
+      function updateSummary() {
+        let subtotal = 0;
+        cartItems.forEach((item) => {
+          if (item.checked) {
+            const product = productMap[item.id];
+            if (product) {
+              const priceStr =
+                product.giasaukhuyenmai && product.giasaukhuyenmai.trim() !== ""
+                  ? product.giasaukhuyenmai
+                  : product.dongia;
+              subtotal += (parseInt(priceStr) || 0) * item.qty;
+            }
+          }
+        });
+
+        const summarySubtotalEl = document.getElementById("summary-subtotal");
+        if (summarySubtotalEl)
+          summarySubtotalEl.textContent = formatPrice(subtotal);
+
+        let shippingFee = subtotal > 0 ? 20000 : 0;
+        const summaryShippingEl = document.getElementById("summary-shipping");
+        if (summaryShippingEl)
+          summaryShippingEl.textContent = formatPrice(shippingFee);
+
+        let discount = 0;
+        let finalTotal = subtotal + shippingFee - discount;
+        const summaryTotalEl = document.getElementById("summary-total");
+        if (summaryTotalEl)
+          summaryTotalEl.textContent = formatPrice(finalTotal);
+      }
+
+      // XỬ LÝ LƯU ĐƠN HÀNG LÊN GOOGLE SHEET VÀ HIỂN THỊ MÀN HÌNH THÀNH CÔNG
+      window.placeOrder = async function () {
+        const name = document.getElementById("customer-name").value.trim();
+        const phone = document.getElementById("customer-phone").value.trim();
+        const address = document
+          .getElementById("customer-address")
+          .value.trim();
+        const note = document.getElementById("customer-note").value.trim();
+        const paymentMethod = document.querySelector(
+          'input[name="payment_method"]:checked',
+        ).value;
+
+        if (!name || !phone || !address) {
+          alert(
+            "Vui lòng điền đầy đủ Họ tên, Số điện thoại và Địa chỉ nhận hàng!",
+          );
+          return;
+        }
+
+        const btn = document.getElementById("btn-checkout");
+        btn.textContent = "Đang xử lý...";
+        btn.disabled = true;
+
+        const orderDetails = cartItems
+          .filter((i) => i.checked)
+          .map((i) => {
+            const p = productMap[i.id];
+            return `${p ? p.tensanpham : "SP"} (Size: ${i.size}, SL: ${i.qty})`;
+          })
+          .join(" | ");
+
+        const totalMoney = document.getElementById("summary-total").textContent;
+
+        // BẠN DÁN LINK APP SCRIPT CỦA BẠN VÀO ĐÂY NHÉ
+        const scriptURL =
+          "https://script.google.com/macros/s/AKfycbx9UsevA1Q2TKDxuj3CbV8VmLThhkjNmKrR7Os1Cc5NbXGMvuQJDEC4xeM4YP-fc02b/exec";
+
+        try {
+          const formData = new FormData();
+          formData.append("Thời gian", new Date().toLocaleString("vi-VN"));
+          formData.append("Họ tên", name);
+          formData.append("SĐT", phone);
+          formData.append("Địa chỉ", address);
+          formData.append("Ghi chú", note);
+          formData.append("Thanh toán", paymentMethod);
+          formData.append("Sản phẩm", orderDetails);
+          formData.append("Tổng tiền", totalMoney);
+
+          // Gửi dữ liệu lên Google Sheet (bỏ qua lỗi CORS của trình duyệt)
+          await fetch(scriptURL, {
+            method: "POST",
+            body: formData,
+            mode: "no-cors",
+          });
+
+          // Xóa các sản phẩm đã thanh toán khỏi giỏ hàng
+          cartItems = cartItems.filter((item) => !item.checked);
+          saveCartData();
+
+          // ========================================================
+          // LOGIC MỚI: CẬP NHẬT GIAO DIỆN "HOÀN TẤT ĐẶT HÀNG"
+          // ========================================================
+          const mainEl = document.querySelector("main");
+          mainEl.innerHTML = `
+            <div class="flex items-center justify-center w-full max-w-3xl mx-auto mb-10 text-[10px] sm:text-xs md:text-sm font-medium">
+              <div class="flex items-center space-x-1.5 sm:space-x-2 text-[#422B1C] opacity-70">
+                <span class="w-4 h-4 sm:w-5 sm:h-5 bg-gray-300 text-white rounded-full flex items-center justify-center text-[9px] sm:text-[10px]"><i class="fa-solid fa-check"></i></span>
+                <i class="fa-solid fa-cart-shopping ml-1"></i>
+                <span class="hidden sm:inline">Kiểm tra giỏ hàng</span>
+                <span class="sm:hidden">Giỏ hàng</span>
+              </div>
+              <div class="border-b-2 border-dashed border-gray-300 flex-1 mx-2 sm:mx-4 max-w-[60px]"></div>
+              
+              <div class="flex items-center space-x-1.5 sm:space-x-2 text-[#422B1C] opacity-70">
+                <span class="w-4 h-4 sm:w-5 sm:h-5 bg-gray-300 text-white rounded-full flex items-center justify-center text-[9px] sm:text-[10px]"><i class="fa-solid fa-check"></i></span>
+                <i class="fa-solid fa-clipboard-list ml-1"></i>
+                <span class="hidden sm:inline">Điền thông tin</span>
+                <span class="sm:hidden">Thông tin</span>
+              </div>
+              <div class="border-b-2 border-dashed border-gray-300 flex-1 mx-2 sm:mx-4 max-w-[60px]"></div>
+              
+              <div class="flex items-center space-x-1.5 sm:space-x-2 bg-gray-200/80 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-[#422B1C]">
+                <span class="w-4 h-4 sm:w-5 sm:h-5 bg-[#422B1C] text-white rounded-full flex items-center justify-center text-[9px] sm:text-[10px]">3</span>
+                <i class="fa-solid fa-clipboard-check"></i>
+                <span class="hidden sm:inline">Hoàn tất đặt hàng</span>
+                <span class="sm:hidden">Hoàn tất</span>
+              </div>
+            </div>
+
+            <div class="max-w-2xl mx-auto text-center py-12 md:py-20 bg-white border border-[#422B1C]/20 rounded-xl shadow-sm px-6">
+              <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-[#422B1C] mb-4">Cảm ơn bạn đã lựa chọn đặt hàng tại Wearever!</h2>
+              <p class="text-gray-600 mb-8 md:text-lg">Đơn hàng của bạn đã được hệ thống ghi nhận. Chúng tôi sẽ sớm liên hệ qua số điện thoại <b>${phone}</b> để xác nhận và giao hàng.</p>
+              <a href="index.html" class="inline-block bg-[#422B1C] text-white font-bold py-3 px-8 rounded-full hover:bg-[#2c1c12] transition text-base shadow-md">
+                Tiếp tục mua sắm
+              </a>
+            </div>
+          `;
+
+          // Cuộn mượt lên đầu trang để khách hàng dễ dàng nhìn thấy thông báo
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } catch (error) {
+          console.error("Lỗi!", error.message);
+          alert("Có lỗi xảy ra, vui lòng thử lại!");
+          btn.textContent = "Thanh toán";
+          btn.disabled = false;
+        }
+      };
+      loadDataAndRender();
+    </script>
+  </body>
+</html>
