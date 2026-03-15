@@ -317,14 +317,23 @@
 
       let allProducts = [];
       let cartItems = [];
+      let productMap = {};
 
       // 1. Khởi tạo/Lấy dữ liệu giỏ hàng từ Local Storage
       function initCartData() {
         cartItems =
           JSON.parse(localStorage.getItem("wearever_cart_details")) || [];
 
-        // MẸO CHỮA CHÁY: Nếu user đã bấm nút mua nhanh ở trang trước (lưu wearever_cart_count)
-        // nhưng mảng chi tiết vẫn trống, ta tạo dummy data để giao diện lên hình đẹp
+        let needsSave = false;
+
+        // FIX: Tự động gán mặc định chọn (checked = true) cho các sản phẩm chưa có trạng thái
+        cartItems.forEach((item) => {
+          if (item.checked === undefined) {
+            item.checked = true;
+            needsSave = true;
+          }
+        });
+
         const cartCount =
           parseInt(localStorage.getItem("wearever_cart_count")) || 0;
         if (cartItems.length === 0 && cartCount > 0 && allProducts.length > 0) {
@@ -332,8 +341,10 @@
             { id: allProducts[0].stt, size: "S", qty: 1, checked: true },
             { id: allProducts[1].stt, size: "M", qty: 1, checked: false },
           ];
-          saveCartData(); // Lưu lại mảng ảo này
+          needsSave = true;
         }
+
+        if (needsSave) saveCartData();
       }
 
       function saveCartData() {
@@ -342,21 +353,17 @@
           JSON.stringify(cartItems),
         );
 
-        // Cập nhật lại bong bóng đỏ
         const totalItems = cartItems.reduce((sum, item) => sum + item.qty, 0);
         localStorage.setItem("wearever_cart_count", totalItems);
         const badge = document.getElementById("global-cart-badge");
         if (badge) badge.textContent = totalItems;
       }
 
-      let productMap = {}; // Thêm biến này lên đầu cùng với allProducts
-
       async function loadDataAndRender() {
         try {
           const response = await fetch("product.json");
           allProducts = await response.json();
 
-          // TỐI ƯU TỐC ĐỘ: Chuyển mảng thành dạng từ điển { ID: Thông tin SP } để tra cứu cực nhanh (O(1))
           productMap = allProducts.reduce((map, product) => {
             map[product.stt] = product;
             return map;
@@ -394,7 +401,6 @@
         let html = "";
 
         cartItems.forEach((item, index) => {
-          // Lấy dữ liệu siêu tốc bằng Object Key
           const product = productMap[item.id];
           if (!product) return;
 
@@ -408,24 +414,19 @@
 
           html += `
       <div class="flex p-3 md:p-5 bg-white relative group ${index !== cartItems.length - 1 ? "border-b border-gray-200" : ""}">
-        
         <div class="flex items-center mr-3 md:mr-4">
           <input type="checkbox" class="cart-checkbox item-checkbox w-4 h-4 cursor-pointer accent-[#422B1C]" data-index="${index}" ${item.checked ? "checked" : ""} onchange="toggleItemCheck(${index}, this.checked)" />
         </div>
-        
         <div class="w-20 h-28 md:w-24 md:h-32 border border-gray-300 rounded overflow-hidden flex-shrink-0 mr-3 md:mr-4">
           <img src="${product.linkanhsp}" alt="${product.tensanpham}" class="w-full h-full object-cover" loading="lazy" />
         </div>
-        
         <div class="flex-1 flex flex-col justify-between py-0.5">
           <div class="pr-6">
             <h3 class="font-medium text-sm md:text-base text-[#422B1C] line-clamp-2">${product.tensanpham}</h3>
             <p class="text-xs md:text-sm mt-1 text-[#422B1C] font-medium">Kích thước: <span class="text-gray-500 font-normal">${item.size}</span></p>
           </div>
-          
           <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-2 md:mt-auto gap-2">
             <span class="font-bold text-sm md:text-lg text-[#422B1C]">${formatPrice(itemTotal)}</span>
-            
             <div class="flex items-center border border-gray-400 rounded w-fit h-7 md:h-8">
               <button type="button" class="w-7 md:w-8 h-full flex items-center justify-center hover:bg-gray-100 transition text-base md:text-lg leading-none" onclick="updateQty(${index}, -1)">-</button>
               <input type="text" class="w-8 md:w-10 h-full text-center border-x border-gray-400 outline-none text-xs md:text-sm font-medium" value="${item.qty}" readonly />
@@ -433,7 +434,6 @@
             </div>
           </div>
         </div>
-        
         <button type="button" onclick="removeItem(${index})" class="absolute top-3 right-3 md:top-4 md:right-4 text-gray-400 hover:text-red-600 transition p-2 md:opacity-0 group-hover:opacity-100" title="Xóa sản phẩm">
           <i class="fa-solid fa-trash-can text-sm md:text-base"></i>
         </button>
@@ -446,10 +446,9 @@
         updateSummary();
       }
 
-      // 4. Các hàm xử lý tương tác
       window.updateQty = function (index, change) {
         let newQty = cartItems[index].qty + change;
-        if (newQty < 1) newQty = 1; // Không cho giảm dưới 1, muốn xoá thì bấm nút thùng rác
+        if (newQty < 1) newQty = 1;
         cartItems[index].qty = newQty;
         saveCartData();
         renderCart();
@@ -487,7 +486,6 @@
         if (checkAllBox) checkAllBox.checked = allChecked;
       }
 
-      // 5. Tính toán Đơn hàng (Cột phải)
       function updateSummary() {
         let subtotal = 0;
         let selectedCount = 0;
@@ -507,17 +505,14 @@
           }
         });
 
-        // 1. Cập nhật số lượng đã chọn
         const selectedCountEl = document.getElementById("selected-count");
         if (selectedCountEl)
           selectedCountEl.textContent = `Đã chọn: ${selectedCount}`;
 
-        // 2. Cập nhật Tổng giá trị (chưa ship)
         const summarySubtotalEl = document.getElementById("summary-subtotal");
         if (summarySubtotalEl)
           summarySubtotalEl.textContent = formatPrice(subtotal);
 
-        // 3. LOGIC MỚI: Tính phí vận chuyển (Nếu có mua hàng thì ship 20k, không thì 0đ)
         let shippingFee = subtotal > 0 ? 20000 : 0;
         const summaryShippingEl = document.getElementById("summary-shipping");
         if (summaryShippingEl) {
@@ -525,10 +520,7 @@
             subtotal > 0 ? formatPrice(shippingFee) : "0đ";
         }
 
-        // 4. Mô phỏng giảm giá
         let discount = 0;
-
-        // 5. LOGIC MỚI: Tính Thành tiền = Tổng giá trị + Phí ship - Giảm giá
         let finalTotal = subtotal + shippingFee - discount;
         const summaryTotalEl = document.getElementById("summary-total");
         if (summaryTotalEl)
@@ -536,22 +528,19 @@
       }
 
       window.goToCheckout = function () {
+        saveCartData(); // FIX: Bắt buộc lưu dữ liệu lần cuối trước khi sang trang
         const hasSelected = cartItems.some((item) => item.checked);
         if (!hasSelected) {
           alert("Vui lòng chọn ít nhất 1 sản phẩm để thanh toán!");
           return;
         }
-
-        // Chuyển hướng thực sự sang trang checkout.html
         window.location.href = "checkout.html";
       };
 
-      // Khởi chạy
       loadDataAndRender();
 
       // ĐỒNG BỘ GIỎ HÀNG REAL-TIME GIỮA CÁC TAB
       window.addEventListener("storage", function (e) {
-        // Cập nhật lại số lượng trên bong bóng đỏ
         if (e.key === "wearever_cart_count") {
           const badge = document.getElementById("global-cart-badge");
           if (badge) {
@@ -560,11 +549,20 @@
             setTimeout(() => badge.classList.remove("scale-150"), 300);
           }
         }
-
-        // Tự động load lại danh sách nếu đang đứng ở trang cart.html
         if (
           e.key === "wearever_cart_details" &&
           window.location.pathname.includes("cart.html")
+        ) {
+          initCartData();
+          renderCart();
+        }
+      });
+
+      // FIX: Cập nhật lại giỏ hàng nếu người dùng bấm nút "Back" của trình duyệt
+      window.addEventListener("pageshow", function (event) {
+        if (
+          event.persisted ||
+          (window.performance && window.performance.navigation.type === 2)
         ) {
           initCartData();
           renderCart();

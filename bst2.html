@@ -1,0 +1,1106 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SUMMER HER - Wearever</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Fira Sans", sans-serif;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      /* Hiệu ứng chuyển slide mượt mà */
+      .slide-fade {
+        transition: opacity 0.8s ease-in-out;
+      }
+    </style>
+  </head>
+  <body class="bg-[#FAFAFA] text-[#422B1C] overflow-x-hidden">
+    <header
+      class="border-b border-gray-200 shadow-sm sticky top-0 bg-white/95 backdrop-blur-sm z-50"
+    >
+      <div
+        class="container mx-auto px-4 py-4 flex items-center justify-between relative"
+      >
+        <nav class="hidden lg:flex space-x-8 font-semibold text-base w-1/3">
+          <a href="shop.html" class="hover:opacity-70 transition-opacity"
+            >Về Wearever</a
+          >
+          <a
+            href="shop.html?category=áo"
+            class="hover:opacity-70 transition-opacity"
+            >Áo</a
+          >
+          <a
+            href="shop.html?category=quần"
+            class="hover:opacity-70 transition-opacity"
+            >Quần</a
+          >
+          <a href="#" class="hover:opacity-70 transition-opacity text-[#7a0000]"
+            >Bộ sưu tập</a
+          >
+        </nav>
+
+        <button class="lg:hidden text-[#422B1C] text-2xl w-1/3 text-left">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div
+          class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        >
+          <a
+            href="index.html"
+            class="w-12 h-12 md:w-16 md:h-16 border-2 border-[#422B1C] rounded-full flex items-center justify-center font-bold text-sm md:text-lg bg-white"
+          >
+            Logo
+          </a>
+        </div>
+
+        <div class="flex items-center justify-end space-x-4 md:space-x-6 w-1/3">
+          <div class="relative hidden xl:block">
+            <input
+              type="text"
+              placeholder="Tìm kiếm sản phẩm"
+              class="border border-[#422B1C]/30 rounded-md py-1.5 px-4 pr-10 focus:outline-none focus:border-[#422B1C] w-64 text-sm font-normal italic transition-colors"
+            />
+            <i
+              class="fa-solid fa-magnifying-glass absolute right-3 top-1/2 -translate-y-1/2 text-[#422B1C]/60 cursor-pointer hover:text-[#422B1C]"
+            ></i>
+          </div>
+          <button class="xl:hidden text-[#422B1C]">
+            <i class="fa-solid fa-magnifying-glass text-xl"></i>
+          </button>
+
+          <a
+            href="#"
+            class="flex items-center space-x-1.5 hover:opacity-70 transition-opacity hidden sm:flex"
+          >
+            <span class="font-normal text-sm md:text-base">Tài khoản</span>
+            <i
+              class="fa-regular fa-circle-user text-xl md:text-2xl text-gray-500"
+            ></i>
+          </a>
+
+          <a
+            href="cart.html"
+            class="relative hover:opacity-70 transition-opacity flex items-center space-x-1.5"
+          >
+            <span class="font-normal text-sm md:text-base hidden sm:inline"
+              >Giỏ hàng</span
+            >
+            <div class="relative">
+              <i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i>
+              <span
+                id="global-cart-badge"
+                class="absolute -top-2 -right-2 bg-[#7a0000] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center transition-transform duration-300"
+                >0</span
+              >
+            </div>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="relative w-full mt-4 md:mt-8">
+        <div
+          class="relative w-full aspect-[16/9] md:aspect-[21/9] bg-gray-200 overflow-hidden"
+        >
+          <div
+            class="carousel-item slide-fade absolute inset-0 opacity-100 z-10"
+          >
+            <img
+              src="https://via.placeholder.com/1400x600/e5e7eb/422b1c?text=Ảnh+Hero+Banner+1"
+              alt="SUMMER HER 1"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <div class="carousel-item slide-fade absolute inset-0 opacity-0 z-0">
+            <img
+              src="https://via.placeholder.com/1400x600/d1d5db/422b1c?text=Ảnh+Hero+Banner+2"
+              alt="SUMMER HER 2"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <button
+            onclick="prevSlide()"
+            class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 w-8 h-10 md:w-12 md:h-16 flex items-center justify-center text-[#422B1C] opacity-50 hover:opacity-100 transition-opacity focus:outline-none"
+          >
+            <i
+              class="fa-solid fa-chevron-left text-3xl md:text-5xl drop-shadow-md"
+            ></i>
+          </button>
+
+          <button
+            onclick="nextSlide()"
+            class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 w-8 h-10 md:w-12 md:h-16 flex items-center justify-center text-[#422B1C] opacity-50 hover:opacity-100 transition-opacity focus:outline-none"
+          >
+            <i
+              class="fa-solid fa-chevron-right text-3xl md:text-5xl drop-shadow-md"
+            ></i>
+          </button>
+
+          <div
+            class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-2"
+          >
+            <div
+              class="indicator w-2 h-2 rounded-full bg-[#422B1C] transition-all cursor-pointer"
+              onclick="goToSlide(0)"
+            ></div>
+            <div
+              class="indicator w-2 h-2 rounded-full bg-[#422B1C] opacity-40 transition-all cursor-pointer"
+              onclick="goToSlide(1)"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container mx-auto px-4 mt-24 md:mt-32 mb-20 max-w-7xl">
+        <div class="flex flex-col md:flex-row gap-8 lg:gap-16 items-start">
+          <div class="w-full md:w-1/3 lg:w-2/5">
+            <h1
+              class="text-3xl md:text-4xl lg:text-5xl font-bold uppercase text-[#422B1C] leading-tight tracking-wide"
+            >
+              SUMMER HER
+            </h1>
+            <div class="w-20 h-1 bg-[#7a0000] mt-4 mb-2"></div>
+          </div>
+
+          <div
+            class="w-full md:w-2/3 lg:w-3/5 flex flex-col sm:flex-row gap-6 lg:gap-10"
+          >
+            <div
+              class="flex-1 text-[#422B1C]/80 space-y-4 text-sm md:text-base text-justify leading-relaxed"
+            >
+              <p>
+                Không chỉ là những thiết kế mặc thường ngày, đây là bản tình ca
+                dành riêng cho sự nữ tính và rạng rỡ của mọi cô gái. "SUMMER
+                HER" mang trọn vẹn hơi thở của những ngày nắng đẹp nhất, được
+                thể hiện qua lăng kính dịu dàng, trendy và đầy cuốn hút. BST ra
+                đời để các nàng tự tin khoác lên mình sự tươi trẻ, sống hết mình
+                với ba sắc thái của mùa hè: Ngọt ngào - Rạng rỡ - Phong cách.
+              </p>
+            </div>
+
+            <div
+              class="flex-1 text-[#422B1C]/80 space-y-4 text-sm md:text-base text-justify leading-relaxed"
+            >
+              <p>
+                Với form dáng nịnh body và sự đa dạng trong họa tiết, "SUMMER
+                HER" không sinh ra để cất gọn trong tủ. Nó sinh ra để xuống phố,
+                lượn lờ quán cafe, lên feed thật "nghệ", và đồng hành cùng bạn
+                trong những chuyến du lịch rực rỡ nhất thanh xuân.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <style>
+      /* FONT FIRA SANS CHO TOÀN BỘ KHỐI */
+      .fira-font {
+        font-family: "Fira Sans", sans-serif;
+      }
+
+      /* BỌC KHÔNG GIAN 3D RIÊNG CHO BAO THƯ */
+      .env-perspective {
+        perspective: 1200px;
+      }
+
+      /* 1. TRẠNG THÁI ĐÓNG (MẶC ĐỊNH) */
+      .env-top-flap {
+        transform-origin: top;
+        transform: rotateX(0deg);
+        z-index: 40;
+        transition:
+          transform 0.4s ease-in-out 0.3s,
+          z-index 0s 0.3s;
+      }
+      .wax-seal {
+        opacity: 1;
+        transition: opacity 0.2s ease-in-out 0.5s;
+      }
+
+      /* CỬA SỔ BẬT LÊN (POPUP) - ĐÃ FIX LỖI HỤT SIZE */
+      .env-popup {
+        opacity: 0;
+        visibility: hidden;
+        /* Định tâm chính xác ở giữa bao thư và thu nhỏ nhẹ khi đóng */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -40%) scale(0.85);
+        z-index: 10;
+        pointer-events: none;
+        transition:
+          opacity 0.3s ease-in-out 0s,
+          transform 0.3s ease-in-out 0s,
+          visibility 0s 0.3s;
+      }
+
+      /* 2. TRẠNG THÁI MỞ (KHI BẤM VÀO) */
+      .env-container.is-open .env-top-flap {
+        transform: rotateX(180deg);
+        z-index: 10;
+        transition:
+          transform 0.4s ease-in-out 0s,
+          z-index 0s 0.2s;
+      }
+      .env-container.is-open .wax-seal {
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out 0s;
+      }
+
+      /* POPUP HIỆN LÊN ĐẦY ĐỦ */
+      .env-container.is-open .env-popup {
+        opacity: 1;
+        visibility: visible;
+        /* Bung ra đúng tâm, to rõ ràng */
+        transform: translate(-50%, -50%) scale(1);
+        z-index: 100; /* Nổi lên trên CÙNG tuyệt đối */
+        pointer-events: auto; /* Nhận click để đóng lại */
+        transition:
+          opacity 0.4s ease-in-out 0.25s,
+          transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.25s,
+          visibility 0s 0s;
+      }
+
+      /* Custom thanh cuộn nhẹ nhàng (đề phòng màn hình đt quá nhỏ) */
+      .env-popup::-webkit-scrollbar {
+        width: 4px;
+      }
+      .env-popup::-webkit-scrollbar-thumb {
+        background-color: #d2c8be;
+        border-radius: 4px;
+      }
+    </style>
+
+    <section
+      class="w-full bg-[#d2c8be] py-16 md:py-24 mt-24 md:mt-32 fira-font overflow-hidden"
+    >
+      <div
+        class="container mx-auto px-4 max-w-7xl flex flex-col xl:flex-row items-center gap-16 xl:gap-20"
+      >
+        <div
+          class="w-full xl:w-3/5 flex justify-center items-center gap-4 md:gap-6"
+        >
+          <div class="w-1/3 transform translate-y-6 md:translate-y-10">
+            <div
+              class="aspect-square bg-white overflow-hidden shadow-md hover:shadow-xl border-[6px] border-white group cursor-pointer transition-shadow duration-500 rounded-sm"
+            >
+              <img
+                src="image/50-it.png"
+                alt="Áo kẻ sọc ren"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <p
+              class="text-center mt-3 md:mt-4 font-bold text-[#422B1C] text-sm md:text-base tracking-wide"
+            >
+              She's Sweet
+            </p>
+          </div>
+          <div class="w-1/3 transform -translate-y-6 md:-translate-y-10">
+            <div
+              class="aspect-square bg-white overflow-hidden shadow-md hover:shadow-xl border-[6px] border-white group cursor-pointer transition-shadow duration-500 rounded-sm"
+            >
+              <img
+                src="image/52-it.png"
+                alt="Áo ôm họa tiết hoa"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <p
+              class="text-center mt-3 md:mt-4 font-bold text-[#422B1C] text-sm md:text-base tracking-wide"
+            >
+              She's Radiant
+            </p>
+          </div>
+          <div class="w-1/3 transform translate-y-6 md:translate-y-10">
+            <div
+              class="aspect-square bg-white overflow-hidden shadow-md hover:shadow-xl border-[6px] border-white group cursor-pointer transition-shadow duration-500 rounded-sm"
+            >
+              <img
+                src="image/51-it.png"
+                alt="Áo cổ yếm trễ vai"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <p
+              class="text-center mt-3 md:mt-4 font-bold text-[#422B1C] text-sm md:text-base tracking-wide"
+            >
+              She's Summer
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="w-full xl:w-2/5 mt-16 xl:mt-0 px-4 md:px-0 flex flex-col items-center justify-center"
+        >
+          <div
+            class="env-container relative w-full max-w-[440px] h-[320px] mx-auto cursor-pointer group flex items-center justify-center"
+            onclick="this.classList.toggle('is-open')"
+          >
+            <div class="relative w-[420px] h-[280px]">
+              <div class="env-perspective absolute inset-0">
+                <div
+                  class="absolute inset-0 bg-[#e6d3bf] rounded-sm shadow-inner z-0"
+                ></div>
+                <div
+                  class="absolute inset-0 z-20 pointer-events-none drop-shadow-sm"
+                >
+                  <div
+                    class="absolute bottom-0 left-0 w-full h-[55%] bg-[#fff3e6]"
+                  ></div>
+                  <div
+                    class="absolute inset-0 bg-[#faeedd]"
+                    style="
+                      clip-path: polygon(0 0, 50% 50%, 0 100%);
+                      border-right: 1px solid rgba(0, 0, 0, 0.02);
+                    "
+                  ></div>
+                  <div
+                    class="absolute inset-0 bg-[#fdf0e0]"
+                    style="
+                      clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+                      border-left: 1px solid rgba(0, 0, 0, 0.02);
+                    "
+                  ></div>
+                  <div
+                    class="absolute inset-0 bg-[#fff3e6]"
+                    style="
+                      clip-path: polygon(0 100%, 50% 45%, 100% 100%);
+                      border-top: 1px solid rgba(0, 0, 0, 0.03);
+                    "
+                  ></div>
+                </div>
+                <div
+                  class="env-top-flap absolute top-0 left-0 w-full h-full pointer-events-none drop-shadow-md"
+                >
+                  <div
+                    class="absolute inset-0 bg-[#fff3e6]"
+                    style="
+                      clip-path: polygon(0 0, 100% 0, 50% 52%);
+                      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+                    "
+                  ></div>
+                  <div
+                    class="wax-seal absolute top-[43%] left-1/2 -translate-x-1/2 w-12 h-12 bg-[#7a0000] rounded-full flex items-center justify-center shadow-lg border border-[#5a0000] group-hover:scale-110 transition-transform"
+                  >
+                    <i class="fa-solid fa-feather text-white/90 text-lg"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="env-popup absolute bg-[#FAF8F5] p-6 md:p-8 rounded-md shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-[#e2d8d0] flex flex-col justify-center w-[90vw] sm:w-[500px] h-auto max-h-[85vh] overflow-y-auto"
+            >
+              <div
+                class="space-y-4 text-[#422B1C] text-sm md:text-base text-justify leading-relaxed"
+              >
+                <p>
+                  Sáu thiết kế trong bộ sưu tập đại diện cho ba mảnh ghép tạo
+                  nên một cô gái hiện đại. Bạn là ai trong mùa hè này?
+                </p>
+                <p>
+                  <b>She's Sweet - Nàng Ngọt Ngào:</b>
+                  Sự kết hợp giữa viền ren tinh tế và họa tiết chấm bi hoài cổ
+                  gợi nhắc nàng rằng: vẻ đẹp đôi khi đến từ những điều mộc mạc
+                  và nữ tính nhất.
+                </p>
+                <p>
+                  <b>She's Radiant - Nàng Rạng Rỡ:</b>
+                  Năng lượng tươi mới từ họa tiết hoa nhí và sự thanh lịch của
+                  thiết kế tay phồng chính là chất xúc tác giúp nàng luôn nổi
+                  bật một cách tự nhiên, tràn đầy sức sống như một đóa hoa đang
+                  nở rộ.
+                </p>
+                <p>
+                  <b>She's Summer - Nàng Phong Cách:</b>
+                  Thiết kế hở lưng hay cổ yếm sành điệu là tuyên ngôn của sự tự
+                  tin. Nàng hiểu rõ sức hấp dẫn của mình và không ngại ngần tỏa
+                  sáng theo cách riêng biệt nhất.
+                </p>
+              </div>
+
+              <div class="mt-6 border-t border-[#422B1C]/10 pt-4 text-center">
+                <span
+                  class="text-[#7a0000] text-xs md:text-sm font-semibold animate-pulse cursor-pointer inline-flex items-center"
+                >
+                  <i class="fa-solid fa-xmark mr-1.5 text-lg"></i> Nhấn vào thư
+                  để đóng lại
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <p
+            class="text-[#422B1C]/60 text-xs italic mt-4 md:mt-8 animate-bounce text-center w-full"
+          >
+            * Nhấn vào lá thư này để khám phá thông điệp
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="w-full bg-transparent py-16 md:py-24 mt-5 md:mt-10 fira-font"
+    >
+      <div
+        class="container mx-auto px-4 max-w-7xl flex flex-col lg:flex-row items-center gap-10 lg:gap-16"
+      >
+        <div class="w-full lg:w-1/3 flex justify-center">
+          <div
+            class="w-[85%] sm:w-[60%] lg:w-full max-w-[350px] aspect-[3/4] bg-gray-200 rounded-t-full overflow-hidden border-[10px] border-[#d2c8be] border-b-0 shadow-[0_15px_30px_rgba(210,200,190,0.6)] relative group"
+          >
+            <img
+              src="image/lb-5.png"
+              alt="Lookbook Image"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+        </div>
+
+        <div class="w-full lg:w-2/3 relative">
+          <button
+            id="slider-prev"
+            class="absolute left-1 md:left-0 top-[40%] -translate-y-1/2 md:-translate-x-5 w-8 h-8 md:w-12 md:h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-md border border-gray-200 flex items-center justify-center text-[#422B1C] hover:bg-[#422B1C] hover:text-white transition-colors z-20 focus:outline-none"
+          >
+            <i class="fa-solid fa-chevron-left text-sm md:text-lg"></i>
+          </button>
+
+          <div
+            id="bst-product-slider"
+            class="overflow-x-auto flex gap-4 md:gap-6 snap-x snap-mandatory scroll-smooth pb-8 pt-4 px-2 scrollbar-hide"
+            style="-ms-overflow-style: none; scrollbar-width: none"
+          >
+            <div class="w-full text-center text-gray-500 py-10">
+              Đang tải sản phẩm...
+            </div>
+          </div>
+
+          <button
+            id="slider-next"
+            class="absolute right-1 md:right-0 top-[40%] -translate-y-1/2 md:translate-x-5 w-8 h-8 md:w-12 md:h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-md border border-gray-200 flex items-center justify-center text-[#422B1C] hover:bg-[#422B1C] hover:text-white transition-colors z-20 focus:outline-none"
+          >
+            <i class="fa-solid fa-chevron-right text-sm md:text-lg"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div
+      id="quick-buy-modal"
+      class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 p-4 transition-opacity duration-300 opacity-0 fira-font"
+      onclick="closeQuickBuy()"
+    >
+      <div
+        class="relative w-full max-w-sm bg-white rounded-xl p-5 shadow-2xl transform transition-transform duration-300 scale-95"
+        id="quick-buy-content"
+        onclick="event.stopPropagation()"
+      ></div>
+    </div>
+
+    <section
+      class="relative w-full mt-16 lg:mt-24 mb-16 lg:mb-32 fira-font py-10 lg:py-0"
+    >
+      <div
+        class="absolute inset-0 lg:top-12 lg:bottom-12 bg-[#d2c8be] border-y border-[#422B1C]/20 z-0 pointer-events-none transition-all duration-300"
+      ></div>
+
+      <div
+        class="container mx-auto px-4 max-w-7xl relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16"
+      >
+        <div class="w-full lg:w-5/12 flex flex-col items-center z-10">
+          <h2
+            class="text-lg sm:text-xl md:text-2xl font-bold text-[#111] mb-4 md:mb-5 uppercase tracking-wide text-center w-full"
+          >
+            Nhận thông báo về BST mới
+          </h2>
+
+          <form
+            id="newsletter-form"
+            name="newsletter-form"
+            class="w-full flex flex-col items-center"
+          >
+            <div
+              class="bg-white p-6 md:p-8 rounded shadow-sm border border-[#422B1C]/50 flex flex-col gap-4 w-full max-w-md"
+            >
+              <input
+                type="text"
+                name="HoTen"
+                placeholder="Họ tên"
+                required
+                class="w-full border border-[#422B1C]/40 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#422B1C] transition-colors"
+              />
+              <input
+                type="tel"
+                name="SoDienThoai"
+                placeholder="Số điện thoại"
+                required
+                class="w-full border border-[#422B1C]/40 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#422B1C] transition-colors"
+              />
+              <input
+                type="text"
+                name="Email"
+                placeholder="Email"
+                required
+                class="w-full border border-[#422B1C]/40 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-[#422B1C] transition-colors"
+              />
+            </div>
+
+            <button
+              type="submit"
+              id="btn-submit-form"
+              class="mt-4 md:mt-5 bg-[#7a0000] hover:bg-[#2c1d12] text-white font-medium px-12 py-3 rounded shadow-md transition-all duration-300 w-auto min-w-[150px] text-sm md:text-base border border-[#422B1C]"
+            >
+              Hoàn tất
+            </button>
+          </form>
+
+          <div
+            id="form-msg"
+            class="mt-4 text-sm font-medium hidden w-full text-center"
+          ></div>
+        </div>
+
+        <div class="w-full lg:w-7/12 relative flex flex-col items-center">
+          <div
+            id="nl-slider"
+            class="flex overflow-x-auto snap-x snap-mandatory w-full gap-4 md:gap-6 scrollbar-hide pb-2"
+            style="-ms-overflow-style: none; scrollbar-width: none"
+          >
+            <div
+              class="nl-slide snap-center shrink-0 w-[65%] sm:w-[50%] lg:w-[55%] aspect-[3/4] bg-white border border-gray-200 shadow-md overflow-hidden flex items-center justify-center"
+            >
+              <img
+                src="image/lb-6.png"
+                alt="Preview 1"
+                class="w-full h-full object-cover select-none"
+                draggable="false"
+              />
+            </div>
+
+            <div
+              class="nl-slide snap-center shrink-0 w-[65%] sm:w-[50%] lg:w-[55%] aspect-[3/4] bg-white border border-gray-200 shadow-md overflow-hidden flex items-center justify-center"
+            >
+              <img
+                src="image/lb-7.png"
+                alt="Preview 2"
+                class="w-full h-full object-cover select-none"
+                draggable="false"
+              />
+            </div>
+
+            <div
+              class="nl-slide snap-center shrink-0 w-[65%] sm:w-[50%] lg:w-[55%] aspect-[3/4] bg-white border border-gray-200 shadow-md overflow-hidden flex items-center justify-center"
+            >
+              <img
+                src="image/lb-8.png"
+                alt="Preview 3"
+                class="w-full h-full object-cover select-none"
+                draggable="false"
+              />
+            </div>
+
+            <div class="shrink-0 w-[15%] sm:w-[25%] lg:w-[20%]"></div>
+          </div>
+
+          <div
+            class="flex lg:absolute lg:-bottom-12 justify-center gap-2.5 mt-4 lg:mt-0 w-full"
+            id="nl-dots"
+          >
+            <button
+              class="nl-dot w-3 h-3 rounded-full bg-[#111] transition-colors"
+              onclick="scrollToSlide(0)"
+            ></button>
+            <button
+              class="nl-dot w-3 h-3 rounded-full bg-transparent border-[1.5px] border-[#111] transition-colors"
+              onclick="scrollToSlide(1)"
+            ></button>
+            <button
+              class="nl-dot w-3 h-3 rounded-full bg-transparent border-[1.5px] border-[#111] transition-colors"
+              onclick="scrollToSlide(2)"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="border-t border-gray-200 mt-12 bg-white">
+      <div
+        class="container mx-auto px-4 py-8 text-center text-[#422B1C]/60 text-sm"
+      >
+        <p>&copy; 2026 Wearever. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // 1. LOGIC ĐỒNG BỘ SỐ LƯỢNG GIỎ HÀNG (GIỮ NGUYÊN TỪ CÁC TRANG TRƯỚC)
+      function initCartBadge() {
+        let currentCount =
+          parseInt(localStorage.getItem("wearever_cart_count")) || 0;
+        let badge = document.getElementById("global-cart-badge");
+        if (badge) {
+          badge.textContent = currentCount;
+        }
+      }
+
+      window.addEventListener("storage", function (e) {
+        if (e.key === "wearever_cart_count") {
+          const badge = document.getElementById("global-cart-badge");
+          if (badge) {
+            badge.textContent = e.newValue || 0;
+            badge.classList.add("scale-150");
+            setTimeout(() => badge.classList.remove("scale-150"), 300);
+          }
+        }
+      });
+
+      window.addEventListener("pageshow", function (event) {
+        if (
+          event.persisted ||
+          (window.performance && window.performance.navigation.type === 2)
+        ) {
+          initCartBadge();
+        }
+      });
+
+      // 2. LOGIC CAROUSEL (SLIDESHOW)
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".carousel-item");
+      const indicators = document.querySelectorAll(".indicator");
+      const totalSlides = slides.length;
+      let slideInterval;
+
+      function showSlide(index) {
+        // Ẩn tất cả slides
+        slides.forEach((slide) => {
+          slide.classList.remove("opacity-100", "z-10");
+          slide.classList.add("opacity-0", "z-0");
+        });
+
+        // Mờ tất cả indicators
+        indicators.forEach((ind) => {
+          ind.classList.remove("opacity-100");
+          ind.classList.add("opacity-40");
+        });
+
+        // Hiện slide được chọn
+        slides[index].classList.remove("opacity-0", "z-0");
+        slides[index].classList.add("opacity-100", "z-10");
+        indicators[index].classList.remove("opacity-40");
+        indicators[index].classList.add("opacity-100");
+      }
+
+      window.nextSlide = function () {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+        resetInterval();
+      };
+
+      window.prevSlide = function () {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+        resetInterval();
+      };
+
+      window.goToSlide = function (index) {
+        currentSlide = index;
+        showSlide(currentSlide);
+        resetInterval();
+      };
+
+      function startInterval() {
+        // Tự động chuyển ảnh sau mỗi 4 giây
+        slideInterval = setInterval(window.nextSlide, 4000);
+      }
+
+      function resetInterval() {
+        clearInterval(slideInterval);
+        startInterval();
+      }
+
+      let allProducts = []; // Biến toàn cục để Modal Mua Nhanh có thể truy xuất dữ liệu
+      let currentQuickBuyId = null;
+
+      const formatPrice = (price) =>
+        new Intl.NumberFormat("vi-VN").format(Number(price)) + "đ";
+
+      // Hàm update lại số trên Giỏ hàng Header
+      function updateGlobalCartBadge() {
+        let currentCount =
+          parseInt(localStorage.getItem("wearever_cart_count")) || 0;
+        const badge = document.getElementById("global-cart-badge");
+        if (badge) {
+          badge.textContent = currentCount;
+          badge.classList.add("scale-150");
+          setTimeout(() => badge.classList.remove("scale-150"), 300);
+        }
+      }
+
+      async function loadBSTProducts() {
+        try {
+          const response = await fetch("product.json");
+          allProducts = await response.json();
+
+          const bstProducts = allProducts.filter((p) => p.phanloai === "BST2");
+          const sliderContainer = document.getElementById("bst-product-slider");
+          let html = "";
+
+          if (bstProducts.length === 0) {
+            sliderContainer.innerHTML = `<p class="w-full text-center text-gray-500 py-10">Chưa có sản phẩm nào trong bộ sưu tập này.</p>`;
+            return;
+          }
+
+          bstProducts.forEach((p) => {
+            const currentPrice = p.giasaukhuyenmai
+              ? formatPrice(p.giasaukhuyenmai)
+              : formatPrice(p.dongia);
+            const hasDiscount =
+              p.giasaukhuyenmai && Number(p.dongia) > Number(p.giasaukhuyenmai);
+
+            // CSS Viền sản phẩm (đỏ nếu có KM)
+            const cardBorderStyle = hasDiscount
+              ? "border-[1.5px] md:border-2 border-[#7a0000]/40"
+              : "border border-[#422B1C]/10 shadow-[0_2px_10px_rgba(0,0,0,0.02)]";
+
+            // Tính Tag giảm giá
+            let discountBadge = "";
+            if (hasDiscount) {
+              const percent = Math.round(
+                100 - (Number(p.giasaukhuyenmai) / Number(p.dongia)) * 100,
+              );
+              discountBadge = `-${percent}%`;
+            }
+
+            // Ảnh trước và sau
+            const imgSrc1 =
+              p.linkanhsp ||
+              "https://via.placeholder.com/300x400?text=Chua+co+anh";
+            const imgSrc2 = p.linkanhsp_hover || imgSrc1;
+
+            // Render nguyên khối thẻ A giống shop.html
+            html += `
+          <div class="snap-start shrink-0 w-[170px] sm:w-[200px] md:w-[240px] flex flex-col group relative bg-white">
+            <a href="product-detail.html?id=${p.stt}" class="group relative block cursor-pointer">
+              <div class="aspect-[1/1.618] ${cardBorderStyle} rounded-md md:rounded-lg mb-1.5 md:mb-4 relative overflow-hidden bg-white transition-all duration-300">
+                  <img src="${imgSrc2}" alt="${p.tensanpham} mặt sau" class="w-full h-full object-cover absolute inset-0 z-0">
+                  <img src="${imgSrc1}" alt="${p.tensanpham}" class="w-full h-full object-cover absolute inset-0 z-10 transition-opacity duration-500 group-hover:opacity-0">
+                  
+                  <div class="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                      <button onclick="openQuickBuy(event, '${p.stt}')" class="w-8 h-8 md:w-10 md:h-10 bg-[#422B1C] border border-transparent text-white rounded-full flex items-center justify-center hover:bg-[#2c1d12] transition-all duration-200 hover:-translate-y-1 shadow-lg">
+                          <i class="fa-solid fa-cart-shopping text-xs md:text-sm"></i>
+                      </button>
+                  </div>
+              </div>
+              
+              <div class="space-y-0.5 md:space-y-1.5 px-0.5">
+                  <h4 class="font-medium truncate text-[11px] sm:text-xs md:text-base leading-tight transition-colors" title="${p.tensanpham}">${p.tensanpham}</h4>
+                  
+                  <div class="flex justify-between items-center">
+                      <span class="font-bold text-[12px] sm:text-sm md:text-lg">${currentPrice}</span>
+                      <div class="flex items-center space-x-0.5 md:space-x-1 text-[#422B1C]/60">
+                          <span class="text-[10px] md:text-base">${p.danhgia || 5}</span>
+                          <i class="fa-solid fa-star text-[10px] md:text-base text-yellow-500"></i>
+                      </div>
+                  </div>
+                  
+                  ${
+                    hasDiscount
+                      ? `
+                  <div class="flex justify-between items-center mt-0.5 md:mt-1">
+                      <span class="text-[10px] md:text-sm text-[#422B1C]/40 line-through">${formatPrice(p.dongia)}</span>
+                      <span class="text-[10px] md:text-[13px] bg-[#7a0000] text-white rounded px-1.5 md:px-3 py-0.5 font-medium leading-none">${discountBadge}</span>
+                  </div>
+                  `
+                      : '<div class="h-4 md:h-7 mt-0.5 md:mt-1"></div>'
+                  }
+              </div>
+            </a>
+          </div>
+        `;
+          });
+
+          sliderContainer.innerHTML = html;
+        } catch (error) {
+          console.error("Lỗi tải dữ liệu sản phẩm:", error);
+        }
+      }
+
+      // --- LOGIC XỬ LÝ TRƯỢT SLIDER ---
+      document.addEventListener("DOMContentLoaded", () => {
+        loadBSTProducts();
+
+        const slider = document.getElementById("bst-product-slider");
+        const btnNext = document.getElementById("slider-next");
+        const btnPrev = document.getElementById("slider-prev");
+
+        if (btnNext && btnPrev) {
+          btnNext.addEventListener("click", () =>
+            slider.scrollBy({ left: 260, behavior: "smooth" }),
+          );
+          btnPrev.addEventListener("click", () =>
+            slider.scrollBy({ left: -260, behavior: "smooth" }),
+          );
+        }
+      });
+
+      // --- LOGIC XỬ LÝ POPUP CHỌN SIZE MUA NHANH ---
+      window.openQuickBuy = function (e, productId) {
+        e.preventDefault(); // Ngăn chặn chuyển sang trang chi tiết
+        e.stopPropagation();
+
+        currentQuickBuyId = productId;
+        const product = allProducts.find((p) => p.stt === productId);
+        if (!product) return;
+
+        const modal = document.getElementById("quick-buy-modal");
+        const content = document.getElementById("quick-buy-content");
+        const sizes = product.kichthuoc
+          ? product.kichthuoc.split(",").map((s) => s.trim())
+          : ["S", "M", "L"];
+
+        content.innerHTML = `
+      <div class="flex justify-between items-center mb-3 border-b border-gray-100 pb-3">
+          <h3 class="font-bold text-lg text-[#422B1C]">Chọn kích thước</h3>
+          <button onclick="closeQuickBuy()" class="text-gray-400 hover:text-red-500 transition-colors"><i class="fa-solid fa-xmark text-xl"></i></button>
+      </div>
+      <p class="text-sm font-medium text-gray-700 mb-4 truncate">${product.tensanpham}</p>
+      <div class="flex flex-wrap gap-3 justify-center mb-2">
+          ${sizes
+            .map(
+              (size) => `
+          <button onclick="confirmAddQuickBuy('${size}')" class="w-12 h-10 border border-[#422B1C]/40 rounded hover:border-[#422B1C] hover:bg-[#422B1C] hover:text-white transition-colors font-medium">
+              ${size}
+          </button>
+          `,
+            )
+            .join("")}
+      </div>
+    `;
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        setTimeout(() => {
+          modal.classList.remove("opacity-0");
+          content.classList.remove("scale-95");
+          content.classList.add("scale-100");
+        }, 10);
+      };
+
+      window.closeQuickBuy = function () {
+        const modal = document.getElementById("quick-buy-modal");
+        const content = document.getElementById("quick-buy-content");
+
+        modal.classList.add("opacity-0");
+        content.classList.remove("scale-100");
+        content.classList.add("scale-95");
+
+        setTimeout(() => {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        }, 300);
+      };
+
+      window.confirmAddQuickBuy = function (size) {
+        if (!currentQuickBuyId) return;
+
+        let cart =
+          JSON.parse(localStorage.getItem("wearever_cart_details")) || [];
+        let existingItem = cart.find(
+          (item) => item.id === currentQuickBuyId && item.size === size,
+        );
+
+        if (existingItem) {
+          existingItem.qty += 1;
+        } else {
+          cart.push({
+            id: currentQuickBuyId,
+            size: size,
+            qty: 1,
+            checked: true,
+          });
+        }
+
+        localStorage.setItem("wearever_cart_details", JSON.stringify(cart));
+
+        let totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+        localStorage.setItem("wearever_cart_count", totalItems);
+
+        updateGlobalCartBadge();
+        closeQuickBuy();
+        alert("Đã thêm sản phẩm vào giỏ hàng thành công!");
+      };
+
+      // Khởi chạy khi load trang
+      initCartBadge();
+      startInterval();
+
+      // --- 1. LOGIC SLIDER ẢNH NHẬN THÔNG BÁO (3 ẢNH) CÓ KÉO VUỐT ---
+      const nlSlider = document.getElementById("nl-slider");
+      const nlSlides = document.querySelectorAll(".nl-slide");
+      const nlDots = document.querySelectorAll(".nl-dot");
+
+      // Logic bấm nút tròn để nhảy ảnh
+      window.scrollToSlide = function (index) {
+        if (nlSlides[index]) {
+          const slide = nlSlides[index];
+          const scrollPos =
+            slide.offsetLeft -
+            nlSlider.offsetLeft -
+            (nlSlider.clientWidth - slide.clientWidth) / 2;
+          nlSlider.scrollTo({ left: scrollPos, behavior: "smooth" });
+        }
+      };
+
+      // Tự động nhận diện bôi đen chấm tròn
+      const sliderObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = Array.from(nlSlides).indexOf(entry.target);
+              nlDots.forEach((dot, i) => {
+                if (i === index) {
+                  dot.classList.add("bg-[#111]");
+                  dot.classList.remove(
+                    "bg-transparent",
+                    "border-[1.5px]",
+                    "border-[#111]",
+                  );
+                } else {
+                  dot.classList.remove("bg-[#111]");
+                  dot.classList.add(
+                    "bg-transparent",
+                    "border-[1.5px]",
+                    "border-[#111]",
+                  );
+                }
+              });
+            }
+          });
+        },
+        { root: nlSlider, threshold: 0.6 },
+      );
+
+      nlSlides.forEach((slide) => sliderObserver.observe(slide));
+
+      // --- THÊM TÍNH NĂNG KÉO VUỐT (DRAG TO SCROLL) ---
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      // Xử lý kéo bằng Chuột (Desktop)
+      nlSlider.addEventListener("mousedown", (e) => {
+        isDown = true;
+        nlSlider.classList.add("cursor-grabbing"); // Đổi con trỏ chuột thành hình bàn tay nắm
+        nlSlider.style.scrollSnapType = "none"; // Tắt hiệu ứng khựng để kéo cho mượt
+        startX = e.pageX - nlSlider.offsetLeft;
+        scrollLeft = nlSlider.scrollLeft;
+      });
+
+      nlSlider.addEventListener("mouseleave", () => {
+        isDown = false;
+        nlSlider.classList.remove("cursor-grabbing");
+        nlSlider.style.scrollSnapType = "x mandatory"; // Bật lại hiệu ứng khựng
+      });
+
+      nlSlider.addEventListener("mouseup", () => {
+        isDown = false;
+        nlSlider.classList.remove("cursor-grabbing");
+        nlSlider.style.scrollSnapType = "x mandatory"; // Bật lại hiệu ứng khựng
+      });
+
+      nlSlider.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - nlSlider.offsetLeft;
+        const walk = (x - startX) * 1.5; // Tốc độ trượt (nhân 1.5 lần để kéo nhạy hơn)
+        nlSlider.scrollLeft = scrollLeft - walk;
+      });
+
+      // Xử lý vuốt bằng Tay (Mobile/Tablet)
+      nlSlider.addEventListener("touchstart", (e) => {
+        isDown = true;
+        nlSlider.style.scrollSnapType = "none";
+        startX = e.touches[0].pageX - nlSlider.offsetLeft;
+        scrollLeft = nlSlider.scrollLeft;
+      });
+
+      nlSlider.addEventListener("touchend", () => {
+        isDown = false;
+        nlSlider.style.scrollSnapType = "x mandatory";
+      });
+
+      nlSlider.addEventListener("touchmove", (e) => {
+        if (!isDown) return;
+        const x = e.touches[0].pageX - nlSlider.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        nlSlider.scrollLeft = scrollLeft - walk;
+      });
+      // --- 2. LOGIC KẾT NỐI GOOGLE SHEET ---
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbwMFvUQUUkZWq_DCVebHTpD3wVcCW_CvfOxmwZ4wQ7UX7_zJG0mWXV6pbNiYuAsuuZE/exec"; // Chèn link Web App của Google Script vào đây
+      const form = document.forms["newsletter-form"];
+      const btnSubmit = document.getElementById("btn-submit-form");
+      const msgText = document.getElementById("form-msg");
+
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          btnSubmit.innerHTML =
+            '<i class="fa-solid fa-spinner fa-spin"></i> Đang gửi...';
+          btnSubmit.disabled = true;
+          btnSubmit.classList.add("opacity-70");
+
+          fetch(scriptURL, {
+            method: "POST",
+            body: new FormData(form),
+            mode: "no-cors",
+          })
+            .then((response) => {
+              msgText.innerHTML =
+                '<i class="fa-solid fa-circle-check mr-1"></i> Đăng ký thành công! Cảm ơn bạn.';
+              msgText.classList.remove("hidden", "text-red-500");
+              msgText.classList.add("text-[#422B1C]");
+              form.reset();
+              resetBtn();
+            })
+            .catch((error) => {
+              msgText.innerHTML =
+                '<i class="fa-solid fa-circle-exclamation mr-1"></i> Có lỗi xảy ra, vui lòng thử lại sau!';
+              msgText.classList.remove("hidden", "text-[422B1C]");
+              msgText.classList.add("text-red-500");
+              resetBtn();
+            });
+        });
+      }
+
+      function resetBtn() {
+        btnSubmit.innerHTML = "Hoàn tất";
+        btnSubmit.disabled = false;
+        btnSubmit.classList.remove("opacity-70");
+        setTimeout(() => {
+          msgText.classList.add("hidden");
+        }, 5000);
+      }
+    </script>
+  </body>
+</html>

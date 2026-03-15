@@ -382,11 +382,14 @@
         cartItems =
           JSON.parse(localStorage.getItem("wearever_cart_details")) || [];
         const hasSelectedItems = cartItems.some((item) => item.checked);
-        if (!hasSelectedItems && cartItems.length > 0) {
+
+        // FIX: Cấm tiệt việc ở lại trang nếu không có sản phẩm nào được chọn (kể cả khi giỏ hàng rỗng)
+        if (!hasSelectedItems) {
           alert(
             "Bạn chưa chọn sản phẩm nào để thanh toán. Đang quay lại giỏ hàng...",
           );
           window.location.href = "cart.html";
+          return; // Ngăn code chạy tiếp
         }
       }
 
@@ -409,8 +412,10 @@
             map[product.stt] = product;
             return map;
           }, {});
+
           initData();
           renderCheckoutCart();
+
           const currentCount =
             parseInt(localStorage.getItem("wearever_cart_count")) || 0;
           const badge = document.getElementById("global-cart-badge");
@@ -498,7 +503,6 @@
           summaryTotalEl.textContent = formatPrice(finalTotal);
       }
 
-      // XỬ LÝ LƯU ĐƠN HÀNG LÊN GOOGLE SHEET VÀ HIỂN THỊ MÀN HÌNH THÀNH CÔNG
       window.placeOrder = async function () {
         const name = document.getElementById("customer-name").value.trim();
         const phone = document.getElementById("customer-phone").value.trim();
@@ -530,8 +534,6 @@
           .join(" | ");
 
         const totalMoney = document.getElementById("summary-total").textContent;
-
-        // BẠN DÁN LINK APP SCRIPT CỦA BẠN VÀO ĐÂY NHÉ
         const scriptURL =
           "https://script.google.com/macros/s/AKfycbx9UsevA1Q2TKDxuj3CbV8VmLThhkjNmKrR7Os1Cc5NbXGMvuQJDEC4xeM4YP-fc02b/exec";
 
@@ -546,20 +548,15 @@
           formData.append("Sản phẩm", orderDetails);
           formData.append("Tổng tiền", totalMoney);
 
-          // Gửi dữ liệu lên Google Sheet (bỏ qua lỗi CORS của trình duyệt)
           await fetch(scriptURL, {
             method: "POST",
             body: formData,
             mode: "no-cors",
           });
 
-          // Xóa các sản phẩm đã thanh toán khỏi giỏ hàng
           cartItems = cartItems.filter((item) => !item.checked);
           saveCartData();
 
-          // ========================================================
-          // LOGIC MỚI: CẬP NHẬT GIAO DIỆN "HOÀN TẤT ĐẶT HÀNG"
-          // ========================================================
           const mainEl = document.querySelector("main");
           mainEl.innerHTML = `
             <div class="flex items-center justify-center w-full max-w-3xl mx-auto mb-10 text-[10px] sm:text-xs md:text-sm font-medium">
@@ -598,8 +595,6 @@
               </a>
             </div>
           `;
-
-          // Cuộn mượt lên đầu trang để khách hàng dễ dàng nhìn thấy thông báo
           window.scrollTo({ top: 0, behavior: "smooth" });
         } catch (error) {
           console.error("Lỗi!", error.message);
@@ -608,7 +603,27 @@
           btn.disabled = false;
         }
       };
+
       loadDataAndRender();
+
+      // FIX: Cập nhật giỏ hàng ngay lập tức nếu người dùng thao tác ở tab khác
+      window.addEventListener("storage", function (e) {
+        if (e.key === "wearever_cart_details") {
+          initData();
+          renderCheckoutCart();
+        }
+      });
+
+      // FIX: Cập nhật lại dữ liệu khi quay lại trang bằng nút Back trên trình duyệt
+      window.addEventListener("pageshow", function (event) {
+        if (
+          event.persisted ||
+          (window.performance && window.performance.navigation.type === 2)
+        ) {
+          initData();
+          renderCheckoutCart();
+        }
+      });
     </script>
   </body>
 </html>
