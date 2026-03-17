@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giới thiệu - Wearever</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ffffff",
+              secondary: "#d2c8be",
+              accent: "#422B1C",
+              cta: "#7a0000",
+            },
+            fontFamily: {
+              sans: ["Fira Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      details > summary {
+        list-style: none;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-primary text-accent font-sans antialiased overflow-x-hidden flex flex-col min-h-screen"
+  >
+    <header
+      class="sticky top-0 z-[50] w-full bg-primary shadow-sm border-b-2 border-accent overflow-visible"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 md:px-12 xl:px-16 py-2 md:py-3 grid grid-cols-[1fr_auto_1fr] gap-4 xl:gap-8 items-center"
+      >
+        <div class="flex items-center gap-4 justify-start">
+          <button
+            id="mobileMenuBtn"
+            class="lg:hidden text-accent text-2xl focus:outline-none"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <button class="lg:hidden text-accent text-xl focus:outline-none">
+            <i class="fas fa-search"></i>
+          </button>
+
+          <nav
+            class="hidden lg:flex gap-6 lg:gap-8 font-semibold text-[17px] xl:text-[19px] items-center"
+          >
+            <div class="group relative py-2 cursor-pointer">
+              <a
+                href="index.html#hero-banner"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >Về Wearever</a
+              >
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 pt-[14px] hidden group-hover:block z-50"
+              >
+                <div
+                  class="bg-primary w-[160px] flex flex-col shadow-lg border border-accent/10"
+                >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Giới thiệu</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Chính sách</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative py-2 cursor-pointer">
+              <a
+                href="#"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >Áo</a
+              >
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 pt-[14px] hidden group-hover:block z-50"
+              >
+                <div
+                  class="bg-primary w-[160px] flex flex-col shadow-lg border border-accent/10"
+                >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Áo thun</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Áo sơ mi</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Áo len</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Áo tank top</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative py-2 cursor-pointer">
+              <a
+                href="#"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >Quần</a
+              >
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 pt-[14px] hidden group-hover:block z-50"
+              >
+                <div
+                  class="bg-primary w-[160px] flex flex-col shadow-lg border border-accent/10"
+                >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Quần jeans</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Quần tây</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Quần kaki</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Quần nỉ</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative py-2 cursor-pointer">
+              <a
+                href="#"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >Bộ sưu tập</a
+              >
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 pt-[14px] hidden group-hover:block z-50"
+              >
+                <div
+                  class="bg-primary w-[200px] flex flex-col shadow-lg border border-accent/10"
+                >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >She's Vietnamese</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Summer her</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="py-2">
+              <a
+                href="index.html#faq-section"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >FAQ</a
+              >
+            </div>
+          </nav>
+        </div>
+
+        <a
+          href="index.html"
+          class="flex justify-center items-center min-w-[80px] md:min-w-[120px] flex-shrink-0"
+        >
+          <img
+            src="./Ảnh/Logo.png"
+            alt="Wearever Logo"
+            class="h-[35px] md:h-[60px] w-auto object-contain transform scale-[2.0] md:scale-[3.0] origin-center translate-y-1 md:translate-y-2"
+          />
+        </a>
+
+        <div class="flex gap-4 md:gap-6 justify-end items-center flex-shrink-0">
+          <div class="relative hidden lg:block">
+            <i
+              class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-accent text-lg"
+            ></i>
+            <input
+              type="text"
+              placeholder="Tìm kiếm sản phẩm"
+              class="border border-accent rounded-full py-1.5 pl-10 pr-4 text-[14px] font-light focus:outline-none focus:ring-1 focus:ring-accent bg-transparent w-44 xl:w-56 italic"
+            />
+          </div>
+          <a
+            href="#"
+            class="flex items-center gap-2 hover:text-cta transition-colors whitespace-nowrap"
+          >
+            <span
+              class="hidden md:inline font-regular text-[17px] xl:text-[19px]"
+              >Tài khoản</span
+            >
+            <i class="far fa-user-circle text-xl md:text-2xl"></i>
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-2 hover:text-cta transition-colors relative whitespace-nowrap"
+          >
+            <span
+              class="hidden md:inline font-regular text-[17px] xl:text-[19px]"
+              >Giỏ hàng</span
+            >
+            <i class="fas fa-shopping-bag text-xl md:text-2xl"></i>
+            <span
+              class="absolute -top-2 -right-2 md:-right-3 bg-cta text-white text-[10px] w-[16px] h-[16px] md:w-[18px] md:h-[18px] rounded-full flex items-center justify-center font-semibold"
+              >0</span
+            >
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div
+      id="mobileMenu"
+      class="fixed inset-0 bg-primary z-[60] transform -translate-x-full transition-transform duration-300 flex flex-col overflow-y-auto lg:hidden"
+    >
+      <div
+        class="flex justify-between items-center px-6 py-4 border-b border-accent/20"
+      >
+        <span class="font-bold text-2xl tracking-widest uppercase">MENU</span>
+        <button
+          id="closeMenuBtn"
+          class="text-accent text-3xl focus:outline-none"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div
+        class="flex flex-col px-6 py-6 gap-2 text-lg text-accent font-semibold"
+      >
+        <details class="group border-b border-accent/10 pb-3 mt-2">
+          <summary class="flex justify-between items-center cursor-pointer">
+            Về Wearever
+            <i
+              class="fas fa-chevron-down text-sm group-open:rotate-180 transition-transform"
+            ></i>
+          </summary>
+          <div
+            class="flex flex-col gap-3 mt-4 pl-4 font-normal text-[16px] text-accent/80"
+          >
+            <a href="#" class="mobile-link">Giới thiệu</a>
+            <a href="#" class="mobile-link">Chính sách</a>
+          </div>
+        </details>
+
+        <details class="group border-b border-accent/10 pb-3 mt-2">
+          <summary class="flex justify-between items-center cursor-pointer">
+            Áo
+            <i
+              class="fas fa-chevron-down text-sm group-open:rotate-180 transition-transform"
+            ></i>
+          </summary>
+          <div
+            class="flex flex-col gap-3 mt-4 pl-4 font-normal text-[16px] text-accent/80"
+          >
+            <a href="#">Áo thun</a>
+            <a href="#">Áo sơ mi</a>
+            <a href="#">Áo len</a>
+            <a href="#">Áo tank top</a>
+          </div>
+        </details>
+
+        <details class="group border-b border-accent/10 pb-3 mt-2">
+          <summary class="flex justify-between items-center cursor-pointer">
+            Quần
+            <i
+              class="fas fa-chevron-down text-sm group-open:rotate-180 transition-transform"
+            ></i>
+          </summary>
+          <div
+            class="flex flex-col gap-3 mt-4 pl-4 font-normal text-[16px] text-accent/80"
+          >
+            <a href="#">Quần jeans</a>
+            <a href="#">Quần tây</a>
+            <a href="#">Quần kaki</a>
+            <a href="#">Quần nỉ</a>
+          </div>
+        </details>
+
+        <details class="group border-b border-accent/10 pb-3 mt-2">
+          <summary class="flex justify-between items-center cursor-pointer">
+            Bộ sưu tập
+            <i
+              class="fas fa-chevron-down text-sm group-open:rotate-180 transition-transform"
+            ></i>
+          </summary>
+          <div
+            class="flex flex-col gap-3 mt-4 pl-4 font-normal text-[16px] text-accent/80"
+          >
+            <a href="#">She's Vietnamese</a>
+            <a href="#">Summer her</a>
+          </div>
+        </details>
+
+        <div class="pb-3 mt-2">
+          <a href="index.html#faq-section" class="mobile-link block w-full"
+            >FAQ</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <main class="flex-grow w-full">
+      <div class="max-w-7xl mx-auto px-4 md:px-12 xl:px-16 py-4 md:py-6">
+        <nav
+          class="flex items-center text-[15px] md:text-[16px] font-light text-accent"
+        >
+          <a
+            href="index.html"
+            class="hover:text-cta transition-colors duration-300"
+            >Trang chủ</a
+          >
+          <span class="mx-3 text-accent/40">/</span>
+          <span class="font-medium text-cta">Giới thiệu</span>
+        </nav>
+      </div>
+
+      <section class="w-full pb-12">
+        <div class="w-full aspect-[16/9] md:aspect-[3/1] overflow-hidden">
+          <img
+            src="./Ảnh/banner.png"
+            alt="Câu chuyện Wearever"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </section>
+
+      <section
+        class="max-w-4xl mx-auto px-6 pb-20 flex flex-col gap-12 md:gap-16 items-center text-center"
+      >
+        <div class="flex flex-col items-center">
+          <h2
+            class="text-xl md:text-2xl font-sans font-bold uppercase tracking-[0.15em] text-accent mb-4 md:mb-6"
+          >
+            Câu chuyện của chúng tôi
+          </h2>
+          <p
+            class="text-[15px] md:text-[17px] font-light leading-relaxed text-accent text-justify md:text-center"
+          >
+            Wearever ra đời từ nhịp sống năng động của phụ nữ hiện đại, biến
+            thời trang thành ngôn ngữ để thể hiện cá tính và sự tự tin. Với tư
+            duy thẩm mỹ đương đại, chúng tôi mang đến những thiết kế trẻ trung,
+            chú trọng vào đường cắt hiện đại, chất liệu thoải mái và tính ứng
+            dụng cao. Wearever đồng hành cùng người phụ nữ độc lập, giúp họ sẵn
+            sàng thử nghiệm và tự tin tỏa sáng với phong cách riêng mỗi ngày.
+          </p>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <h2
+            class="text-xl md:text-2xl font-sans font-bold uppercase tracking-[0.15em] text-accent mb-4 md:mb-6"
+          >
+            Tầm nhìn
+          </h2>
+          <p
+            class="text-[15px] md:text-[17px] font-light leading-relaxed text-accent text-justify md:text-center"
+          >
+            Trở thành thương hiệu thời trang thiết kế đương đại hàng đầu cho phụ
+            nữ Việt Nam, từng bước vươn tầm Đông Nam Á và quốc tế. Wearever khát
+            vọng xây dựng một cộng đồng sáng tạo và tự tin, nơi phong cách cá
+            nhân luôn được tôn vinh.
+          </p>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <h2
+            class="text-xl md:text-2xl font-sans font-bold uppercase tracking-[0.15em] text-accent mb-4 md:mb-6"
+          >
+            Sứ mệnh
+          </h2>
+          <div
+            class="flex flex-col gap-1 md:gap-2 text-[15px] md:text-[17px] font-light text-accent"
+          >
+            <p>Truyền cảm hứng phong cách</p>
+            <p>Thời trang ứng dụng</p>
+            <p>Trách nhiệm với hành tinh</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <h2
+            class="text-xl md:text-2xl font-sans font-bold uppercase tracking-[0.15em] text-accent mb-4 md:mb-6"
+          >
+            Giá trị cốt lõi
+          </h2>
+          <div
+            class="flex flex-col gap-1 md:gap-2 text-[15px] md:text-[17px] font-light text-accent"
+          >
+            <p>Sáng tạo không ngừng</p>
+            <p>Chất lượng thực thu</p>
+            <p>Thấu hiểu khách hàng</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="w-full border-t border-accent pt-10 md:pt-12 pb-8 bg-primary text-accent mt-auto"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
+      >
+        <div class="flex flex-col space-y-6">
+          <div class="flex flex-wrap items-center gap-3">
+            <img
+              src="./Ảnh/Favicon.png"
+              alt="Wearever Logo"
+              class="h-12 w-auto object-contain"
+            />
+            <img
+              src="./Ảnh/dmca.png"
+              alt="DMCA Protected"
+              class="h-8 w-auto object-contain"
+            />
+            <img
+              src="./Ảnh/logo-da-thong-bao-bo-cong-thuong-mau-xanh.png"
+              alt="Đã thông báo Bộ Công Thương"
+              class="h-8 w-auto object-contain"
+            />
+          </div>
+          <div>
+            <h3 class="font-semibold text-[17px] mb-3">Theo dõi chúng tôi</h3>
+            <div class="flex items-center gap-4 text-2xl">
+              <a
+                href="#"
+                class="text-[#1877F2] hover:opacity-80 transition-opacity"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a
+                href="#"
+                class="text-[#DB4437] hover:opacity-80 transition-opacity"
+                ><i class="fab fa-google"></i
+              ></a>
+              <a
+                href="#"
+                class="text-[#E4405F] hover:opacity-80 transition-opacity"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="w-7 h-7 rounded-full border border-[#0068FF] text-[#0068FF] flex items-center justify-center hover:bg-[#0068FF] hover:text-white transition-colors text-[10px] font-bold tracking-tighter"
+                >Zalo</a
+              >
+              <a
+                href="#"
+                class="text-[#FF0000] hover:opacity-80 transition-opacity"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-semibold text-[17px] mb-3">
+              Phương thức thanh toán
+            </h3>
+            <div class="grid grid-cols-4 gap-2 w-full max-w-[200px]">
+              <img
+                src="./Ảnh/cash.png"
+                alt="Tiền mặt"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="./Ảnh/bank_transfer.jpg"
+                alt="Ebank"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="./Ảnh/visa.jpg"
+                alt="Visa"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="./Ảnh/Mastercard-logo.svg.png"
+                alt="Mastercard"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="./Ảnh/JCB_logo.svg.png"
+                alt="JCB"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="./Ảnh/VNPAY.png"
+                alt="VNPAY"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <h3 class="font-semibold text-xl mb-4 md:mb-5">Thông tin liên hệ</h3>
+          <div
+            class="space-y-3 text-[15px] font-light text-accent leading-relaxed"
+          >
+            <p><strong class="font-semibold">Hotline:</strong> 0949.161.245</p>
+            <p>
+              <strong class="font-semibold">Email:</strong>
+              cskh-wearever@gmail.com
+            </p>
+            <p>
+              <strong class="font-semibold">Địa chỉ:</strong> 256/13A Phạm Văn
+              Hai,<br />Phường Tân Sơn Nhất, TPHCM
+            </p>
+            <p>
+              <strong class="font-semibold">Số ĐKKD:</strong> 0107574310, ngày
+              cấp: 23/09/2016<br /><strong class="font-semibold"
+                >Nơi cấp:</strong
+              >
+              Sở Kế hoạch và đầu tư TP.HCM
+            </p>
+            <p class="mt-5 text-sm font-semibold tracking-wide">
+              ® Bản quyền thuộc thời trang Wearever
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <h3 class="font-semibold text-xl mb-4 md:mb-5">Hỗ trợ khách hàng</h3>
+          <ul class="space-y-3 text-[15px] font-light">
+            <li>
+              <a href="#" class="hover:text-cta transition-colors duration-300"
+                >Hướng dẫn chọn size</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-cta transition-colors duration-300"
+                >Chính sách điều khoản</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-cta transition-colors duration-300"
+                >Chính sách thẻ thành viên</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-cta transition-colors duration-300"
+                >Chính sách thanh toán</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-cta transition-colors duration-300"
+                >Chính sách bảo mật và quyền riêng tư</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-cta transition-colors duration-300"
+                >Chính sách bảo hành và đổi trả</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex flex-col">
+          <h3
+            class="font-semibold text-[17px] xl:text-[19px] mb-4 leading-snug"
+          >
+            Đăng ký thẻ thành viên để nhận ưu đãi từ Wearever
+          </h3>
+          <form
+            class="relative w-full mb-8 flex items-center border border-accent rounded-xl p-1 bg-transparent"
+          >
+            <input
+              type="email"
+              placeholder="Nhập email của bạn"
+              class="w-full bg-transparent py-1.5 pl-3 pr-2 focus:outline-none text-[15px] italic font-light placeholder-accent/70"
+              required
+            />
+            <button
+              type="submit"
+              class="flex-shrink-0 border border-accent rounded-lg px-4 py-1.5 font-semibold hover:bg-cta hover:text-white hover:border-cta transition-colors bg-white text-sm"
+            >
+              Đăng ký
+            </button>
+          </form>
+
+          <h3 class="font-semibold text-xl mb-4">Download App</h3>
+          <div class="flex flex-col gap-3 items-start">
+            <a
+              href="#"
+              class="hover:opacity-80 transition-opacity block w-[140px] h-[42px]"
+            >
+              <img
+                src="./Ảnh/appstore.png"
+                alt="Download on the App Store"
+                class="w-full h-full object-contain object-left rounded"
+              />
+            </a>
+            <a
+              href="#"
+              class="hover:opacity-80 transition-opacity block w-[140px] h-[42px]"
+            >
+              <img
+                src="./Ảnh/ggplay.png"
+                alt="Get it on Google Play"
+                class="w-full h-full object-contain object-left rounded"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // XỬ LÝ ĐÓNG / MỞ MOBILE MENU
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const closeMenuBtn = document.getElementById("closeMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("-translate-x-full");
+      });
+
+      closeMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.add("-translate-x-full");
+      });
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("-translate-x-full");
+        });
+      });
+    </script>
+  </body>
+</html>
