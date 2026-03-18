@@ -1,0 +1,1028 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chính sách - Wearever</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ffffff",
+              secondary: "#d2c8be",
+              accent: "#422B1C",
+              cta: "#7a0000",
+            },
+            fontFamily: {
+              sans: ["Fira Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      details > summary {
+        list-style: none;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+      /* Tùy chỉnh danh sách ul/li cho trang chính sách */
+      .policy-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .policy-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #7a0000;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-primary text-accent font-sans antialiased overflow-x-hidden flex flex-col min-h-screen"
+  >
+    <header
+      class="sticky top-0 z-[50] w-full bg-primary shadow-sm border-b-2 border-accent overflow-visible"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 md:px-12 xl:px-16 py-2 md:py-3 grid grid-cols-[1fr_auto_1fr] gap-4 xl:gap-8 items-center"
+      >
+        <div class="flex items-center gap-4 justify-start">
+          <button
+            id="mobileMenuBtn"
+            class="lg:hidden text-accent text-2xl focus:outline-none"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <button class="lg:hidden text-accent text-xl focus:outline-none">
+            <i class="fas fa-search"></i>
+          </button>
+
+          <nav
+            class="hidden lg:flex gap-6 lg:gap-8 font-semibold text-[17px] xl:text-[19px] items-center"
+          >
+            <div class="group relative py-2 cursor-pointer">
+              <a
+                href="index.html#hero-banner"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >Về Wearever</a
+              >
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 pt-[14px] hidden group-hover:block z-50"
+              >
+                <div
+                  class="bg-primary w-[160px] flex flex-col shadow-lg border border-accent/10"
+                >
+                  <a
+                    href="gioi-thieu.html"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Giới thiệu</a
+                  >
+                  <a
+                    href="chinh-sach.html"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Chính sách</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative py-2 cursor-pointer">
+              <a
+                href="#"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >Áo</a
+              >
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 pt-[14px] hidden group-hover:block z-50"
+              >
+                <div
+                  class="bg-primary w-[160px] flex flex-col shadow-lg border border-accent/10"
+                >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Áo thun</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Áo sơ mi</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Áo len</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Áo tank top</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative py-2 cursor-pointer">
+              <a
+                href="#"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >Quần</a
+              >
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 pt-[14px] hidden group-hover:block z-50"
+              >
+                <div
+                  class="bg-primary w-[160px] flex flex-col shadow-lg border border-accent/10"
+                >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Quần jeans</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Quần tây</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Quần kaki</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Quần nỉ</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative py-2 cursor-pointer">
+              <a
+                href="#"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >Bộ sưu tập</a
+              >
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 pt-[14px] hidden group-hover:block z-50"
+              >
+                <div
+                  class="bg-primary w-[200px] flex flex-col shadow-lg border border-accent/10"
+                >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >She's Vietnamese</a
+                  >
+                  <a
+                    href="#"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Summer her</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="py-2">
+              <a
+                href="index.html#faq-section"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >FAQ</a
+              >
+            </div>
+          </nav>
+        </div>
+
+        <a
+          href="index.html"
+          class="flex justify-center items-center min-w-[80px] md:min-w-[120px] flex-shrink-0"
+        >
+          <img
+            src="./Ảnh/Logo.png"
+            alt="Wearever Logo"
+            class="h-[35px] md:h-[60px] w-auto object-contain transform scale-[2.0] md:scale-[3.0] origin-center translate-y-1 md:translate-y-2"
+          />
+        </a>
+
+        <div class="flex gap-4 md:gap-6 justify-end items-center flex-shrink-0">
+          <div class="relative hidden lg:block">
+            <i
+              class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-accent text-lg"
+            ></i>
+            <input
+              type="text"
+              placeholder="Tìm kiếm sản phẩm"
+              class="border border-accent rounded-full py-1.5 pl-10 pr-4 text-[14px] font-light focus:outline-none focus:ring-1 focus:ring-accent bg-transparent w-44 xl:w-56 italic"
+            />
+          </div>
+          <a
+            href="#"
+            class="flex items-center gap-2 hover:text-cta transition-colors whitespace-nowrap"
+          >
+            <span
+              class="hidden md:inline font-regular text-[17px] xl:text-[19px]"
+              >Tài khoản</span
+            >
+            <i class="far fa-user-circle text-xl md:text-2xl"></i>
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-2 hover:text-cta transition-colors relative whitespace-nowrap"
+          >
+            <span
+              class="hidden md:inline font-regular text-[17px] xl:text-[19px]"
+              >Giỏ hàng</span
+            >
+            <i class="fas fa-shopping-bag text-xl md:text-2xl"></i>
+            <span
+              class="absolute -top-2 -right-2 md:-right-3 bg-cta text-white text-[10px] w-[16px] h-[16px] md:w-[18px] md:h-[18px] rounded-full flex items-center justify-center font-semibold"
+              >0</span
+            >
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div
+      id="mobileMenu"
+      class="fixed inset-0 bg-primary z-[60] transform -translate-x-full transition-transform duration-300 flex flex-col overflow-y-auto lg:hidden"
+    >
+      <div
+        class="flex justify-between items-center px-6 py-4 border-b border-accent/20"
+      >
+        <span class="font-bold text-2xl tracking-widest uppercase">MENU</span>
+        <button
+          id="closeMenuBtn"
+          class="text-accent text-3xl focus:outline-none"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div
+        class="flex flex-col px-6 py-6 gap-2 text-lg text-accent font-semibold"
+      >
+        <details class="group border-b border-accent/10 pb-3 mt-2">
+          <summary class="flex justify-between items-center cursor-pointer">
+            Về Wearever
+            <i
+              class="fas fa-chevron-down text-sm group-open:rotate-180 transition-transform"
+            ></i>
+          </summary>
+          <div
+            class="flex flex-col gap-3 mt-4 pl-4 font-normal text-[16px] text-accent/80"
+          >
+            <a href="gioi-thieu.html" class="mobile-link">Giới thiệu</a>
+            <a href="chinh-sach.html" class="mobile-link">Chính sách</a>
+          </div>
+        </details>
+
+        <details class="group border-b border-accent/10 pb-3 mt-2">
+          <summary class="flex justify-between items-center cursor-pointer">
+            Áo
+            <i
+              class="fas fa-chevron-down text-sm group-open:rotate-180 transition-transform"
+            ></i>
+          </summary>
+          <div
+            class="flex flex-col gap-3 mt-4 pl-4 font-normal text-[16px] text-accent/80"
+          >
+            <a href="#" class="mobile-link">Áo thun</a>
+            <a href="#" class="mobile-link">Áo sơ mi</a>
+            <a href="#" class="mobile-link">Áo len</a>
+            <a href="#" class="mobile-link">Áo tank top</a>
+          </div>
+        </details>
+
+        <details class="group border-b border-accent/10 pb-3 mt-2">
+          <summary class="flex justify-between items-center cursor-pointer">
+            Quần
+            <i
+              class="fas fa-chevron-down text-sm group-open:rotate-180 transition-transform"
+            ></i>
+          </summary>
+          <div
+            class="flex flex-col gap-3 mt-4 pl-4 font-normal text-[16px] text-accent/80"
+          >
+            <a href="#" class="mobile-link">Quần jeans</a>
+            <a href="#" class="mobile-link">Quần tây</a>
+            <a href="#" class="mobile-link">Quần kaki</a>
+            <a href="#" class="mobile-link">Quần nỉ</a>
+          </div>
+        </details>
+
+        <details class="group border-b border-accent/10 pb-3 mt-2">
+          <summary class="flex justify-between items-center cursor-pointer">
+            Bộ sưu tập
+            <i
+              class="fas fa-chevron-down text-sm group-open:rotate-180 transition-transform"
+            ></i>
+          </summary>
+          <div
+            class="flex flex-col gap-3 mt-4 pl-4 font-normal text-[16px] text-accent/80"
+          >
+            <a href="#" class="mobile-link">She's Vietnamese</a>
+            <a href="#" class="mobile-link">Summer her</a>
+          </div>
+        </details>
+
+        <div class="pb-3 mt-2">
+          <a href="index.html#faq-section" class="mobile-link block w-full"
+            >FAQ</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <main class="flex-grow w-full bg-[#fcfbf9]">
+      <div class="bg-primary border-b border-accent/10">
+        <div class="max-w-7xl mx-auto px-4 md:px-12 xl:px-16 py-4">
+          <nav
+            class="flex items-center text-[15px] md:text-[16px] font-light text-accent"
+          >
+            <a
+              href="index.html"
+              class="hover:text-cta transition-colors duration-300"
+              >Trang chủ</a
+            >
+            <span class="mx-3 text-accent/40">/</span>
+            <span class="font-medium text-cta">Chính sách</span>
+          </nav>
+        </div>
+      </div>
+
+      <section class="max-w-4xl mx-auto px-6 py-10 md:py-16">
+        <div class="mb-12 md:mb-16">
+          <h2
+            class="text-2xl md:text-3xl font-bold uppercase tracking-wider text-accent mb-6 border-b-2 border-accent pb-3"
+          >
+            1. CHÍNH SÁCH ĐIỀU KHOẢN
+          </h2>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            1.1. Giới thiệu chung:
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            Chào mừng bạn đến với không gian mua sắm của Wearever! Bằng việc
+            truy cập, đăng ký tài khoản và chốt đơn tại website của chúng mình,
+            bạn đồng ý tuân thủ các điều khoản và điều kiện được quy định dưới
+            đây. Wearever có quyền cập nhật các điều khoản này để phù hợp với
+            định hướng phát triển mà không cần báo trước.
+          </p>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            1.2. Trách nhiệm của khách hàng:
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            Để trải nghiệm mua sắm diễn ra mượt mà nhất, bạn vui lòng cung cấp
+            thông tin cá nhân (Họ tên, SĐT, Địa chỉ) chính xác khi tạo tài khoản
+            hoặc đặt hàng. Bạn có trách nhiệm bảo mật thông tin tài khoản của
+            mình và không sử dụng website của Wearever cho các mục đích lừa đảo,
+            phát tán mã độc hoặc vi phạm pháp luật.
+          </p>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            1.3. Bản quyền thương hiệu:
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            Mọi hình ảnh, video, thiết kế sản phẩm, logo và nội dung bài viết
+            trên website đều là tài sản trí tuệ thuộc bản quyền của Wearever.
+            Nghiêm cấm mọi hành vi sao chép, chỉnh sửa hoặc sử dụng hình ảnh của
+            chúng mình cho mục đích thương mại khi chưa có sự đồng ý bằng văn
+            bản.
+          </p>
+        </div>
+
+        <div class="mb-12 md:mb-16">
+          <h2
+            class="text-2xl md:text-3xl font-bold uppercase tracking-wider text-accent mb-6 border-b-2 border-accent pb-3"
+          >
+            2. CHÍNH SÁCH THẺ THÀNH VIÊN
+          </h2>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            2.1. Hạng thẻ và Điều kiện nâng hạng:
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-3"
+          >
+            Chỉ cần mua sắm tại Wearever, bạn sẽ tự động được gia nhập hội
+            "homie" với các hạng thẻ siêu xịn dựa trên mức tiêu dùng tích lũy
+            (áp dụng cho đơn hàng mua tại cửa hàng và kênh online qua
+            website/mạng xã hội; không áp dụng trên các sàn TMĐT):
+          </p>
+          <ul
+            class="policy-list text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            <li>
+              <strong>Rookie:</strong> Dành cho khách hàng có ít nhất 1 hóa đơn
+              mua hàng thành công.
+            </li>
+            <li>
+              <strong>The Trendsetter:</strong> Tổng chi tiêu tích lũy đạt từ
+              5.000.000 VNĐ.
+            </li>
+            <li>
+              <strong>The Icon:</strong> Tổng chi tiêu tích lũy đạt từ
+              10.000.000 VNĐ.
+            </li>
+          </ul>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            2.2. Đặc quyền dành riêng cho thành viên:
+          </h3>
+          <ul
+            class="policy-list text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            <li>
+              <strong>Wearever Rookie:</strong> Được nhận thông báo sớm nhất về
+              các chương trình khuyến mãi và bộ sưu tập mới.
+            </li>
+            <li>
+              <strong>Wearever The Trendsetter:</strong> Mua hàng với mức giá ưu
+              đãi TheTrendsetter10 (giảm 10%). Tặng mã giảm giá 20% vào tháng
+              sinh nhật. Được hỗ trợ sửa đồ theo số đo miễn phí.
+            </li>
+            <li>
+              <strong>Wearever The Icon:</strong> Mua hàng với mức giá ưu đãi
+              cực sâu Thelcon15 (giảm 15%). Tặng mã giảm giá 30% vào tháng sinh
+              nhật. Được hỗ trợ sửa đồ theo số đo miễn phí.
+            </li>
+          </ul>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            2.3. Điều kiện và Điều khoản áp dụng:
+          </h3>
+          <ul
+            class="policy-list text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            <li>
+              Để gia nhập Wearever's Rookie, bạn chỉ cần cung cấp các thông tin
+              cơ bản: Họ tên, số điện thoại, ngày tháng năm sinh, email và địa
+              chỉ khi mua hàng.
+            </li>
+            <li>
+              Xác thực thông tin: Wearever không yêu cầu bạn cung cấp hay lưu
+              trữ số thẻ CCCD. Tuy nhiên, để đảm bảo tính chính xác cho các
+              quyền lợi đặc biệt (như ưu đãi tháng sinh nhật), Wearever sẽ cần
+              xác minh như sau:
+              <ul class="list-circle pl-6 mt-2 space-y-1 text-justify">
+                <li>
+                  Khách mua trực tiếp tại cửa hàng: Bạn vui lòng mở ứng dụng
+                  VNeID để nhân viên Wearever đối chiếu nhanh chóng tại quầy thu
+                  ngân.
+                </li>
+                <li>
+                  Khách mua online (Website/MXH): Khi có nhu cầu sử dụng ưu đãi
+                  sinh nhật, bạn chỉ cần gửi ảnh chụp màn hình VNeID (khuyến
+                  khích che/làm mờ số thẻ CCCD, chỉ cần hiển thị rõ Họ Tên và
+                  Ngày sinh) gửi vào Zalo OA hoặc Fanpage của Wearever. Đội ngũ
+                  CSKH sẽ kiểm tra và gửi ngay mã code giảm giá riêng cho đơn
+                  hàng online của bạn.
+                </li>
+              </ul>
+            </li>
+            <li>
+              Ưu đãi giảm giá hạng thẻ (The Trendsetter/The Icon) có thể được áp
+              dụng chung với một số chương trình giảm giá khác của Wearever (tùy
+              theo quy định từng đợt).
+            </li>
+            <li>
+              Ưu đãi giảm giá sinh nhật: Chỉ áp dụng khi mua sắm sản phẩm nguyên
+              giá. Không áp dụng chung với voucher, ưu đãi The Trendsetter/The
+              Icon và các chương trình khuyến mãi khác nếu có.
+            </li>
+          </ul>
+        </div>
+
+        <div class="mb-12 md:mb-16">
+          <h2
+            class="text-2xl md:text-3xl font-bold uppercase tracking-wider text-accent mb-6 border-b-2 border-accent pb-3"
+          >
+            3. CHÍNH SÁCH THANH TOÁN
+          </h2>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-6"
+          >
+            Để quá trình mua sắm và chốt đơn diễn ra thuận tiện, an toàn nhất,
+            Wearever hiện đang áp dụng 3 phương thức thanh toán sau:
+          </p>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            3.1. Mua sắm và thanh toán trực tiếp tại cửa hàng:
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            Chúng mình luôn khuyến khích bạn ghé thăm các cửa hàng của Wearever
+            để có trải nghiệm mua sắm trọn vẹn nhất: tự tay kiểm tra chất liệu
+            và thử trực tiếp các form dáng sản phẩm. Tại quầy thu ngân, bạn có
+            thể thanh toán linh hoạt bằng nhiều hình thức: tiền mặt, quẹt thẻ
+            (Napas/Visa/Mastercard) hoặc quét mã QR vô cùng nhanh chóng.
+          </p>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            3.2. Thanh toán chuyển khoản (Ưu tiên xử lý hỏa tốc):
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-3"
+          >
+            Đây là phương thức được Wearever khuyến khích cho các đơn đặt hàng
+            online (qua website hoặc mạng xã hội). Khi bạn thanh toán chuyển
+            khoản trước 100% giá trị, hệ thống sẽ tự động xác nhận đơn mà không
+            cần qua bước gọi điện thoại. Đơn hàng của bạn sẽ được ưu tiên đóng
+            gói và bàn giao ngay lập tức cho các đối tác vận chuyển để sản phẩm
+            đến tay bạn trong thời gian sớm nhất.
+          </p>
+          <p class="text-[15px] md:text-[16px] font-medium text-accent mb-2">
+            Thông tin tài khoản chính thức của Wearever:
+          </p>
+          <ul
+            class="policy-list text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            <li><strong>Ngân hàng:</strong> TECHCOMBANK</li>
+            <li><strong>Số tài khoản:</strong> 1907 1567 8490 10</li>
+            <li><strong>Tên tài khoản:</strong> CÔNG TY TNHH WEAREVER</li>
+            <li>
+              <strong>Nội dung chuyển khoản:</strong> [Số điện thoại đặt hàng] -
+              [Tên khách hàng]
+            </li>
+          </ul>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            3.3. Thanh toán khi nhận hàng (Ship COD):
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-3"
+          >
+            Wearever vẫn cung cấp hình thức thanh toán COD (nhận hàng và thanh
+            toán tiền mặt cho nhân viên giao hàng của đơn vị vận chuyển). Tuy
+            nhiên, để tối ưu vận hành, phương thức này sẽ áp dụng kèm theo các
+            quy định sau:
+          </p>
+          <ul
+            class="policy-list text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            <li>
+              Chỉ hỗ trợ đối với các đơn hàng có tổng giá trị thanh toán dưới
+              2.000.000 VNĐ.
+            </li>
+            <li>
+              Tất cả các đơn hàng chọn hình thức COD bắt buộc phải qua quy trình
+              gọi điện thoại xác nhận từ bộ phận CSKH của Wearever. Do đó, thời
+              gian xử lý và bàn giao cho đơn vị vận chuyển sẽ chậm hơn từ 1 đến
+              2 ngày làm việc so với các đơn hàng đã được thanh toán chuyển
+              khoản.
+            </li>
+          </ul>
+        </div>
+
+        <div class="mb-12 md:mb-16">
+          <h2
+            class="text-2xl md:text-3xl font-bold uppercase tracking-wider text-accent mb-6 border-b-2 border-accent pb-3"
+          >
+            4. CHÍNH SÁCH BẢO MẬT & QUYỀN RIÊNG TƯ
+          </h2>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            4.1. Chúng mình thu thập những thông tin gì?
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-3"
+          >
+            Khi bạn trải nghiệm mua sắm tại Wearever, hệ thống sẽ ghi nhận một
+            số thông tin cơ bản sau:
+          </p>
+          <ul
+            class="policy-list text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            <li>
+              <strong>Thông tin cá nhân:</strong> Tên, số điện thoại, email và
+              địa chỉ giao hàng khi bạn tạo tài khoản hoặc đặt đơn.
+            </li>
+            <li>
+              <strong>Dữ liệu tự động (Cookies & Log data):</strong> Lịch sử
+              lướt web, địa chỉ IP, loại thiết bị và các thao tác trên trang.
+              Những dữ liệu này giúp chúng mình ghi nhớ bạn cho lần truy cập sau
+              và đề xuất đúng những món đồ bạn thích.
+            </li>
+            <li>
+              <strong>Thông tin thanh toán:</strong> Khi bạn thanh toán online,
+              các đối tác cổng thanh toán của chúng mình sẽ thu thập thông tin
+              thẻ/ví điện tử. Wearever không trực tiếp lưu trữ toàn bộ số thẻ
+              tín dụng hay mật khẩu ngân hàng của bạn.
+            </li>
+          </ul>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            4.2. Chúng mình sử dụng thông tin của bạn để làm gì?
+          </h3>
+          <ul
+            class="policy-list text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            <li>
+              <strong>Xử lý đơn hàng:</strong> Giao hàng đến tận tay bạn và xác
+              nhận thanh toán.
+            </li>
+            <li>
+              <strong>Cá nhân hóa trải nghiệm:</strong> Nâng cấp các tính năng
+              trên website và gợi ý các bộ sưu tập mới chuẩn gu của bạn.
+            </li>
+            <li>
+              <strong>Chăm sóc khách hàng:</strong> Gửi thông báo về hạng thẻ
+              (Rookie, The Trendsetter, The Icon), voucher sinh nhật hoặc hỗ trợ
+              bạn xử lý các sự cố phát sinh.
+            </li>
+            <li>
+              <strong>Cam kết không làm phiền (No Spam):</strong> Bạn có quyền
+              từ chối nhận email/tin nhắn quảng cáo bất cứ lúc nào.
+            </li>
+          </ul>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            4.3. Cam kết bảo mật & Chia sẻ thông tin
+          </h3>
+          <ul
+            class="policy-list text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            <li>
+              Sự riêng tư của bạn là ưu tiên hàng đầu. Chúng mình sử dụng công
+              nghệ mã hóa an toàn (SSL) để bảo vệ dữ liệu truyền tải trên hệ
+              thống. Wearever tuyệt đối không bán, cho thuê hay trao đổi thông
+              tin cá nhân của bạn cho bất kỳ bên thứ ba nào vì mục đích thương
+              mại.
+            </li>
+            <li>
+              Thông tin của bạn chỉ được chia sẻ trong nội bộ và cho các đối tác
+              trực tiếp (đơn vị vận chuyển, cổng thanh toán) để hoàn tất đơn
+              hàng, hoặc khi có yêu cầu bắt buộc từ cơ quan pháp luật.
+            </li>
+          </ul>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            4.4. Quyền làm chủ dữ liệu của bạn
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-3"
+          >
+            Dữ liệu của bạn luôn thuộc về bạn. Bất cứ lúc nào, bạn cũng có
+            quyền:
+          </p>
+          <ul
+            class="policy-list text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            <li>
+              Đăng nhập vào tài khoản để tự xem xét, cập nhật hoặc chỉnh sửa
+              thông tin.
+            </li>
+            <li>
+              Liên hệ với chúng mình qua Email/Fanpage/Zalo để yêu cầu xóa vĩnh
+              viễn dữ liệu tài khoản khỏi hệ thống. Chúng mình sẽ xử lý yêu cầu
+              này trong vòng tối đa 30 ngày làm việc.
+            </li>
+          </ul>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            4.5. Cam kết an toàn thanh toán trực tuyến
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            Mọi giao dịch trực tuyến trên website Wearever đều được xử lý bởi hệ
+            thống mạng lưới ngân hàng và ví điện tử uy tín. Chúng mình cam kết
+            hỗ trợ, phối hợp chặt chẽ với đối tác thanh toán và cơ quan chức
+            năng để bảo vệ quyền lợi và đền bù thiệt hại cho bạn nếu có bất kỳ
+            rủi ro rò rỉ thông tin thanh toán nào xảy ra từ phía hệ thống của
+            Wearever.
+          </p>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            4.6. Quy định về độ tuổi (Sự riêng tư của trẻ em)
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            Website của chúng mình được thiết kế dành cho người dùng từ 18 tuổi
+            trở lên. Nếu bạn dưới 18 tuổi, vui lòng tham khảo ý kiến và thao tác
+            đặt hàng dưới sự đồng ý của cha mẹ hoặc người giám hộ.
+          </p>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            4.7. Cập nhật chính sách
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            Chính sách này có thể được chúng mình cập nhật để phù hợp với các
+            quy định mới hoặc sự thay đổi của hệ thống. Bất kỳ thay đổi quan
+            trọng nào cũng sẽ được Wearever thông báo rõ ràng ngay trên trang
+            chủ để bạn luôn nắm bắt được thông tin.
+          </p>
+        </div>
+
+        <div>
+          <h2
+            class="text-2xl md:text-3xl font-bold uppercase tracking-wider text-accent mb-6 border-b-2 border-accent pb-3"
+          >
+            5. CHÍNH SÁCH BẢO HÀNH & ĐỔI TRẢ
+          </h2>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            5.1. Điều kiện và thời gian đổi trả:
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            Wearever hỗ trợ đổi size, đổi màu hoặc trả hàng trong vòng 07 ngày
+            kể từ lúc nhận hàng. Sản phẩm cần giữ nguyên tình trạng ban đầu:
+            chưa qua sử dụng, chưa giặt ủi, không có mùi lạ và còn nguyên tem
+            mác, hộp/túi đựng của hãng.
+          </p>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            5.2. Quy định bảo hành sản phẩm:
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            Chúng mình bảo hành MIỄN PHÍ trong vòng 30 ngày đối với các lỗi từ
+            nhà sản xuất như: bung chỉ, hỏng khóa kéo (zipper), đứt nút, hoặc
+            hình in bị bong tróc ngay lần giặt đầu tiên (khi giặt đúng theo
+            hướng dẫn đính kèm). Không bảo hành các lỗi do sử dụng sai cách (ủi
+            nhiệt độ quá cao, dùng chất tẩy mạnh).
+          </p>
+
+          <h3 class="text-[17px] md:text-lg font-semibold text-cta mt-6 mb-3">
+            5.3. Quy trình thực hiện nhanh chóng:
+          </h3>
+          <p
+            class="text-[15px] md:text-[16px] font-light leading-relaxed text-justify mb-4"
+          >
+            Khi có nhu cầu đổi trả hoặc bảo hành, bạn chỉ cần nhắn tin cho
+            Fanpage/Zalo của Wearever kèm theo video unbox hoặc hình ảnh sản
+            phẩm. Đội ngũ CSKH sẽ hướng dẫn bạn gửi hàng về kho và xử lý gửi lại
+            hàng mới cho bạn trong vòng 3-5 ngày làm việc.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="w-full border-t border-accent pt-10 md:pt-12 pb-8 bg-primary text-accent mt-auto"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
+      >
+        <div class="flex flex-col space-y-6">
+          <div class="flex flex-wrap items-center gap-3">
+            <img
+              src="./Ảnh/Favicon.png"
+              alt="Wearever Logo"
+              class="h-12 w-auto object-contain"
+            />
+            <img
+              src="./Ảnh/dmca.png"
+              alt="DMCA Protected"
+              class="h-8 w-auto object-contain"
+            />
+            <img
+              src="./Ảnh/logo-da-thong-bao-bo-cong-thuong-mau-xanh.png"
+              alt="Đã thông báo Bộ Công Thương"
+              class="h-8 w-auto object-contain"
+            />
+          </div>
+          <div>
+            <h3 class="font-semibold text-[17px] mb-3">Theo dõi chúng tôi</h3>
+            <div class="flex items-center gap-4 text-2xl">
+              <a
+                href="#"
+                class="text-[#1877F2] hover:opacity-80 transition-opacity"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a
+                href="#"
+                class="text-[#DB4437] hover:opacity-80 transition-opacity"
+                ><i class="fab fa-google"></i
+              ></a>
+              <a
+                href="#"
+                class="text-[#E4405F] hover:opacity-80 transition-opacity"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="w-7 h-7 rounded-full border border-[#0068FF] text-[#0068FF] flex items-center justify-center hover:bg-[#0068FF] hover:text-white transition-colors text-[10px] font-bold tracking-tighter"
+                >Zalo</a
+              >
+              <a
+                href="#"
+                class="text-[#FF0000] hover:opacity-80 transition-opacity"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-semibold text-[17px] mb-3">
+              Phương thức thanh toán
+            </h3>
+            <div class="grid grid-cols-4 gap-2 w-full max-w-[200px]">
+              <img
+                src="./Ảnh/cash.png"
+                alt="Tiền mặt"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="./Ảnh/bank_transfer.jpg"
+                alt="Ebank"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="./Ảnh/visa.jpg"
+                alt="Visa"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="./Ảnh/Mastercard-logo.svg.png"
+                alt="Mastercard"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="./Ảnh/JCB_logo.svg.png"
+                alt="JCB"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="./Ảnh/VNPAY.png"
+                alt="VNPAY"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <h3 class="font-semibold text-xl mb-4 md:mb-5">Thông tin liên hệ</h3>
+          <div
+            class="space-y-3 text-[15px] font-light text-accent leading-relaxed"
+          >
+            <p><strong class="font-semibold">Hotline:</strong> 0949.161.245</p>
+            <p>
+              <strong class="font-semibold">Email:</strong>
+              cskh-wearever@gmail.com
+            </p>
+            <p>
+              <strong class="font-semibold">Địa chỉ:</strong> 256/13A Phạm Văn
+              Hai,<br />Phường Tân Sơn Nhất, TPHCM
+            </p>
+            <p>
+              <strong class="font-semibold">Số ĐKKD:</strong> 0107574310, ngày
+              cấp: 23/09/2016<br /><strong class="font-semibold"
+                >Nơi cấp:</strong
+              >
+              Sở Kế hoạch và đầu tư TP.HCM
+            </p>
+            <p class="mt-5 text-sm font-semibold tracking-wide">
+              ® Bản quyền thuộc thời trang Wearever
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <h3 class="font-semibold text-xl mb-4 md:mb-5">Hỗ trợ khách hàng</h3>
+          <ul class="space-y-3 text-[15px] font-light">
+            <li>
+              <a href="#" class="hover:text-cta transition-colors duration-300"
+                >Hướng dẫn chọn size</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-cta transition-colors duration-300"
+                >Chính sách điều khoản</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-cta transition-colors duration-300"
+                >Chính sách thẻ thành viên</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-cta transition-colors duration-300"
+                >Chính sách thanh toán</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-cta transition-colors duration-300"
+                >Chính sách bảo mật và quyền riêng tư</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-cta transition-colors duration-300"
+                >Chính sách bảo hành và đổi trả</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex flex-col">
+          <h3
+            class="font-semibold text-[17px] xl:text-[19px] mb-4 leading-snug"
+          >
+            Đăng ký thẻ thành viên để nhận ưu đãi từ Wearever
+          </h3>
+          <form
+            class="relative w-full mb-8 flex items-center border border-accent rounded-xl p-1 bg-transparent"
+          >
+            <input
+              type="email"
+              placeholder="Nhập email của bạn"
+              class="w-full bg-transparent py-1.5 pl-3 pr-2 focus:outline-none text-[15px] italic font-light placeholder-accent/70"
+              required
+            />
+            <button
+              type="submit"
+              class="flex-shrink-0 border border-accent rounded-lg px-4 py-1.5 font-semibold hover:bg-cta hover:text-white hover:border-cta transition-colors bg-white text-sm"
+            >
+              Đăng ký
+            </button>
+          </form>
+
+          <h3 class="font-semibold text-xl mb-4">Download App</h3>
+          <div class="flex flex-col gap-3 items-start">
+            <a
+              href="#"
+              class="hover:opacity-80 transition-opacity block w-[140px] h-[42px]"
+            >
+              <img
+                src="./Ảnh/appstore.png"
+                alt="Download on the App Store"
+                class="w-full h-full object-contain object-left rounded"
+              />
+            </a>
+            <a
+              href="#"
+              class="hover:opacity-80 transition-opacity block w-[140px] h-[42px]"
+            >
+              <img
+                src="./Ảnh/ggplay.png"
+                alt="Get it on Google Play"
+                class="w-full h-full object-contain object-left rounded"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // XỬ LÝ ĐÓNG / MỞ MOBILE MENU
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const closeMenuBtn = document.getElementById("closeMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("-translate-x-full");
+      });
+
+      closeMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.add("-translate-x-full");
+      });
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("-translate-x-full");
+        });
+      });
+    </script>
+  </body>
+</html>
