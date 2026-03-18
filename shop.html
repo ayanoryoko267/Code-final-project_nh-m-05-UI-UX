@@ -4,7 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wearever - Cửa hàng thời trang</title>
+    <link rel="shortcut icon" href="image/Favicon.png" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        future: {
+          hoverOnlyWhenSupported: true, // Thêm dòng này để fix lỗi dính hover trên điện thoại
+        },
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ffffff",
+              secondary: "#d2c8be",
+              accent: "#422B1C",
+              cta: "#7a0000",
+            },
+            fontFamily: {
+              sans: ["Fira Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -37,180 +58,335 @@
         scrollbar-width: none;
       }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-QPWN4NC6DX"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-QPWN4NC6DX");
+    </script>
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "vxnnx5tefi");
+    </script>
   </head>
 
   <body class="bg-white text-[#422B1C] overflow-x-hidden relative">
     <header
-      class="border-b border-gray-100 shadow-sm sticky top-0 bg-white/95 backdrop-blur-sm z-50"
+      class="sticky top-0 z-50 w-full bg-primary shadow-sm border-b-2 border-accent overflow-visible"
     >
       <div
-        class="container mx-auto px-3 py-3 md:px-4 md:py-4 flex flex-wrap items-center justify-between gap-y-3"
+        class="max-w-7xl mx-auto px-4 md:px-12 xl:px-16 py-2 md:py-3 grid grid-cols-[1fr_auto_1fr] gap-4 xl:gap-8 items-center"
       >
-        <div
-          class="order-1 md:order-2 flex-shrink-0 w-1/2 md:w-1/3 flex justify-start md:justify-center"
-        >
-          <div
-            class="w-10 h-10 md:w-12 md:h-12 border-2 border-[#422B1C] rounded-full flex items-center justify-center font-bold text-xs md:text-base"
+        <div class="flex items-center gap-4 justify-start">
+          <button
+            id="mobileMenuBtn"
+            class="lg:hidden text-accent text-2xl focus:outline-none"
           >
-            Logo
-          </div>
-        </div>
-
-        <div
-          class="order-2 md:order-3 flex items-center justify-end space-x-4 md:space-x-6 w-1/2 md:w-1/3"
-        >
-          <div class="relative hidden sm:block">
-            <input
-              type="text"
-              placeholder="Tìm kiếm sản phẩm"
-              class="border border-[#422B1C]/30 rounded-full py-1 px-4 pl-10 focus:outline-none focus:border-[#422B1C] w-48 lg:w-64 text-sm font-normal italic transition-colors"
-            />
-            <i
-              class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-[#422B1C]/60"
-            ></i>
-          </div>
-          <button class="sm:hidden text-[#422B1C]">
-            <i class="fa-solid fa-magnifying-glass text-lg"></i>
+            <i class="fas fa-bars"></i>
           </button>
 
+          <button class="lg:hidden text-accent text-xl focus:outline-none">
+            <i class="fas fa-search"></i>
+          </button>
+
+          <nav
+            class="hidden lg:flex gap-6 lg:gap-8 font-semibold text-[17px] xl:text-[19px] items-center"
+          >
+            <div class="group relative py-2 cursor-pointer">
+              <a
+                href="index.html#hero-banner"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >Về Wearever</a
+              >
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 pt-[14px] hidden group-hover:block z-50"
+              >
+                <div
+                  class="bg-white w-[160px] flex flex-col shadow-lg border border-accent/10"
+                >
+                  <a
+                    href="about.html"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Giới thiệu</a
+                  >
+                  <a
+                    href="policy.html"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Chính sách</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative py-2 cursor-pointer">
+              <a
+                href="shop.html?category=áo"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >Áo</a
+              >
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 pt-[14px] hidden group-hover:block z-50"
+              >
+                <div
+                  class="bg-white w-[160px] flex flex-col shadow-lg border border-accent/10"
+                >
+                  <a
+                    href="shop.html?category=áo thun"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Áo thun</a
+                  >
+                  <a
+                    href="shop.html?category=áo sơ mi"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Áo sơ mi</a
+                  >
+                  <a
+                    href="shop.html?category=áo len"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Áo len</a
+                  >
+                  <a
+                    href="shop.html?category=áo tanktop"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Áo tank top</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative py-2 cursor-pointer">
+              <a
+                href="shop.html?category=quần"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >Quần</a
+              >
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 pt-[14px] hidden group-hover:block z-50"
+              >
+                <div
+                  class="bg-white w-[160px] flex flex-col shadow-lg border border-accent/10"
+                >
+                  <a
+                    href="shop.html?category=quần jeans"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Quần jeans</a
+                  >
+                  <a
+                    href="shop.html?category=quần tây"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Quần tây</a
+                  >
+                  <a
+                    href="shop.html?category=quần kaki"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Quần kaki</a
+                  >
+                  <a
+                    href="shop.html?category=quần nỉ"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >Quần nỉ</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="group relative py-2 cursor-pointer">
+              <a
+                href="shop.html"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >Bộ sưu tập</a
+              >
+              <div
+                class="absolute top-full left-1/2 -translate-x-1/2 pt-[14px] hidden group-hover:block z-50"
+              >
+                <div
+                  class="bg-white w-[200px] flex flex-col shadow-lg border border-accent/10"
+                >
+                  <a
+                    href="bst1.html"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >SHE'S VIETNAMESE</a
+                  >
+                  <a
+                    href="bst2.html"
+                    class="px-5 py-3 hover:bg-black/5 transition-colors text-left text-[16px] text-accent font-semibold"
+                    >SUMMER HER</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="py-2">
+              <a
+                href="index.html#faq-section"
+                class="hover:text-cta transition-colors duration-300 whitespace-nowrap inline-block"
+                >FAQ</a
+              >
+            </div>
+          </nav>
+        </div>
+
+        <a
+          href="index.html"
+          class="flex justify-center items-center min-w-[80px] md:min-w-[120px] flex-shrink-0"
+        >
+          <img
+            src="image/Logo.png"
+            alt="Wearever Logo"
+            class="h-[35px] md:h-[60px] w-auto object-contain transform scale-[2.0] md:scale-[3.0] origin-center translate-y-1 md:translate-y-2"
+          />
+        </a>
+
+        <div class="flex gap-4 md:gap-6 justify-end items-center flex-shrink-0">
+          <div class="relative hidden lg:block">
+            <i
+              class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-accent text-lg"
+            ></i>
+            <input
+              type="text"
+              id="desktopSearchInput"
+              placeholder="Tìm kiếm sản phẩm"
+              class="border border-accent rounded-full py-1.5 pl-10 pr-4 text-[14px] font-light focus:outline-none focus:ring-1 focus:ring-accent bg-transparent w-44 xl:w-56 italic"
+            />
+          </div>
           <a
             href="#"
-            class="flex items-center space-x-1 hover:opacity-70 transition-opacity"
+            class="flex items-center gap-2 hover:text-cta transition-colors whitespace-nowrap"
           >
-            <span class="font-normal hidden md:inline">Tài khoản</span
-            ><i class="fa-regular fa-circle-user text-xl md:text-2xl"></i>
+            <span
+              class="hidden md:inline font-regular text-[17px] xl:text-[19px]"
+              >Tài khoản</span
+            >
+            <i class="far fa-user-circle text-xl md:text-2xl"></i>
           </a>
-
           <a
             href="cart.html"
-            class="relative hover:opacity-70 transition-opacity flex items-center space-x-1"
+            class="flex items-center gap-2 hover:text-cta transition-colors relative whitespace-nowrap"
           >
-            <span class="font-normal hidden md:inline">Giỏ hàng</span
-            ><i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i>
+            <span
+              class="hidden md:inline font-regular text-[17px] xl:text-[19px]"
+              >Giỏ hàng</span
+            >
+            <i class="fas fa-shopping-bag text-xl md:text-2xl"></i>
             <span
               id="global-cart-badge"
-              class="absolute -top-2 -right-2 bg-[#7a0000] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center transition-transform duration-300"
+              class="absolute -top-2 -right-2 md:-right-3 bg-cta text-white text-[10px] w-[16px] h-[16px] md:w-[18px] md:h-[18px] rounded-full flex items-center justify-center font-semibold transition-transform duration-300"
               >0</span
             >
           </a>
         </div>
-
-        <nav
-          class="order-3 md:order-1 flex space-x-5 md:space-x-8 font-semibold items-center overflow-x-auto scrollbar-hide md:overflow-visible w-full md:w-1/3 text-sm md:text-base pb-1 md:pb-0"
-        >
-          <a
-            href="shop.html"
-            class="hover:opacity-70 py-2 whitespace-nowrap transition-opacity"
-            >Về Wearever</a
-          >
-          <div class="relative group py-2 whitespace-nowrap">
-            <a
-              href="#"
-              class="hover:opacity-70 cursor-pointer transition-opacity"
-              >Áo</a
-            >
-            <div
-              class="absolute top-full left-0 pt-2 hidden group-hover:block z-50"
-            >
-              <div
-                class="bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.05)] rounded-md w-40 overflow-hidden"
-              >
-                <a
-                  href="javascript:void(0)"
-                  onclick="goToCategory('áo thun')"
-                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
-                  >Áo thun</a
-                >
-                <a
-                  href="javascript:void(0)"
-                  onclick="goToCategory('áo sơ mi')"
-                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
-                  >Áo sơ mi</a
-                >
-                <a
-                  href="javascript:void(0)"
-                  onclick="goToCategory('áo len')"
-                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
-                  >Áo len</a
-                >
-                <a
-                  href="javascript:void(0)"
-                  onclick="goToCategory('áo tanktop')"
-                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
-                  >Áo tanktop</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="relative group py-2 whitespace-nowrap">
-            <a
-              href="#"
-              class="hover:opacity-70 cursor-pointer transition-opacity"
-              >Quần</a
-            >
-            <div
-              class="absolute top-full left-0 pt-2 hidden group-hover:block z-50"
-            >
-              <div
-                class="bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.05)] rounded-md w-40 overflow-hidden"
-              >
-                <a
-                  href="javascript:void(0)"
-                  onclick="goToCategory('quần jeans')"
-                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
-                  >Quần jeans</a
-                >
-                <a
-                  href="javascript:void(0)"
-                  onclick="goToCategory('quần tây')"
-                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
-                  >Quần tây</a
-                >
-                <a
-                  href="javascript:void(0)"
-                  onclick="goToCategory('quần kaki')"
-                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
-                  >Quần kaki</a
-                >
-                <a
-                  href="javascript:void(0)"
-                  onclick="goToCategory('quần nỉ')"
-                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
-                  >Quần nỉ</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="relative group py-2 whitespace-nowrap">
-            <a
-              href="#"
-              class="hover:opacity-70 cursor-pointer transition-opacity"
-              >Bộ sưu tập</a
-            >
-            <div
-              class="absolute top-full left-0 pt-2 hidden group-hover:block z-50"
-            >
-              <div
-                class="bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.05)] rounded-md w-48 overflow-hidden"
-              >
-                <a
-                  href="bst1.html"
-                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
-                  >SHE'S VIETNAMESE</a
-                >
-                <a
-                  href="bst2.html"
-                  class="block px-4 py-2.5 text-sm font-normal hover:bg-[#422B1C] hover:text-white transition-colors"
-                  >SUMMER HER</a
-                >
-              </div>
-            </div>
-          </div>
-        </nav>
       </div>
     </header>
+
+    <div
+      id="mobileMenu"
+      class="fixed inset-0 bg-white z-[60] transform -translate-x-full transition-transform duration-300 flex flex-col overflow-y-auto lg:hidden"
+    >
+      <div
+        class="flex justify-between items-center px-6 py-4 border-b border-accent/20"
+      >
+        <span class="font-bold text-2xl tracking-widest uppercase text-accent"
+          >MENU</span
+        >
+        <button
+          id="closeMenuBtn"
+          class="text-accent text-3xl focus:outline-none"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div
+        class="flex flex-col px-6 py-6 gap-2 text-lg text-accent font-semibold"
+      >
+        <details class="group border-b border-accent/10 pb-3 mt-2">
+          <summary class="flex justify-between items-center cursor-pointer">
+            Về Wearever
+            <i
+              class="fas fa-chevron-down text-sm group-open:rotate-180 transition-transform"
+            ></i>
+          </summary>
+          <div
+            class="flex flex-col gap-3 mt-4 pl-4 font-normal text-[16px] text-accent/80"
+          >
+            <a href="about.html" class="mobile-link">Giới thiệu</a>
+            <a href="policy.html" class="mobile-link">Chính sách</a>
+          </div>
+        </details>
+
+        <details class="group border-b border-accent/10 pb-3 mt-2">
+          <summary class="flex justify-between items-center cursor-pointer">
+            Áo
+            <i
+              class="fas fa-chevron-down text-sm group-open:rotate-180 transition-transform"
+            ></i>
+          </summary>
+          <div
+            class="flex flex-col gap-3 mt-4 pl-4 font-normal text-[16px] text-accent/80"
+          >
+            <a href="shop.html?category=áo thun">Áo thun</a>
+            <a href="shop.html?category=áo sơ mi">Áo sơ mi</a>
+            <a href="shop.html?category=áo len">Áo len</a>
+            <a href="shop.html?category=áo tanktop">Áo tank top</a>
+          </div>
+        </details>
+
+        <details class="group border-b border-accent/10 pb-3 mt-2">
+          <summary class="flex justify-between items-center cursor-pointer">
+            Quần
+            <i
+              class="fas fa-chevron-down text-sm group-open:rotate-180 transition-transform"
+            ></i>
+          </summary>
+          <div
+            class="flex flex-col gap-3 mt-4 pl-4 font-normal text-[16px] text-accent/80"
+          >
+            <a href="shop.html?category=quần jeans">Quần jeans</a>
+            <a href="shop.html?category=quần tây">Quần tây</a>
+            <a href="shop.html?category=quần kaki">Quần kaki</a>
+            <a href="shop.html?category=quần nỉ">Quần nỉ</a>
+          </div>
+        </details>
+
+        <details class="group border-b border-accent/10 pb-3 mt-2">
+          <summary class="flex justify-between items-center cursor-pointer">
+            Bộ sưu tập
+            <i
+              class="fas fa-chevron-down text-sm group-open:rotate-180 transition-transform"
+            ></i>
+          </summary>
+          <div
+            class="flex flex-col gap-3 mt-4 pl-4 font-normal text-[16px] text-accent/80"
+          >
+            <a href="bst1.html">SHE'S VIETNAMESE</a>
+            <a href="bst2.html">SUMMER HER</a>
+          </div>
+        </details>
+
+        <div class="pb-3 mt-2">
+          <a href="index.html#faq-section" class="mobile-link block w-full"
+            >FAQ</a
+          >
+        </div>
+      </div>
+    </div>
 
     <main class="container mx-auto px-2 md:px-4 py-4 md:py-6">
       <div class="flex flex-col mb-4 md:mb-6">
@@ -401,11 +577,223 @@
       ></div>
     </div>
 
-    <footer class="border-t border-gray-100 mt-12 md:mt-16 bg-gray-50/50">
+    <footer
+      class="w-full border-t border-accent mt-16 md:mt-20 pt-10 md:pt-12 pb-8 bg-primary text-accent"
+    >
       <div
-        class="container mx-auto px-4 py-8 md:py-12 text-center text-[#422B1C]/60 text-xs md:text-sm"
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
       >
-        <p>&copy; 2026 Wearever. All rights reserved.</p>
+        <div class="flex flex-col space-y-6">
+          <div class="flex flex-wrap items-center gap-3">
+            <img
+              src="image/Favicon.png"
+              alt="Wearever Logo"
+              class="h-12 w-auto object-contain"
+            />
+            <img
+              src="image/dmca.png"
+              alt="DMCA Protected"
+              class="h-8 w-auto object-contain"
+            />
+            <img
+              src="image/logo-da-thong-bao-bo-cong-thuong-mau-xanh.png"
+              alt="Đã thông báo Bộ Công Thương"
+              class="h-8 w-auto object-contain"
+            />
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-[17px] mb-3">Theo dõi chúng tôi</h3>
+            <div class="flex items-center gap-4 text-2xl">
+              <a
+                href="#"
+                class="text-[#1877F2] hover:opacity-80 transition-opacity"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a
+                href="#"
+                class="text-[#DB4437] hover:opacity-80 transition-opacity"
+                ><i class="fab fa-google"></i
+              ></a>
+              <a
+                href="#"
+                class="text-[#E4405F] hover:opacity-80 transition-opacity"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="w-7 h-7 rounded-full border border-[#0068FF] text-[#0068FF] flex items-center justify-center hover:bg-[#0068FF] hover:text-white transition-colors text-[10px] font-bold tracking-tighter"
+                >Zalo</a
+              >
+              <a
+                href="#"
+                class="text-[#FF0000] hover:opacity-80 transition-opacity"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-[17px] mb-3">
+              Phương thức thanh toán
+            </h3>
+            <div class="grid grid-cols-4 gap-2 w-full max-w-[200px]">
+              <img
+                src="image/cash.png"
+                alt="Tiền mặt"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="image/bank_transfer.jpg"
+                alt="Ebank"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="image/visa.jpg"
+                alt="Visa"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="image/Mastercard-logo.svg.png"
+                alt="Mastercard"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="image/JCB_logo.svg.png"
+                alt="JCB"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+              <img
+                src="image/VNPAY.png"
+                alt="VNPAY"
+                class="w-full h-auto border border-accent/20 rounded object-contain p-1"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <h3 class="font-semibold text-xl mb-4 md:mb-5">Thông tin liên hệ</h3>
+          <div
+            class="space-y-3 text-[15px] font-light text-accent leading-relaxed"
+          >
+            <p><strong class="font-semibold">Hotline:</strong> 0949.161.245</p>
+            <p>
+              <strong class="font-semibold">Email:</strong>
+              cskh-wearever@gmail.com
+            </p>
+            <p>
+              <strong class="font-semibold">Địa chỉ:</strong> 256/13A Phạm Văn
+              Hai,<br />Phường Tân Sơn Nhất, TPHCM
+            </p>
+            <p>
+              <strong class="font-semibold">Số ĐKKD:</strong> 0107574310, ngày
+              cấp: 23/09/2016<br /><strong class="font-semibold"
+                >Nơi cấp:</strong
+              >
+              Sở Kế hoạch và đầu tư TP.HCM
+            </p>
+            <p class="mt-5 text-sm font-semibold tracking-wide">
+              ® Bản quyền thuộc thời trang Wearever
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <h3 class="font-semibold text-xl mb-4 md:mb-5">Hỗ trợ khách hàng</h3>
+          <ul class="space-y-3 text-[15px] font-light">
+            <li>
+              <a
+                href="hdsize.html"
+                class="hover:text-cta transition-colors duration-300"
+                >Hướng dẫn chọn size</a
+              >
+            </li>
+            <li>
+              <a
+                href="policy.html"
+                class="hover:text-cta transition-colors duration-300"
+                >Chính sách điều khoản</a
+              >
+            </li>
+            <li>
+              <a
+                href="policy.html"
+                class="hover:text-cta transition-colors duration-300"
+                >Chính sách thẻ thành viên</a
+              >
+            </li>
+            <li>
+              <a
+                href="policy.html"
+                class="hover:text-cta transition-colors duration-300"
+                >Chính sách thanh toán</a
+              >
+            </li>
+            <li>
+              <a
+                href="policy.html"
+                class="hover:text-cta transition-colors duration-300"
+                >Chính sách bảo mật và quyền riêng tư</a
+              >
+            </li>
+            <li>
+              <a
+                href="policy.html"
+                class="hover:text-cta transition-colors duration-300"
+                >Chính sách bảo hành và đổi trả</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex flex-col">
+          <h3
+            class="font-semibold text-[17px] xl:text-[19px] mb-4 leading-snug"
+          >
+            Đăng ký thẻ thành viên để nhận ưu đãi từ Wearever
+          </h3>
+          <form
+            class="relative w-full mb-8 flex items-center border border-accent rounded-xl p-1 bg-transparent"
+          >
+            <input
+              type="email"
+              placeholder="Nhập email của bạn"
+              class="w-full bg-transparent py-1.5 pl-3 pr-2 focus:outline-none text-[15px] italic font-light placeholder-accent/70"
+              required
+            />
+            <button
+              type="submit"
+              class="flex-shrink-0 border border-accent rounded-lg px-4 py-1.5 font-semibold hover:bg-cta hover:text-white hover:border-cta transition-colors bg-white text-sm"
+            >
+              Đăng ký
+            </button>
+          </form>
+
+          <h3 class="font-semibold text-xl mb-4">Download App</h3>
+          <div class="flex flex-col gap-3 items-start">
+            <a
+              href="#"
+              class="hover:opacity-80 transition-opacity block w-[140px] h-[42px]"
+            >
+              <img
+                src="image/appstore.png"
+                alt="Download on the App Store"
+                class="w-full h-full object-contain object-left rounded"
+              />
+            </a>
+            <a
+              href="#"
+              class="hover:opacity-80 transition-opacity block w-[140px] h-[42px]"
+            >
+              <img
+                src="image/ggplay.png"
+                alt="Get it on Google Play"
+                class="w-full h-full object-contain object-left rounded"
+              />
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
 
@@ -419,11 +807,39 @@
 
     <script>
       let allProducts = [];
-      let activeCategory = new URLSearchParams(window.location.search).get(
-        "category",
-      );
+      const urlParams = new URLSearchParams(window.location.search);
+      let activeCategory = urlParams.get("category");
+      let searchQuery = urlParams.get("search");
 
-      // --- CẬP NHẬT GIỎ HÀNG TOÀN CỤC (LOCAL STORAGE) ---
+      // ==========================================
+      // 1. TÌM KIẾM TRÊN HEADER
+      // ==========================================
+      const searchInputs = document.querySelectorAll(
+        'input[placeholder="Tìm kiếm sản phẩm"]',
+      );
+      searchInputs.forEach((input) => {
+        // Giữ lại từ khóa trong ô tìm kiếm
+        if (searchQuery) {
+          input.value = searchQuery;
+        }
+
+        // Bắt sự kiện Enter
+        input.addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            const val = this.value.trim();
+            if (val !== "") {
+              window.location.href =
+                "shop.html?search=" + encodeURIComponent(val);
+            } else {
+              window.location.href = "shop.html";
+            }
+          }
+        });
+      });
+
+      // ==========================================
+      // 2. CẬP NHẬT SỐ LƯỢNG GIỎ HÀNG
+      // ==========================================
       function updateGlobalCartBadge() {
         let currentCount =
           parseInt(localStorage.getItem("wearever_cart_count")) || 0;
@@ -435,9 +851,31 @@
         }
       }
 
-      document
-        .getElementById("toggle-filter-btn")
-        .addEventListener("click", function () {
+      // ==========================================
+      // 3. MENU MOBILE & TOGGLE BỘ LỌC
+      // ==========================================
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const closeMenuBtn = document.getElementById("closeMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+
+      if (mobileMenuBtn)
+        mobileMenuBtn.addEventListener("click", () =>
+          mobileMenu.classList.remove("-translate-x-full"),
+        );
+      if (closeMenuBtn)
+        closeMenuBtn.addEventListener("click", () =>
+          mobileMenu.classList.add("-translate-x-full"),
+        );
+      mobileLinks.forEach((link) =>
+        link.addEventListener("click", () =>
+          mobileMenu.classList.add("-translate-x-full"),
+        ),
+      );
+
+      const filterBtn = document.getElementById("toggle-filter-btn");
+      if (filterBtn) {
+        filterBtn.addEventListener("click", function () {
           const sidebar = document.getElementById("filter-sidebar");
           const productSection = document.getElementById("product-section");
           sidebar.classList.toggle("hidden");
@@ -449,7 +887,11 @@
             productSection.classList.add("md:w-3/4");
           }
         });
+      }
 
+      // ==========================================
+      // 4. DANH MỤC & BREADCRUMB
+      // ==========================================
       window.goToCategory = function (cat) {
         document
           .querySelectorAll(".filter-size.selected")
@@ -462,6 +904,7 @@
           .forEach((el) => (el.checked = false));
 
         activeCategory = cat;
+        searchQuery = null; // Xóa trạng thái search khi chọn danh mục
 
         if (cat) {
           const newUrl =
@@ -475,6 +918,7 @@
           );
         }
 
+        searchInputs.forEach((input) => (input.value = "")); // Reset ô search
         updateBreadcrumb();
         applyFilters();
       };
@@ -482,6 +926,16 @@
       function updateBreadcrumb() {
         const breadcrumbContainer =
           document.getElementById("dynamic-breadcrumb");
+
+        if (searchQuery) {
+          breadcrumbContainer.innerHTML = `
+              <a href="index.html" class="hover:opacity-70 transition-opacity">Trang chủ</a>
+              <span class="text-[#422B1C]/40">|</span>
+              <span class="bg-[#d2c8be] px-2 md:px-3 py-1 rounded font-medium">Kết quả tìm kiếm cho: "${searchQuery}"</span>
+          `;
+          return;
+        }
+
         const categoryMap = {
           "áo thun": { parent: "Áo", parentId: "áo", name: "Áo thun" },
           "áo sơ mi": { parent: "Áo", parentId: "áo", name: "Áo sơ mi" },
@@ -531,6 +985,9 @@
         }
       }
 
+      // ==========================================
+      // 5. FETCH & LỌC DATA
+      // ==========================================
       async function fetchProducts() {
         try {
           const response = await fetch("product.json");
@@ -557,15 +1014,19 @@
 
         let filteredProducts = allProducts;
 
-        if (activeCategory) {
+        if (searchQuery) {
+          const query = searchQuery.toLowerCase();
+          filteredProducts = filteredProducts.filter(
+            (p) => p.tensanpham && p.tensanpham.toLowerCase().includes(query),
+          );
+        } else if (activeCategory) {
           const searchCat = activeCategory.toLowerCase();
           filteredProducts = filteredProducts.filter((p) => {
             if (!p.phanloai) return false;
             const spCat = p.phanloai.toLowerCase();
-            if (searchCat === "áo" || searchCat === "quần") {
-              return spCat.includes(searchCat);
-            }
-            return spCat === searchCat;
+            return searchCat === "áo" || searchCat === "quần"
+              ? spCat.includes(searchCat)
+              : spCat === searchCat;
           });
         }
 
@@ -590,12 +1051,11 @@
                 ? p.giasaukhuyenmai
                 : p.dongia;
             const currentPrice = parseInt(priceStr);
-            return selectedPriceInputs.some((cb) => {
-              return (
+            return selectedPriceInputs.some(
+              (cb) =>
                 currentPrice >= parseInt(cb.dataset.min) &&
-                currentPrice <= parseInt(cb.dataset.max)
-              );
-            });
+                currentPrice <= parseInt(cb.dataset.max),
+            );
           });
         }
 
@@ -654,12 +1114,12 @@
                     </div>
                     
                     <div class="space-y-0.5 md:space-y-1.5 px-0.5">
-                        <h4 class="font-medium truncate text-[9px] sm:text-[11px] md:text-base leading-tight" title="${p.tensanpham}">${p.tensanpham}</h4>
+                        <h4 class="font-medium truncate text-[9px] sm:text-[11px] md:text-base leading-tight group-hover:text-cta transition-colors" title="${p.tensanpham}">${p.tensanpham}</h4>
                         
                         <div class="flex justify-between items-center">
                             <span class="font-bold text-[11px] sm:text-sm md:text-lg">${currentPrice}</span>
                             <div class="flex items-center space-x-0.5 md:space-x-1 text-[#422B1C]/60">
-                                <span class="text-[10px] md:text-base">${p.danhgia}</span>
+                                <span class="text-[10px] md:text-base">${p.danhgia || 5}</span>
                                 <i class="fa-solid fa-star text-[10px] md:text-base text-yellow-500"></i>
                             </div>
                         </div>
@@ -681,14 +1141,15 @@
           .join("");
       }
 
-      // --- LOGIC XỬ LÝ POPUP CHỌN SIZE MUA NHANH ---
-      let currentQuickBuyId = null; // THÊM KHAI BÁO BIẾN Ở ĐÂY
+      // ==========================================
+      // 6. POPUP MUA NHANH (QUICK BUY)
+      // ==========================================
+      let currentQuickBuyId = null;
 
       window.openQuickBuy = function (e, productId) {
-        e.preventDefault(); // Ngăn link <a> chuyển hướng đến trang detail
-        e.stopPropagation(); // Ngăn sự kiện click bị lây lan
-
-        currentQuickBuyId = productId; // GÁN ID CỦA SẢN PHẨM KHI VỪA MỞ POPUP
+        e.preventDefault();
+        e.stopPropagation();
+        currentQuickBuyId = productId;
 
         const product = allProducts.find((p) => p.stt === productId);
         if (!product) return;
@@ -699,7 +1160,6 @@
           ? product.kichthuoc.split(",").map((s) => s.trim())
           : [];
 
-        // Render nội dung bên trong modal
         content.innerHTML = `
               <div class="flex justify-between items-center mb-3 border-b border-gray-100 pb-3">
                   <h3 class="font-bold text-lg text-[#422B1C]">Chọn kích thước</h3>
@@ -719,7 +1179,6 @@
               </div>
           `;
 
-        // Bật Modal
         modal.classList.remove("hidden");
         modal.classList.add("flex");
         setTimeout(() => {
@@ -732,11 +1191,9 @@
       window.closeQuickBuy = function () {
         const modal = document.getElementById("quick-buy-modal");
         const content = document.getElementById("quick-buy-content");
-
         modal.classList.add("opacity-0");
         content.classList.remove("scale-100");
         content.classList.add("scale-95");
-
         setTimeout(() => {
           modal.classList.add("hidden");
           modal.classList.remove("flex");
@@ -744,13 +1201,10 @@
       };
 
       window.confirmAddQuickBuy = function (size) {
-        if (!currentQuickBuyId) return; // Chặn lỗi nếu không có ID
+        if (!currentQuickBuyId) return;
 
-        // Lấy mảng giỏ hàng từ Local Storage
         let cart =
           JSON.parse(localStorage.getItem("wearever_cart_details")) || [];
-
-        // Kiểm tra xem áo/quần size này đã có trong giỏ chưa
         let existingItem = cart.find(
           (item) => item.id === currentQuickBuyId && item.size === size,
         );
@@ -766,28 +1220,30 @@
           });
         }
 
-        // Lưu lại mảng mới vào Local Storage
         localStorage.setItem("wearever_cart_details", JSON.stringify(cart));
-
-        // Tính lại tổng số lượng và cập nhật badge đỏ trên header
         let totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
         localStorage.setItem("wearever_cart_count", totalItems);
-        updateGlobalCartBadge();
 
-        // Đóng modal
+        updateGlobalCartBadge();
         closeQuickBuy();
       };
 
-      // Gắn sự kiện Filters
+      // ==========================================
+      // 7. EVENT LISTENERS & KHỞI CHẠY
+      // ==========================================
       document.querySelectorAll(".filter-size").forEach((btn) =>
-        btn.addEventListener("click", (e) => {
-          e.target.classList.toggle("selected");
+        btn.addEventListener("click", function (e) {
+          // Dùng 'this' thay cho 'e.target' để luôn nhắm đúng vào nút
+          this.classList.toggle("selected");
+          this.blur(); // Thoát trạng thái focus để tránh lỗi dính giao diện trên mobile
           applyFilters();
         }),
       );
+
       document.querySelectorAll(".filter-color").forEach((div) =>
-        div.addEventListener("click", (e) => {
-          e.target.classList.toggle("selected");
+        div.addEventListener("click", function (e) {
+          this.classList.toggle("selected");
+          this.blur();
           applyFilters();
         }),
       );
@@ -795,29 +1251,28 @@
         .querySelectorAll(".filter-price")
         .forEach((cb) => cb.addEventListener("change", applyFilters));
 
-      // Scroll to Top
       window.onscroll = function () {
         const btn = document.getElementById("backToTopBtn");
-        if (
-          document.body.scrollTop > 300 ||
-          document.documentElement.scrollTop > 300
-        ) {
-          btn.classList.remove("opacity-0", "translate-y-10");
-        } else {
-          btn.classList.add("opacity-0", "translate-y-10");
+        if (btn) {
+          if (
+            document.body.scrollTop > 300 ||
+            document.documentElement.scrollTop > 300
+          ) {
+            btn.classList.remove("opacity-0", "translate-y-10");
+          } else {
+            btn.classList.add("opacity-0", "translate-y-10");
+          }
         }
       };
+
       function scrollToTop() {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
-      // Khởi chạy
       fetchProducts();
-      updateGlobalCartBadge(); // Đảm bảo lúc vừa vào trang là load giỏ hàng ngay
+      updateGlobalCartBadge();
 
-      // ĐỒNG BỘ GIỎ HÀNG REAL-TIME GIỮA CÁC TAB
       window.addEventListener("storage", function (e) {
-        // Cập nhật lại số lượng trên bong bóng đỏ
         if (e.key === "wearever_cart_count") {
           const badge = document.getElementById("global-cart-badge");
           if (badge) {
@@ -826,15 +1281,40 @@
             setTimeout(() => badge.classList.remove("scale-150"), 300);
           }
         }
-
-        // Tự động load lại danh sách nếu đang đứng ở trang cart.html
         if (
           e.key === "wearever_cart_details" &&
           window.location.pathname.includes("cart.html")
         ) {
-          initCartData();
-          renderCart();
+          if (typeof initCartData === "function") initCartData();
+          if (typeof renderCart === "function") renderCart();
         }
+      });
+      // XỬ LÝ TRƯỢT MƯỢT (SMOOTH SCROLL) CHO ANCHOR LINK
+      // ==========================================
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const targetId = this.getAttribute("href");
+
+          // Bỏ qua nếu link chỉ là "#" hoặc không tìm thấy khối ID tương ứng trên trang
+          if (targetId === "#" || !document.querySelector(targetId)) return;
+
+          e.preventDefault(); // Chặn hành vi reload trang mặc định
+
+          // Trượt mượt đến đúng section
+          document.querySelector(targetId).scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+
+          // Nếu đang mở menu trên mobile thì tự động đóng lại
+          const mobileMenu = document.getElementById("mobileMenu");
+          if (
+            mobileMenu &&
+            !mobileMenu.classList.contains("-translate-x-full")
+          ) {
+            mobileMenu.classList.add("-translate-x-full");
+          }
+        });
       });
     </script>
   </body>
