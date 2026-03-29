@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Giỏ hàng của bạn - Wearever</title>
+    <title>Wearever - Giỏ hàng của bạn</title>
     <link rel="shortcut icon" href="image/Favicon.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -867,7 +867,7 @@
 
       async function loadDataAndRender() {
         try {
-          const response = await fetch("product.json");
+          const response = await fetch("productnew.json");
           allProducts = await response.json();
 
           productMap = allProducts.reduce((map, product) => {

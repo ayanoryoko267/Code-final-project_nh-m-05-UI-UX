@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chi tiết sản phẩm - Wearever</title>
+    <title>Wearever - Chi tiết sản phẩm</title>
     <link rel="shortcut icon" href="image/Favicon.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -577,6 +577,17 @@
           </div>
         </div>
       </div>
+      <div class="mt-20 pt-10 border-t border-gray-200">
+        <h2
+          class="text-2xl md:text-3xl font-bold mb-8 text-center text-[#422B1C] uppercase tracking-widest"
+        >
+          Sản phẩm tương tự
+        </h2>
+        <div
+          id="related-products-container"
+          class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+        ></div>
+      </div>
     </main>
 
     <div
@@ -890,12 +901,13 @@
 
       async function loadProductDetail() {
         try {
-          const response = await fetch("product.json");
+          const response = await fetch("productnew.json");
           const products = await response.json();
           const product = products.find((p) => p.stt === productId);
 
           if (product) {
             renderDetail(product);
+            renderRelatedProducts(product, products);
           } else {
             document.getElementById("main-content").innerHTML = `
               <div class="text-center py-20">
@@ -940,8 +952,14 @@
         `;
 
         document.getElementById("detail-name").textContent = p.tensanpham;
-        document.getElementById("detail-desc").textContent =
-          p.mota || "Chưa có mô tả cho sản phẩm này.";
+        let descText = p.mota || "Chưa có mô tả cho sản phẩm này.";
+        // Thay thế chuỗi "\n-" hoặc "\n" thành thẻ xuống dòng và bullet point của HTML
+        descText = descText
+          .replace(/\\n\s*-/g, "<br>• ")
+          .replace(/\\n/g, "<br>")
+          .replace(/\n\s*-/g, "<br>• ")
+          .replace(/\n/g, "<br>");
+        document.getElementById("detail-desc").innerHTML = descText;
 
         const priceBox = document.getElementById("detail-price-box");
         const eventBanner = document.getElementById("event-banner");
@@ -1110,19 +1128,11 @@
         const imgContainer = document.getElementById("img-container");
         const zoomIcon = document.getElementById("zoom-icon");
 
-        // ZOOM CHỈ KÍCH HOẠT CHO ẢNH THỨ 3 (INDEX = 2)
-        if (currentImageIndex === 2) {
-          imgContainer.classList.add("cursor-crosshair");
-          zoomIcon.classList.remove("hidden");
-          zoomIcon.classList.add("flex");
-        } else {
-          imgContainer.classList.remove("cursor-crosshair");
-          zoomIcon.classList.add("hidden");
-          zoomIcon.classList.remove("flex");
-          document.getElementById("main-img").style.transform = "scale(1)";
-        }
+        // Bỏ điều kiện if (currentImageIndex === 2), bật zoom cho mọi ảnh
+        imgContainer.classList.add("cursor-crosshair");
+        zoomIcon.classList.remove("hidden");
+        zoomIcon.classList.add("flex");
       };
-
       window.selectSize = function (el) {
         document
           .querySelectorAll(".size-btn")
@@ -1144,7 +1154,6 @@
 
       // 1. XỬ LÝ ZOOM TRÊN MÁY TÍNH (Chuột)
       function applyZoom(clientX, clientY) {
-        if (currentImageIndex !== 2) return;
         mainImg.style.transform = "scale(1.8)";
         const rect = imgContainer.getBoundingClientRect();
         const x = ((clientX - rect.left) / rect.width) * 100;
@@ -1167,7 +1176,6 @@
       imgContainer.addEventListener(
         "touchstart",
         (e) => {
-          if (currentImageIndex !== 2) return;
           // Lấy vị trí ngón tay đầu tiên chạm vào
           applyZoom(e.touches[0].clientX, e.touches[0].clientY);
         },
@@ -1177,7 +1185,6 @@
       imgContainer.addEventListener(
         "touchmove",
         (e) => {
-          if (currentImageIndex !== 2) return;
           // Ngăn chặn hành vi cuộn trang web (scroll) khi đang vuốt xem ảnh
           e.preventDefault();
           applyZoom(e.touches[0].clientX, e.touches[0].clientY);
@@ -1368,6 +1375,41 @@
           }
         });
       });
+      function renderRelatedProducts(currentProduct, allProducts) {
+        const container = document.getElementById("related-products-container");
+        if (!container) return;
+
+        // Lọc các sản phẩm cùng phân loại nhưng khác ID với sản phẩm đang xem, lấy tối đa 4 cái
+        const related = allProducts
+          .filter(
+            (p) =>
+              p.phanloai === currentProduct.phanloai &&
+              p.stt !== currentProduct.stt,
+          )
+          .slice(0, 4);
+
+        if (related.length === 0) {
+          container.parentElement.style.display = "none"; // Ẩn luôn khu vực này nếu không có SP tương tự
+          return;
+        }
+
+        container.innerHTML = related
+          .map(
+            (p) => `
+    <a href="product-detail.html?id=${p.stt}" class="group block">
+        <div class="relative aspect-[1/1.5] overflow-hidden rounded-lg mb-3 bg-gray-100 border border-gray-100 shadow-sm">
+            <img src="${p.linkanhsp}" alt="${p.tensanpham}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 origin-center">
+        </div>
+        <h3 class="text-sm md:text-base font-medium text-[#422B1C] truncate mb-1">${p.tensanpham}</h3>
+        <div class="flex items-center gap-2">
+            <p class="text-[#422B1C] font-bold">${formatPrice(p.giasaukhuyenmai || p.dongia)}</p>
+            ${p.giasaukhuyenmai && Number(p.dongia) > Number(p.giasaukhuyenmai) ? `<span class="text-xs text-[#422B1C]/50 line-through">${formatPrice(p.dongia)}</span>` : ""}
+        </div>
+    </a>
+  `,
+          )
+          .join("");
+      }
     </script>
   </body>
 </html>

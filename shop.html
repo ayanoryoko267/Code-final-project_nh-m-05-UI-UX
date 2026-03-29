@@ -435,71 +435,95 @@
             <h3 class="font-bold mb-3 md:mb-4 text-sm md:text-lg">
               Kích thước
             </h3>
-            <div class="flex flex-wrap gap-2 md:gap-3" id="size-filters">
+            <div
+              class="grid grid-cols-5 gap-1.5 md:gap-2 w-full"
+              id="size-filters"
+            >
               <button
-                class="filter-size w-9 h-9 md:w-11 md:h-11 text-xs md:text-base border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
+                class="filter-size w-full h-8 md:h-10 text-[10px] md:text-sm border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
                 data-size="XS"
               >
                 XS
               </button>
               <button
-                class="filter-size w-9 h-9 md:w-11 md:h-11 text-xs md:text-base border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
+                class="filter-size w-full h-8 md:h-10 text-[10px] md:text-sm border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
                 data-size="S"
               >
                 S
               </button>
               <button
-                class="filter-size w-9 h-9 md:w-11 md:h-11 text-xs md:text-base border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
+                class="filter-size w-full h-8 md:h-10 text-[10px] md:text-sm border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
                 data-size="M"
               >
                 M
               </button>
               <button
-                class="filter-size w-9 h-9 md:w-11 md:h-11 text-xs md:text-base border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
+                class="filter-size w-full h-8 md:h-10 text-[10px] md:text-sm border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
                 data-size="L"
               >
                 L
               </button>
               <button
-                class="filter-size w-9 h-9 md:w-11 md:h-11 text-xs md:text-base border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
+                class="filter-size w-full h-8 md:h-10 text-[10px] md:text-sm border border-[#422B1C]/30 flex items-center justify-center hover:bg-[#422B1C] hover:border-[#422B1C] hover:text-white transition rounded-sm"
                 data-size="XL"
               >
                 XL
               </button>
             </div>
           </div>
+
           <div class="mb-6 md:mb-8">
             <h3 class="font-bold mb-3 md:mb-4 text-sm md:text-lg">Màu sắc</h3>
-            <div class="flex flex-wrap gap-3 md:gap-4" id="color-filters">
+            <div
+              class="grid grid-cols-5 gap-2 md:gap-3 justify-items-center"
+              id="color-filters"
+            >
               <div
-                class="filter-color w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#ffffff] border border-gray-300 cursor-pointer shadow-sm hover:scale-110 transition-transform"
+                class="filter-color w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#ffffff] border border-gray-300 cursor-pointer shadow-sm hover:scale-110 transition-transform"
                 data-color="trắng"
                 title="Trắng"
               ></div>
               <div
-                class="filter-color w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#EED9B9] border border-gray-200 cursor-pointer shadow-sm hover:scale-110 transition-transform"
+                class="filter-color w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#EED9B9] border border-gray-200 cursor-pointer shadow-sm hover:scale-110 transition-transform"
                 data-color="be"
                 title="Be"
               ></div>
               <div
-                class="filter-color w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#263B6A] cursor-pointer shadow-sm hover:scale-110 transition-transform"
+                class="filter-color w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#263B6A] cursor-pointer shadow-sm hover:scale-110 transition-transform"
                 data-color="xanh dương"
                 title="Xanh dương"
               ></div>
               <div
-                class="filter-color w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#d2c8be] cursor-pointer shadow-sm hover:scale-110 transition-transform"
+                class="filter-color w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#d2c8be] cursor-pointer shadow-sm hover:scale-110 transition-transform"
                 data-color="xám"
                 title="Xám"
               ></div>
               <div
-                class="filter-color w-7 h-7 md:w-10 md:h-10 rounded-full bg-[#000000] cursor-pointer shadow-sm hover:scale-110 transition-transform"
+                class="filter-color w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#000000] cursor-pointer shadow-sm hover:scale-110 transition-transform"
                 data-color="đen"
                 title="Đen"
               ></div>
             </div>
           </div>
-          <div>
+
+          <div class="mb-6 md:mb-8">
             <h3 class="font-bold mb-3 md:mb-4 text-sm md:text-lg">Mức giá</h3>
+            <div class="mb-4 space-y-3 border-b border-[#422B1C]/10 pb-4">
+              <div
+                class="sort-btn flex items-center space-x-3 cursor-pointer text-[#422B1C] transition-all"
+                data-sort="asc"
+              >
+                <i class="fa-solid fa-arrow-up-1-9 text-lg"></i>
+                <span class="text-xs md:text-base">Giá tăng dần</span>
+              </div>
+              <div
+                class="sort-btn flex items-center space-x-3 cursor-pointer text-[#422B1C] transition-all"
+                data-sort="desc"
+              >
+                <i class="fa-solid fa-arrow-down-9-1 text-lg"></i>
+                <span class="text-xs md:text-base">Giá giảm dần</span>
+              </div>
+            </div>
             <div class="space-y-3 md:space-y-4" id="price-filters">
               <label
                 class="flex items-center space-x-2 md:space-x-3 cursor-pointer group"
@@ -545,6 +569,66 @@
               </label>
             </div>
           </div>
+
+          <div>
+            <h3 class="font-bold mb-3 md:mb-4 text-sm md:text-lg">Đánh giá</h3>
+            <div class="space-y-3" id="rating-filters">
+              <label
+                class="flex items-center space-x-2 md:space-x-3 cursor-pointer group"
+              >
+                <input
+                  type="checkbox"
+                  class="filter-rating w-4 h-4 md:w-5 md:h-5 accent-[#422B1C] border-gray-300 rounded cursor-pointer"
+                  data-rating="5"
+                />
+                <div
+                  class="flex text-yellow-400 text-[10px] md:text-sm tracking-widest"
+                >
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                </div>
+              </label>
+              <label
+                class="flex items-center space-x-2 md:space-x-3 cursor-pointer group"
+              >
+                <input
+                  type="checkbox"
+                  class="filter-rating w-4 h-4 md:w-5 md:h-5 accent-[#422B1C] border-gray-300 rounded cursor-pointer"
+                  data-rating="4"
+                />
+                <div
+                  class="flex text-yellow-400 text-[10px] md:text-sm tracking-widest"
+                >
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-regular fa-star text-gray-300"></i>
+                </div>
+              </label>
+              <label
+                class="flex items-center space-x-2 md:space-x-3 cursor-pointer group"
+              >
+                <input
+                  type="checkbox"
+                  class="filter-rating w-4 h-4 md:w-5 md:h-5 accent-[#422B1C] border-gray-300 rounded cursor-pointer"
+                  data-rating="3"
+                />
+                <div
+                  class="flex text-yellow-400 text-[10px] md:text-sm tracking-widest"
+                >
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i
+                  ><i class="fa-regular fa-star text-gray-300"></i
+                  ><i class="fa-regular fa-star text-gray-300"></i>
+                </div>
+              </label>
+            </div>
+          </div>
         </aside>
 
         <section
@@ -553,8 +637,9 @@
         >
           <div
             id="product-grid"
-            class="grid grid-cols-3 gap-1.5 md:gap-x-6 md:gap-y-10"
+            class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-x-6 md:gap-y-10"
           ></div>
+
           <div
             id="no-products-msg"
             class="hidden text-center text-[#422B1C]/60 py-10 w-full text-sm md:text-base"
@@ -990,7 +1075,7 @@
       // ==========================================
       async function fetchProducts() {
         try {
-          const response = await fetch("product.json");
+          const response = await fetch("productnew.json");
           allProducts = await response.json();
           updateBreadcrumb();
           applyFilters();
@@ -1011,8 +1096,12 @@
         const selectedPriceInputs = Array.from(
           document.querySelectorAll(".filter-price:checked"),
         );
+        const selectedRatings = Array.from(
+          document.querySelectorAll(".filter-rating:checked"),
+        ).map((cb) => parseInt(cb.dataset.rating));
 
-        let filteredProducts = allProducts;
+        // Tạo một bản sao của mảng gốc để giữ nguyên thứ tự ban đầu nếu không có sắp xếp
+        let filteredProducts = [...allProducts];
 
         if (searchQuery) {
           const query = searchQuery.toLowerCase();
@@ -1059,6 +1148,35 @@
           });
         }
 
+        if (selectedRatings.length > 0) {
+          filteredProducts = filteredProducts.filter((p) => {
+            const star = parseInt(Math.round(p.danhgia || 5));
+            return selectedRatings.includes(star);
+          });
+        }
+
+        // Xử lý Sắp xếp giá (Có thể hủy chọn để trở về mặc định)
+        const sortEl = document.querySelector(".sort-btn.selected");
+        const sortVal = sortEl ? sortEl.dataset.sort : null;
+
+        if (sortVal) {
+          filteredProducts.sort((a, b) => {
+            const priceA =
+              parseInt(
+                a.giasaukhuyenmai && a.giasaukhuyenmai.trim() !== ""
+                  ? a.giasaukhuyenmai
+                  : a.dongia,
+              ) || 0;
+            const priceB =
+              parseInt(
+                b.giasaukhuyenmai && b.giasaukhuyenmai.trim() !== ""
+                  ? b.giasaukhuyenmai
+                  : b.dongia,
+              ) || 0;
+            return sortVal === "asc" ? priceA - priceB : priceB - priceA;
+          });
+        }
+
         renderProducts(filteredProducts);
       }
 
@@ -1083,9 +1201,9 @@
               : formatPrice(p.dongia);
             const hasDiscount =
               p.giasaukhuyenmai && Number(p.dongia) > Number(p.giasaukhuyenmai);
-            const cardBorderStyle = hasDiscount
-              ? "border-[1.5px] md:border-2 border-[#7a0000]/40"
-              : "border border-[#422B1C]/10 shadow-[0_2px_10px_rgba(0,0,0,0.02)]";
+
+            const cardBorderStyle =
+              "border border-[#422B1C]/10 shadow-[0_2px_10px_rgba(0,0,0,0.02)]";
 
             let discountBadge = "";
             if (hasDiscount) {
@@ -1103,21 +1221,32 @@
             return `
                 <a href="product-detail.html?id=${p.stt}" class="group relative block cursor-pointer">
                     <div class="aspect-[1/1.618] ${cardBorderStyle} rounded-md md:rounded-lg mb-1.5 md:mb-4 relative overflow-hidden bg-white transition-all duration-300">
+                        
+                        ${
+                          hasDiscount
+                            ? `
+                          <div class="absolute top-0 right-0 md:top-2 md:right-2 bg-[#7a0000] text-white text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 z-30 shadow-sm">
+                            SALE
+                          </div>
+                        `
+                            : ""
+                        }
+
                         <img src="${imgSrc2}" alt="${p.tensanpham} mặt sau" class="w-full h-full object-cover absolute inset-0 z-0">
                         <img src="${imgSrc1}" alt="${p.tensanpham}" class="w-full h-full object-cover absolute inset-0 z-10 transition-opacity duration-500 group-hover:opacity-0">
                         
-                        <div class="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                            <button onclick="openQuickBuy(event, '${p.stt}')" class="w-6 h-6 md:w-10 md:h-10 bg-white border border-[#422B1C] text-[#422B1C] rounded-full flex items-center justify-center hover:bg-[#422B1C] hover:text-white transition-all duration-200 hover:-translate-y-1 shadow-md">
-                                <i class="fa-solid fa-cart-shopping text-[8px] md:text-sm"></i>
+                        <div class="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+                            <button onclick="openQuickBuy(event, '${p.stt}')" class="w-8 h-8 md:w-11 md:h-11 bg-white border-2 border-[#422B1C] text-[#422B1C] rounded-full flex items-center justify-center hover:bg-[#422B1C] hover:text-white transition-all duration-200 hover:-translate-y-1 shadow-md">
+                                <i class="fa-solid fa-cart-shopping text-xs md:text-sm"></i>
                             </button>
                         </div>
                     </div>
                     
                     <div class="space-y-0.5 md:space-y-1.5 px-0.5">
-                        <h4 class="font-medium truncate text-[9px] sm:text-[11px] md:text-base leading-tight group-hover:text-cta transition-colors" title="${p.tensanpham}">${p.tensanpham}</h4>
+                        <h4 class="font-medium truncate text-[10px] sm:text-xs md:text-base leading-tight group-hover:text-cta transition-colors" title="${p.tensanpham}">${p.tensanpham}</h4>
                         
                         <div class="flex justify-between items-center">
-                            <span class="font-bold text-[11px] sm:text-sm md:text-lg">${currentPrice}</span>
+                            <span class="font-bold text-xs sm:text-sm md:text-lg">${currentPrice}</span>
                             <div class="flex items-center space-x-0.5 md:space-x-1 text-[#422B1C]/60">
                                 <span class="text-[10px] md:text-base">${p.danhgia || 5}</span>
                                 <i class="fa-solid fa-star text-[10px] md:text-base text-yellow-500"></i>
@@ -1140,7 +1269,6 @@
           })
           .join("");
       }
-
       // ==========================================
       // 6. POPUP MUA NHANH (QUICK BUY)
       // ==========================================
@@ -1249,6 +1377,28 @@
       );
       document
         .querySelectorAll(".filter-price")
+        .forEach((cb) => cb.addEventListener("change", applyFilters));
+
+      // Xử lý nút bấm Sắp xếp (Click lần nữa để hủy chọn)
+      document.querySelectorAll(".sort-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const isActive = this.classList.contains("selected");
+
+          // Gỡ bỏ trạng thái chọn (in đậm) của tất cả các nút sắp xếp
+          document.querySelectorAll(".sort-btn").forEach((b) => {
+            b.classList.remove("selected", "font-bold");
+          });
+
+          // Nếu nút vừa bấm CHƯA được chọn, thì bật lên (in đậm)
+          if (!isActive) {
+            this.classList.add("selected", "font-bold");
+          }
+
+          applyFilters();
+        });
+      });
+      document
+        .querySelectorAll(".filter-rating")
         .forEach((cb) => cb.addEventListener("change", applyFilters));
 
       window.onscroll = function () {

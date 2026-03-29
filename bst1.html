@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SHE'S VIETNAMESE - Wearever</title>
+    <title>Wearever - SHE'S VIETNAMESE </title>
     <link rel="shortcut icon" href="image/Favicon.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -932,93 +932,97 @@
       }
 
       async function loadBSTProducts() {
-        try {
-          const response = await fetch("product.json");
-          allProducts = await response.json();
+  try {
+    const response = await fetch("productnew.json");
+    allProducts = await response.json();
 
-          const bstProducts = allProducts.filter((p) => p.phanloai === "BST1");
-          const sliderContainer = document.getElementById("bst-product-slider");
-          let html = "";
+    const bstProducts = allProducts.filter((p) => p.phanloai === "BST1");
+    const sliderContainer = document.getElementById("bst-product-slider");
+    let html = "";
 
-          if (bstProducts.length === 0) {
-            sliderContainer.innerHTML = `<p class="w-full text-center text-gray-500 py-10">Chưa có sản phẩm nào trong bộ sưu tập này.</p>`;
-            return;
-          }
+    if (bstProducts.length === 0) {
+      sliderContainer.innerHTML = `<p class="w-full text-center text-gray-500 py-10">Chưa có sản phẩm nào trong bộ sưu tập này.</p>`;
+      return;
+    }
 
-          bstProducts.forEach((p) => {
-            const currentPrice = p.giasaukhuyenmai
-              ? formatPrice(p.giasaukhuyenmai)
-              : formatPrice(p.dongia);
-            const hasDiscount =
-              p.giasaukhuyenmai && Number(p.dongia) > Number(p.giasaukhuyenmai);
+    bstProducts.forEach((p) => {
+      const currentPrice = p.giasaukhuyenmai
+        ? formatPrice(p.giasaukhuyenmai)
+        : formatPrice(p.dongia);
+      const hasDiscount =
+        p.giasaukhuyenmai && Number(p.dongia) > Number(p.giasaukhuyenmai);
 
-            // CSS Viền sản phẩm (đỏ nếu có KM)
-            const cardBorderStyle = hasDiscount
-              ? "border-[1.5px] md:border-2 border-[#7a0000]/40"
-              : "border border-[#422B1C]/10 shadow-[0_2px_10px_rgba(0,0,0,0.02)]";
+      // 1. CẬP NHẬT TỪ SHOP: Bỏ viền đỏ, dùng viền shadow nhẹ
+      const cardBorderStyle = "border border-[#422B1C]/10 shadow-[0_2px_10px_rgba(0,0,0,0.02)]";
 
-            // Tính Tag giảm giá
-            let discountBadge = "";
-            if (hasDiscount) {
-              const percent = Math.round(
-                100 - (Number(p.giasaukhuyenmai) / Number(p.dongia)) * 100,
-              );
-              discountBadge = `-${percent}%`;
-            }
+      let discountBadge = "";
+      if (hasDiscount) {
+        const percent = Math.round(
+          100 - (Number(p.giasaukhuyenmai) / Number(p.dongia)) * 100,
+        );
+        discountBadge = `-${percent}%`;
+      }
 
-            // Ảnh trước và sau
-            const imgSrc1 =
-              p.linkanhsp ||
-              "https://via.placeholder.com/300x400?text=Chua+co+anh";
-            const imgSrc2 = p.linkanhsp_hover || imgSrc1;
+      const imgSrc1 = p.linkanhsp || "https://via.placeholder.com/300x400?text=Chua+co+anh";
+      const imgSrc2 = p.linkanhsp_hover || imgSrc1;
 
-            // Render nguyên khối thẻ A giống shop.html
-            html += `
-          <div class="snap-start shrink-0 w-[170px] sm:w-[200px] md:w-[240px] flex flex-col group relative bg-white">
-            <a href="product-detail.html?id=${p.stt}" class="group relative block cursor-pointer">
-              <div class="aspect-[1/1.618] ${cardBorderStyle} rounded-md md:rounded-lg mb-1.5 md:mb-4 relative overflow-hidden bg-white transition-all duration-300">
-                  <img src="${imgSrc2}" alt="${p.tensanpham} mặt sau" class="w-full h-full object-cover absolute inset-0 z-0">
-                  <img src="${imgSrc1}" alt="${p.tensanpham}" class="w-full h-full object-cover absolute inset-0 z-10 transition-opacity duration-500 group-hover:opacity-0">
-                  
-                  <div class="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                      <button onclick="openQuickBuy(event, '${p.stt}')" class="w-8 h-8 md:w-10 md:h-10 bg-[#422B1C] border border-transparent text-white rounded-full flex items-center justify-center hover:bg-[#2c1d12] transition-all duration-200 hover:-translate-y-1 shadow-lg">
-                          <i class="fa-solid fa-cart-shopping text-xs md:text-sm"></i>
-                      </button>
+      html += `
+      <div class="snap-start shrink-0 w-[170px] sm:w-[200px] md:w-[240px] flex flex-col group relative bg-white">
+        <a href="product-detail.html?id=${p.stt}" class="group relative block cursor-pointer">
+          <div class="aspect-[1/1.618] ${cardBorderStyle} rounded-md md:rounded-lg mb-1.5 md:mb-4 relative overflow-hidden bg-white transition-all duration-300">
+              
+              ${
+                hasDiscount
+                  ? `
+              <div class="absolute top-0 right-0 md:top-2 md:right-2 bg-[#7a0000] text-white text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 z-30 shadow-sm">
+                SALE
+              </div>
+              `
+                  : ""
+              }
+
+              <img src="${imgSrc2}" alt="${p.tensanpham} mặt sau" class="w-full h-full object-cover absolute inset-0 z-0">
+              <img src="${imgSrc1}" alt="${p.tensanpham}" class="w-full h-full object-cover absolute inset-0 z-10 transition-opacity duration-500 group-hover:opacity-0">
+              
+              <div class="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+                  <button onclick="openQuickBuy(event, '${p.stt}')" class="w-8 h-8 md:w-11 md:h-11 bg-white border-2 border-[#422B1C] text-[#422B1C] rounded-full flex items-center justify-center hover:bg-[#422B1C] hover:text-white transition-all duration-200 hover:-translate-y-1 shadow-md">
+                      <i class="fa-solid fa-cart-shopping text-xs md:text-sm"></i>
+                  </button>
+              </div>
+          </div>
+          
+          <div class="space-y-0.5 md:space-y-1.5 px-0.5">
+              <h4 class="font-medium truncate text-[11px] sm:text-xs md:text-base leading-tight group-hover:text-cta transition-colors" title="${p.tensanpham}">${p.tensanpham}</h4>
+              
+              <div class="flex justify-between items-center">
+                  <span class="font-bold text-[12px] sm:text-sm md:text-lg">${currentPrice}</span>
+                  <div class="flex items-center space-x-0.5 md:space-x-1 text-[#422B1C]/60">
+                      <span class="text-[10px] md:text-base">${p.danhgia || 5}</span>
+                      <i class="fa-solid fa-star text-[10px] md:text-base text-yellow-500"></i>
                   </div>
               </div>
               
-              <div class="space-y-0.5 md:space-y-1.5 px-0.5">
-                  <h4 class="font-medium truncate text-[11px] sm:text-xs md:text-base leading-tight transition-colors" title="${p.tensanpham}">${p.tensanpham}</h4>
-                  
-                  <div class="flex justify-between items-center">
-                      <span class="font-bold text-[12px] sm:text-sm md:text-lg">${currentPrice}</span>
-                      <div class="flex items-center space-x-0.5 md:space-x-1 text-[#422B1C]/60">
-                          <span class="text-[10px] md:text-base">${p.danhgia || 5}</span>
-                          <i class="fa-solid fa-star text-[10px] md:text-base text-yellow-500"></i>
-                      </div>
-                  </div>
-                  
-                  ${
-                    hasDiscount
-                      ? `
-                  <div class="flex justify-between items-center mt-0.5 md:mt-1">
-                      <span class="text-[10px] md:text-sm text-[#422B1C]/40 line-through">${formatPrice(p.dongia)}</span>
-                      <span class="text-[10px] md:text-[13px] bg-[#7a0000] text-white rounded px-1.5 md:px-3 py-0.5 font-medium leading-none">${discountBadge}</span>
-                  </div>
-                  `
-                      : '<div class="h-4 md:h-7 mt-0.5 md:mt-1"></div>'
-                  }
+              ${
+                hasDiscount
+                  ? `
+              <div class="flex justify-between items-center mt-0.5 md:mt-1">
+                  <span class="text-[10px] md:text-sm text-[#422B1C]/40 line-through">${formatPrice(p.dongia)}</span>
+                  <span class="text-[10px] md:text-[13px] bg-[#7a0000] text-white rounded px-1.5 md:px-3 py-0.5 font-medium leading-none">${discountBadge}</span>
               </div>
-            </a>
+              `
+                  : '<div class="h-4 md:h-7 mt-0.5 md:mt-1"></div>'
+              }
           </div>
-        `;
-          });
+        </a>
+      </div>
+    `;
+    });
 
-          sliderContainer.innerHTML = html;
-        } catch (error) {
-          console.error("Lỗi tải dữ liệu sản phẩm:", error);
-        }
-      }
+    sliderContainer.innerHTML = html;
+  } catch (error) {
+    console.error("Lỗi tải dữ liệu sản phẩm:", error);
+  }
+}
 
       // --- LOGIC XỬ LÝ TRƯỢT SLIDER ---
       document.addEventListener("DOMContentLoaded", () => {

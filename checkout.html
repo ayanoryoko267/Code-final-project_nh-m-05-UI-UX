@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thanh toán - Wearever</title>
+    <title>Wearever - Thanh toán</title>
     <link rel="shortcut icon" href="image/Favicon.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -918,7 +918,7 @@
 
       async function loadDataAndRender() {
         try {
-          const response = await fetch("product.json");
+          const response = await fetch("productnew.json");
           allProducts = await response.json();
           productMap = allProducts.reduce((map, product) => {
             map[product.stt] = product;
@@ -1037,8 +1037,10 @@
         btn.textContent = "Đang xử lý...";
         btn.disabled = true;
 
-        const orderDetails = cartItems
-          .filter((i) => i.checked)
+        // Lưu trữ lại danh sách sản phẩm đã đặt trước khi xóa khỏi giỏ hàng
+        const orderedItems = cartItems.filter((i) => i.checked);
+
+        const orderDetails = orderedItems
           .map((i) => {
             const p = productMap[i.id];
             return `${p ? p.tensanpham : "SP"} (Size: ${i.size}, SL: ${i.qty})`;
@@ -1060,15 +1062,56 @@
           formData.append("Sản phẩm", orderDetails);
           formData.append("Tổng tiền", totalMoney);
 
+          // Gửi dữ liệu qua Google Sheets
           await fetch(scriptURL, {
             method: "POST",
             body: formData,
             mode: "no-cors",
           });
 
+          // Xóa sản phẩm đã thanh toán khỏi giỏ
           cartItems = cartItems.filter((item) => !item.checked);
           saveCartData();
 
+          // --- XỬ LÝ GIAO DIỆN BƯỚC 3 THEO WIREFRAME ---
+
+          // 1. Tính toán ngày giao hàng dự kiến (Ngày hiện tại + 3 ngày)
+          const deliveryDate = new Date();
+          deliveryDate.setDate(deliveryDate.getDate() + 3);
+          const formattedDate = deliveryDate.toLocaleDateString("vi-VN", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+          });
+
+          // 2. Render danh sách sản phẩm trong đơn hàng
+          let productsHTML = "";
+          orderedItems.forEach((item) => {
+            const product = productMap[item.id] || {
+              tensanpham: "Sản phẩm không rõ",
+              linkanhsp: "",
+              dongia: 0,
+            };
+            const priceStr =
+              product.giasaukhuyenmai && product.giasaukhuyenmai.trim() !== ""
+                ? product.giasaukhuyenmai
+                : product.dongia;
+
+            productsHTML += `
+              <div class="flex gap-4 mb-4 items-center">
+                <div class="w-20 h-28 border border-gray-300 rounded overflow-hidden flex-shrink-0">
+                  <img src="${product.linkanhsp}" alt="${product.tensanpham}" class="w-full h-full object-cover" />
+                </div>
+                <div class="flex flex-col text-left">
+                  <h3 class="font-medium text-base text-[#422B1C] mb-1 line-clamp-2">${product.tensanpham}</h3>
+                  <p class="text-sm text-[#422B1C] mb-2">Kích thước: <span class="text-gray-500">${item.size}</span></p>
+                  <p class="font-bold text-[#422B1C]">${formatPrice(priceStr)}</p>
+                </div>
+              </div>
+            `;
+          });
+
+          // 3. Thay thế toàn bộ thẻ <main>
           const mainEl = document.querySelector("main");
           mainEl.innerHTML = `
             <div class="flex items-center justify-center w-full max-w-3xl mx-auto mb-10 text-[10px] sm:text-xs md:text-sm font-medium">
@@ -1083,7 +1126,7 @@
               <div class="flex items-center space-x-1.5 sm:space-x-2 text-[#422B1C] opacity-70">
                 <span class="w-4 h-4 sm:w-5 sm:h-5 bg-gray-300 text-white rounded-full flex items-center justify-center text-[9px] sm:text-[10px]"><i class="fa-solid fa-check"></i></span>
                 <i class="fa-solid fa-clipboard-list ml-1"></i>
-                <span class="hidden sm:inline">Điền thông tin</span>
+                <span class="hidden sm:inline">Điền thông tin đơn hàng</span>
                 <span class="sm:hidden">Thông tin</span>
               </div>
               <div class="border-b-2 border-dashed border-gray-300 flex-1 mx-2 sm:mx-4 max-w-[60px]"></div>
@@ -1096,15 +1139,65 @@
               </div>
             </div>
 
-            <div class="max-w-2xl mx-auto text-center py-12 md:py-20 bg-white border border-[#422B1C]/20 rounded-xl shadow-sm px-6">
-              <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
-                <i class="fa-solid fa-check"></i>
+            <div class="max-w-5xl mx-auto">
+              <h2 class="text-xl md:text-2xl font-bold text-[#422B1C] mb-6">Theo dõi đơn hàng của bạn</h2>
+              
+              <div class="border border-[#422B1C] rounded-xl bg-white overflow-hidden mb-8">
+                  <div class="hidden md:grid grid-cols-4 gap-4 p-4 border-b border-[#422B1C] bg-gray-50 font-bold text-[#422B1C] text-center items-center">
+                      <div class="text-left pl-4">Sản phẩm đã mua</div>
+                      <div>Tổng tiền thanh toán</div>
+                      <div>Trạng thái</div>
+                      <div>Thời gian giao hàng</div>
+                  </div>
+                  
+                  <div class="flex flex-col md:grid md:grid-cols-4 gap-4 p-4 md:p-6 md:items-center text-center">
+                      <div class="w-full md:border-r md:border-transparent">
+                          ${productsHTML}
+                      </div>
+                      
+                      <div class="w-full flex justify-between md:block py-3 border-t border-dashed border-gray-200 md:border-none">
+                          <span class="md:hidden font-bold text-[#422B1C]">Tổng tiền:</span>
+                          <span class="font-bold text-lg md:text-xl text-[#7a0000]">${totalMoney}</span>
+                      </div>
+                      
+                      <div class="w-full flex justify-between md:block py-3 border-t border-dashed border-gray-200 md:border-none">
+                          <span class="md:hidden font-bold text-[#422B1C]">Trạng thái:</span>
+                          <span class="text-[#422B1C] font-medium">Chờ xác nhận</span>
+                      </div>
+                      
+                      <div class="w-full flex justify-between md:block py-3 border-t border-dashed border-gray-200 md:border-none">
+                          <span class="md:hidden font-bold text-[#422B1C]">Giao hàng dự kiến:</span>
+                          <span class="text-[#422B1C] font-medium">${formattedDate}</span>
+                      </div>
+                  </div>
               </div>
-              <h2 class="text-2xl md:text-3xl font-bold text-[#422B1C] mb-4">Cảm ơn bạn đã lựa chọn đặt hàng tại Wearever!</h2>
-              <p class="text-gray-600 mb-8 md:text-lg">Đơn hàng của bạn đã được hệ thống ghi nhận. Chúng tôi sẽ sớm liên hệ qua số điện thoại <b>${phone}</b> để xác nhận và giao hàng.</p>
-              <a href="index.html" class="inline-block bg-[#422B1C] text-white font-bold py-3 px-8 rounded-full hover:bg-[#2c1c12] transition text-base shadow-md">
-                Tiếp tục mua sắm
-              </a>
+
+              <div class="bg-gray-50 border border-dashed border-gray-400 rounded-xl p-5 md:p-6">
+                  <h3 class="font-bold text-lg text-[#422B1C] mb-2"><i class="fa-solid fa-gift text-[#7a0000] mr-2"></i>Ưu đãi cho lần mua sau</h3>
+                  <p class="text-sm text-gray-600 mb-5">Wearever gửi tặng bạn mã ưu đãi để đền bù trong trường hợp đơn hàng giao không đúng hẹn. Hãy lưu lại để sử dụng nhé!</p>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div class="flex items-center p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                          <div class="bg-red-50 text-[#7a0000] font-bold text-lg md:text-xl px-4 py-2 rounded border border-dashed border-[#7a0000] mr-4 tracking-wider">LATESHIP10</div>
+                          <div>
+                              <p class="font-bold text-[#422B1C]">Giảm 10%</p>
+                              <p class="text-xs text-gray-500 mt-0.5">Cho đơn hàng tiếp theo</p>
+                          </div>
+                      </div>
+                      <div class="flex items-center p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                          <div class="bg-red-50 text-[#7a0000] font-bold text-lg md:text-xl px-4 py-2 rounded border border-dashed border-[#7a0000] mr-4 tracking-wider">FREESHIP</div>
+                          <div>
+                              <p class="font-bold text-[#422B1C]">Miễn phí vận chuyển</p>
+                              <p class="text-xs text-gray-500 mt-0.5">Cho đơn hàng tiếp theo</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="mt-8 text-center md:text-left">
+                   <a href="index.html" class="inline-block border-2 border-[#422B1C] text-[#422B1C] font-bold py-2 px-8 rounded-full hover:bg-[#422B1C] hover:text-white transition-colors duration-300 text-sm md:text-base">
+                      &larr; Tiếp tục mua sắm
+                  </a>
+              </div>
             </div>
           `;
           window.scrollTo({ top: 0, behavior: "smooth" });
