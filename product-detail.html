@@ -1375,39 +1375,121 @@
           }
         });
       });
-      function renderRelatedProducts(currentProduct, allProducts) {
-        const container = document.getElementById("related-products-container");
-        if (!container) return;
+      function renderRelatedProducts(currentProduct, allProductsList) {
+        const grid = document.getElementById("related-products-container");
 
-        // Lọc các sản phẩm cùng phân loại nhưng khác ID với sản phẩm đang xem, lấy tối đa 4 cái
-        const related = allProducts
-          .filter(
-            (p) =>
-              p.phanloai === currentProduct.phanloai &&
-              p.stt !== currentProduct.stt,
-          )
-          .slice(0, 4);
-
-        if (related.length === 0) {
-          container.parentElement.style.display = "none"; // Ẩn luôn khu vực này nếu không có SP tương tự
+        if (!allProductsList || allProductsList.length === 0) {
+          grid.innerHTML =
+            '<p class="text-center w-full text-gray-500 col-span-2 md:col-span-4">Chưa có sản phẩm tương tự.</p>';
           return;
         }
 
-        container.innerHTML = related
-          .map(
-            (p) => `
-    <a href="product-detail.html?id=${p.stt}" class="group block">
-        <div class="relative aspect-[1/1.5] overflow-hidden rounded-lg mb-3 bg-gray-100 border border-gray-100 shadow-sm">
-            <img src="${p.linkanhsp}" alt="${p.tensanpham}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 origin-center">
-        </div>
-        <h3 class="text-sm md:text-base font-medium text-[#422B1C] truncate mb-1">${p.tensanpham}</h3>
-        <div class="flex items-center gap-2">
-            <p class="text-[#422B1C] font-bold">${formatPrice(p.giasaukhuyenmai || p.dongia)}</p>
-            ${p.giasaukhuyenmai && Number(p.dongia) > Number(p.giasaukhuyenmai) ? `<span class="text-xs text-[#422B1C]/50 line-through">${formatPrice(p.dongia)}</span>` : ""}
-        </div>
-    </a>
-  `,
-          )
+        // 1. Lọc ra các sản phẩm CÙNG LOẠI nhưng KHÁC sản phẩm hiện tại
+        const currentCategory = currentProduct.phanloai
+          ? currentProduct.phanloai.toLowerCase()
+          : "";
+        let relatedItems = allProductsList.filter((p) => {
+          const pCategory = p.phanloai ? p.phanloai.toLowerCase() : "";
+          // Giống phân loại (áo/quần) và không phải là chính sản phẩm đang xem
+          return (
+            pCategory.includes(currentCategory) && p.stt !== currentProduct.stt
+          );
+        });
+
+        // 2. Nếu không có cùng loại, lấy đại sản phẩm khác
+        if (relatedItems.length === 0) {
+          relatedItems = allProductsList.filter(
+            (p) => p.stt !== currentProduct.stt,
+          );
+        }
+
+        // 3. Xáo trộn ngẫu nhiên (tùy chọn) và lấy tối đa 4 sản phẩm
+        relatedItems = relatedItems.sort(() => 0.5 - Math.random());
+        const maxItems = relatedItems.slice(0, 4);
+
+        if (maxItems.length === 0) {
+          grid.innerHTML =
+            '<p class="text-center w-full text-gray-500 col-span-2 md:col-span-4">Chưa có sản phẩm tương tự.</p>';
+          return;
+        }
+
+        grid.innerHTML = maxItems
+          .map((p) => {
+            const formatPrice = (price) =>
+              new Intl.NumberFormat("vi-VN").format(Number(price)) + "đ";
+
+            const currentPrice =
+              p.giasaukhuyenmai && p.giasaukhuyenmai.trim() !== ""
+                ? formatPrice(p.giasaukhuyenmai)
+                : formatPrice(p.dongia);
+
+            const hasDiscount =
+              p.giasaukhuyenmai &&
+              p.giasaukhuyenmai.trim() !== "" &&
+              Number(p.dongia) > Number(p.giasaukhuyenmai);
+
+            const cardBorderStyle =
+              "border border-[#422B1C]/10 shadow-[0_2px_10px_rgba(0,0,0,0.02)]";
+
+            let discountBadge = "";
+            if (hasDiscount) {
+              const percent = Math.round(
+                100 - (Number(p.giasaukhuyenmai) / Number(p.dongia)) * 100,
+              );
+              discountBadge = `-${percent}%`;
+            }
+
+            const imgSrc1 =
+              p.linkanhsp ||
+              "https://via.placeholder.com/300x400?text=Chua+co+anh";
+            const imgSrc2 = p.linkanhsp_hover || imgSrc1;
+            const ratingStar = p.danhgia || 5;
+
+            return `
+            <a href="product-detail.html?id=${p.stt}" class="group relative block cursor-pointer">
+                <div class="aspect-[1/1.618] ${cardBorderStyle} rounded-md md:rounded-lg mb-1.5 md:mb-4 relative overflow-hidden bg-white transition-all duration-300">
+                    
+                    ${
+                      hasDiscount
+                        ? `
+                      <div class="absolute top-0 right-0 md:top-2 md:right-2 bg-[#7a0000] text-white text-[10px] md:text-xs font-bold px-2 py-1 md:px-3 md:py-1.5 z-30 shadow-sm">
+                        SALE
+                      </div>
+                    `
+                        : ""
+                    }
+
+                    <img src="${imgSrc2}" alt="${p.tensanpham} mặt sau" class="w-full h-full object-cover absolute inset-0 z-0">
+                    <img src="${imgSrc1}" alt="${p.tensanpham}" class="w-full h-full object-cover absolute inset-0 z-10 transition-opacity duration-500 group-hover:opacity-0">
+                    
+  
+                </div>
+                
+                <div class="space-y-0.5 md:space-y-1.5 px-0.5 text-left">
+                    <h4 class="font-medium truncate text-[10px] sm:text-xs md:text-base leading-tight group-hover:text-cta transition-colors" title="${p.tensanpham}">${p.tensanpham}</h4>
+                    
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-xs sm:text-sm md:text-lg">${currentPrice}</span>
+                        <div class="flex items-center space-x-0.5 md:space-x-1 text-[#422B1C]/60">
+                            <span class="text-[10px] md:text-base">${ratingStar}</span>
+                            <i class="fa-solid fa-star text-[10px] md:text-base text-yellow-500"></i>
+                        </div>
+                    </div>
+                    
+                    ${
+                      hasDiscount
+                        ? `
+                    <div class="flex justify-between items-center mt-0.5 md:mt-1">
+                        <span class="text-[9px] md:text-sm text-[#422B1C]/40 line-through">${formatPrice(p.dongia)}</span>
+                        <span class="text-[10px] md:text-[13px] bg-[#7a0000] text-white rounded px-1.5 md:px-3 py-0.5 font-medium leading-none">${discountBadge}</span>
+                    </div>
+                    `
+                        : '<div class="h-4 md:h-7 mt-0.5 md:mt-1"></div>'
+                    }
+                </div>
+            </a>
+          `;
+          })
           .join("");
       }
     </script>
